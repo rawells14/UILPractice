@@ -4,14 +4,75 @@
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".HomeScreen$PlaceholderFragment"
-    android:background="#3f51b5">
+    android:background="#C5CAE9"
+    android:id="@+id/drawer_layout">
 
-    <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/www"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/begin_starting"
+            android:text="@string/begin_starting"
+            android:textColor="#2196F3"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:focusable="false"
+            android:layout_marginTop="34dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_section1"
+            android:id="@+id/textView"
+            android:layout_marginLeft="44dp"
+            android:layout_marginStart="44dp"
+            android:layout_below="@+id/imageButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/imageButton"
+            android:background="@null"
+            android:src="@drawable/ic_computer_science"
+            android:layout_marginTop="72dp"
+            android:layout_below="@+id/begin_starting"
+            android:layout_alignRight="@+id/textView"
+            android:layout_alignEnd="@+id/textView" />
+
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@null"
+            android:id="@+id/imageButton2"
+            android:src="@drawable/ic_science"
+            android:scaleType="fitXY"
+            android:layout_above="@+id/textView"
+            android:layout_toRightOf="@+id/begin_starting"
+            android:layout_toEndOf="@+id/begin_starting" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_section4"
+            android:id="@+id/textView2"
+            android:layout_below="@+id/textView"
+            android:layout_alignRight="@+id/imageButton2"
+            android:layout_alignEnd="@+id/imageButton2" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

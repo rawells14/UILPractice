@@ -7,4 +7,5 @@
     android:divider="@android:color/transparent"
     android:dividerHeight="0dp"
 
-    tools:context=".NavigationDrawerFragment" />
+    tools:context=".NavigationDrawerFragment"
+    android:id="@+id/list_item" />
