@@ -1,16 +1,11 @@
 from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
-import sqlite3
+from sqlalchemy.orm import sessionmaker
 
-DATABASE = 'sqlite:///data.db'
 
-engine = create_engine(DATABASE, echo=True)
+
+engine = create_engine('sqlite:///data.db', echo=True)
 Base = declarative_base()
-
-
-
-
 
 
 class User(Base):
@@ -25,5 +20,9 @@ class User(Base):
             self.name, self.fullname, self.password)
 
 
-ryan = User(name='Ryan', fullname='Ryan Wells', password='dank', score='100')
-print(ryan.password)
+def create_new_user(name, fullname, password):
+    user = User(name='Davis', fullname='Davis Robertson', password='lank', score=100)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    session.add(user)
+    session.commit()
