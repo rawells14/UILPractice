@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>UIL Practice</title>
+    <title>UIL Practice</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 
 <body>
-  <div class="jumbotron">
-  	<h1>Welcome to UIL Practice</h1>
-  		<p>
+<div class="jumbotron">
+    <h1>Welcome to UIL Practice</h1>
 
-  			<a class="btn btn-primary btn-lg" href="learn" role="button">Learn more</a>
-
-  		</p>
-	</div>
+    <p>
+        <a class="btn btn-primary btn-lg" href="signup" role="button">Sign Up Now</a>
+    </p>
+</div>
+<div id="users">
+    Our Current Users:
+    {% for user in users %}
+        <br>
+        {{ user.username}}
+    <br>
+    {% endfor %}
+</div>
 </body>
 
 </html>

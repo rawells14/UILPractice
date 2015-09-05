@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="jumbotron">
+    <h1>Sign Up for Free!</h1>
+
+    <form method="post">
+        <div id="error">
+            {{ error }}
+        </div>
+        Username<br>
+        <input type="text" name="uname">
+        <br>
+        Full Name<br>
+        <input type="text" name="fname">
+        <br>
+        Password
+        <br>
+        <input type="password" name="pwd">
+        <br>
+        <input type="submit" value="Create Account">
+    </form>
+</div>
+</body>
+
+</html>
