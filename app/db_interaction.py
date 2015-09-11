@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, create_engine
+from sqlalchemy import Column, Integer, String, create_engine, exists
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
@@ -34,3 +34,10 @@ def get_all_users():
     for i in session.query(User).order_by(User.username):
         list.append(i)
     return list
+
+
+def is_taken(u):
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    q = session.query(User).filter_by(username=u[0]).first()
+    return not (q is None)

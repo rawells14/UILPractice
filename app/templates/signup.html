@@ -3,6 +3,7 @@
 <head>
     <title>Sign Up</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
 </head>
 
 <body>
@@ -10,9 +11,11 @@
     <h1>Sign Up for Free!</h1>
 
     <form method="post">
-        <div id="error">
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
             {{ error }}
         </div>
+        {% endif %}
         Username<br>
         <input type="text" name="uname">
         <br>

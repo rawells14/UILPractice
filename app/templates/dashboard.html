@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>UIL Practice</title>
+    <title>My Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/style.css">
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="static/script.js"></script>
+
 </head>
 
 <body>
-<div class="jumbotron center-text">
-    <h1>Welcome to UIL Practice</h1>
+<div class="jumbotron">
+    <h1>Your Dashboard</h1>
 
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -23,15 +22,10 @@
     {% endwith %}
 
     <p>
-        <a class="btn btn-success btn-lg" href="signup" role="button">Create an Account</a>
+        <a class="btn btn-primary btn-lg" href="signup" role="button">Sign Up Now</a>
     </p>
-
-    <p>
-        <button id="login" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-info">Sign In</button>
-    </p>
-    <div id="modal-info">Sign In</div>
 </div>
-<div id="users" class="center-text">
+<div id="users">
     Our Current Users:
     {% for user in users %}
     <br>
