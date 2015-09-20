@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/style.css">
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="static/script.js"></script>
 </head>
 
@@ -12,24 +13,91 @@
 <div class="jumbotron center-text">
     <h1>Welcome to UIL Practice</h1>
 
-    {% with messages = get_flashed_messages() %}
+    <!--Errors-->
+    {% with messages = get_flashed_messages(category_filter=["error"]) %}
     {% if messages %}
-    <div class="alert alert-success" role="alert">
-        {% for message in messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
         {{ message }}
-        {% endfor %}
     </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <!--Successes -->
+    {% with messages = get_flashed_messages(category_filter=["success"]) %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
     {% endif %}
     {% endwith %}
 
     <p>
-        <a class="btn btn-success btn-lg" href="signup" role="button">Create an Account</a>
+        <button type="button" id="login" class="btn btn-primary btn-lg" data-toggle="modal"
+                data-target="#sign-in-modal">
+            Sign In
+        </button>
     </p>
 
+
     <p>
-        <button id="login" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-info">Sign In</button>
+        <button type="button" id="signup" class="btn btn-success btn-lg" data-toggle="modal"
+                data-target="#sign-up-modal">
+            Create an Account
+        </button>
     </p>
-    <div id="modal-info">Sign In</div>
+
+
+    <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div id="help-dialog-signin" class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Sign Into Account
+                </div>
+                <div class="modal-body center">
+                    <form method="post" action="{{ url_for('signin') }}">
+                        Username<br>
+                        <input type="text" name="uname">
+                        <br>
+                        Password
+                        <br>
+                        <input type="password" name="pwd">
+                        <br>
+                        <input type="submit" value="Sign In">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div id="help-dialog" class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Create an Account for Free
+                </div>
+                <div class="modal-body center">
+                    <form method="post" action="{{ url_for('signup') }}">
+                        Username<br>
+                        <input type="text" name="uname">
+                        <br>
+                        Full Name<br>
+                        <input type="text" name="fname">
+                        <br>
+                        Password
+                        <br>
+                        <input type="password" name="pwd">
+                        <br>
+                        <input type="submit" value="Create Account">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div id="users" class="center-text">
     Our Current Users:

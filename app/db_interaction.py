@@ -41,3 +41,15 @@ def is_taken(u):
     session = Session()
     q = session.query(User).filter_by(username=u[0]).first()
     return not (q is None)
+
+
+def is_valid(u, p):
+    username = u[0]
+    password = p[0]
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    for i in session.query(User).order_by(User.username):
+        if i.username == username and i.password == password:
+            return True
+
+    return False
