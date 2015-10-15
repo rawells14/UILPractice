@@ -18,6 +18,9 @@ class User(Base):
         return "<User(username='%s', fullname='%s', password='%s', score='%d')>" % (
             self.username, self.fullname, self.password, self.score)
 
+    def is_authenticated(self):
+        return True;
+    
 
 def create_user(uname, full, pwd, scr):
     Session = sessionmaker(bind=engine)
