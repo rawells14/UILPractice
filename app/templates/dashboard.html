@@ -9,7 +9,10 @@
 <body>
 <div class="jumbotron">
     <h1>Your Dashboard</h1>
-
+    {% if current_user.is_authenticated %}
+    Hi {{ current_user.name }}!
+    {% endif %}
+x
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <div class="alert alert-success" role="alert">

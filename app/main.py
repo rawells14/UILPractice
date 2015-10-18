@@ -1,10 +1,10 @@
-from flask import Flask, request, url_for, flash, session
+from flask import Flask, request, url_for, flash, session, g
 from flask import render_template
-from flask_login import LoginManager, login_required, logout_user
+from flask_login import LoginManager, login_required, logout_user, login_user, current_user
 from sqlalchemy.sql.functions import user
 from werkzeug.utils import redirect
 
-from app.db_interaction import create_user, get_all_users, is_taken, is_valid, User
+from app.db_interaction import create_user, get_all_users, is_taken, is_valid, User, get_user_by_username
 
 app = Flask(__name__)
 app.secret_key = '123'
@@ -12,9 +12,14 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
+@app.before_request
+def before_request():
+    g.user = current_user
+
+
 @login_manager.user_loader
-def load_user(user_id):
-    return User.get(user_id)
+def load_user(username):
+    return User.get(username)
 
 
 @app.route('/', methods=['GET'])
@@ -59,7 +64,9 @@ def signin():
             flash(error, 'error')
             return redirect(url_for('home'))
         else:
-
+            u = get_user_by_username(username[0])
+            login_user(u)
+            flash("Successfully Logged In!")
             return redirect(url_for('dashboard'))
 
     return redirect(url_for('home'))
@@ -67,12 +74,12 @@ def signin():
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
-    print(session)
-    print(session['loggedin'])
-    if session['loggedin'] == True:
-        return render_template('dashboard.html')
-    else:
-        return redirect(url_for('signin'))
+    return redirect(url_for('signin'))
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
 
 
 @app.route('/logout', methods=['GET'])

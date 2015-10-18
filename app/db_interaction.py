@@ -1,3 +1,4 @@
+from flask_login import unicode
 from sqlalchemy import Column, Integer, String, create_engine, exists
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -19,8 +20,17 @@ class User(Base):
             self.username, self.fullname, self.password, self.score)
 
     def is_authenticated(self):
-        return True;
-    
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return unicode(self.username)
+
 
 def create_user(uname, full, pwd, scr):
     Session = sessionmaker(bind=engine)
@@ -39,6 +49,17 @@ def get_all_users():
     return list
 
 
+def get_user_by_username(username):
+    lst = get_all_users()
+    for i in lst:
+        print(i)
+        print(i.username)
+        print(username)
+        if i.username == username:
+            return i
+    return None
+
+
 def is_taken(u):
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -54,5 +75,4 @@ def is_valid(u, p):
     for i in session.query(User).order_by(User.username):
         if i.username == username and i.password == password:
             return True
-
     return False
