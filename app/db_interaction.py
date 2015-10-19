@@ -1,7 +1,9 @@
-from flask_login import unicode
-from sqlalchemy import Column, Integer, String, create_engine, exists
+from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+
+from flask_login import unicode
+
 
 Base = declarative_base()
 engine = create_engine('sqlite:///data.db', echo=True)
@@ -50,14 +52,9 @@ def get_all_users():
 
 
 def get_user_by_username(username):
-    lst = get_all_users()
-    for i in lst:
-        print(i)
-        print(i.username)
-        print(username)
-        if i.username == username:
-            return i
-    return None
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    return session.query(User).get(username)
 
 
 def is_taken(u):

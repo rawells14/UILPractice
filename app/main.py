@@ -1,10 +1,10 @@
-from flask import Flask, request, url_for, flash, session, g
+from flask import Flask, request, url_for, flash, g
 from flask import render_template
 from flask_login import LoginManager, login_required, logout_user, login_user, current_user
-from sqlalchemy.sql.functions import user
 from werkzeug.utils import redirect
 
-from app.db_interaction import create_user, get_all_users, is_taken, is_valid, User, get_user_by_username
+from app.db_interaction import create_user, get_all_users, is_taken, is_valid, get_user_by_username
+
 
 app = Flask(__name__)
 app.secret_key = '123'
@@ -19,7 +19,7 @@ def before_request():
 
 @login_manager.user_loader
 def load_user(username):
-    return User.get(username)
+    return get_user_by_username(username)
 
 
 @app.route('/', methods=['GET'])
@@ -74,12 +74,9 @@ def signin():
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
-    return redirect(url_for('signin'))
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.get(user_id)
+    if current_user == None or not current_user.is_active or not current_user.is_authenticated:
+        return redirect(url_for('signin'))
+    return render_template('dashboard.html')
 
 
 @app.route('/logout', methods=['GET'])
