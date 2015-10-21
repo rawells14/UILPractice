@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="static/style.css">
+
+    <script src="static/script.js"></script>
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/dashboard"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                Dashboard</a>
+
+            <div class="collapse navbar-collapse" id="navigation-bar">
+                <ul id="nav-buttons" class="nav navbar-nav">
+                    <li id="cs" class="">
+                        <a href="#">Computer Science</a>
+                    </li>
+                    <li id="math">
+                        <a href="#">Math<span class="sr-only"></span></a>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="Search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search Users">
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"
+                                                                        aria-hidden="true"></span></button>
+                </form>
+                <a class="navbar-brand navbar-right" href="logout">Logout</a>
+                <a class="navbar-brand navbar-right" href="#">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    Hello, {{ current_user.username }}!
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+<div id="content">
+    {% block content %}
+
+    {% endblock %}
+</div>
+</body>
+</html>

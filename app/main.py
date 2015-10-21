@@ -5,7 +5,6 @@ from werkzeug.utils import redirect
 
 from app.db_interaction import create_user, get_all_users, is_taken, is_valid, get_user_by_username
 
-
 app = Flask(__name__)
 app.secret_key = '123'
 login_manager = LoginManager()
@@ -68,7 +67,6 @@ def signin():
             login_user(u)
             flash("Successfully Logged In!")
             return redirect(url_for('dashboard'))
-
     return redirect(url_for('home'))
 
 
@@ -84,6 +82,11 @@ def dashboard():
 def logout():
     logout_user()
     return redirect(url_for('home'))
+
+
+@app.route('/search', methods=['GET'])
+def search():
+    return render_template("search.html", users_found={'Ryan', 'Davis'})
 
 
 if __name__ == '__main__':
