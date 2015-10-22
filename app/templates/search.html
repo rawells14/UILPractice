@@ -1,34 +1,33 @@
 {% extends "layout.html" %}
-<div id="content">
-    {% block title %}
-    Search
-    {% endblock %}
-    {% block content %}
-    <div id="Found Users">
-        {% if users_found %}
-        dank
-        <table class="table table-striped">
-            <tr>
-                <th>
-                    Username
-                </th>
-                <th>
-                    Score
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    {{ users_found[0] }}
-                </td>
-                <td>
+{% block title %}
+Search
+{% endblock %}
 
-                </td>
-            </tr>
-        </table>
-        {% else %}
-
-        {% endif %}
-
-    </div>
+<body>
+{% block content %}
+<div id="FoundUsers">
+    {% if users_found %}
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Username
+            </th>
+            <th>
+                Score
+            </th>
+        </tr>
+        <tr>
+            <td>
+                {{ users_found[0] }}
+            </td>
+            <td>
+                100
+            </td>
+        </tr>
+    </table>
+    {% else %}
+    Test
+    {% endif %}
 </div>
 {% endblock %}
+</body>
