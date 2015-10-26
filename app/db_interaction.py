@@ -4,7 +4,6 @@ from sqlalchemy.orm import sessionmaker
 
 from flask_login import unicode
 
-
 Base = declarative_base()
 engine = create_engine('sqlite:///data.db', echo=True)
 
@@ -54,7 +53,15 @@ def get_all_users():
 def get_user_by_username(username):
     Session = sessionmaker(bind=engine)
     session = Session()
+    users = session.query(User).filter(User.username.contains(username))
     return session.query(User).get(username)
+
+
+def search_by_username(username):
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    users = session.query(User).filter(User.username.contains(username))
+    return users
 
 
 def is_taken(u):

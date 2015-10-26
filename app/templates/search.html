@@ -2,11 +2,10 @@
 {% block title %}
 Search
 {% endblock %}
-
-<body>
-{% block content %}
 <div id="FoundUsers">
+    {% block content %}
     {% if users_found %}
+    <div class="alert alert-success center-text" role="alert">Found {{users_found|length}} Users</div>
     <table class="table table-striped">
         <tr>
             <th>
@@ -16,18 +15,19 @@ Search
                 Score
             </th>
         </tr>
+        {% for i in users_found %}
         <tr>
             <td>
-                {{ users_found[0] }}
+                {{ i.username }}
             </td>
             <td>
-                100
+                {{ i.score }}
             </td>
         </tr>
+        {% endfor %}
     </table>
     {% else %}
-    Test
+    <div class="alert alert-danger" role="alert"><strong>0 </strong>Users found</div>
     {% endif %}
+    {% endblock %}
 </div>
-{% endblock %}
-</body>
