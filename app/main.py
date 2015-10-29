@@ -89,11 +89,10 @@ def search():
     users_found = []
     if request.method == 'POST':
         uname = username = [request.form['uname']][0]
-        print(uname)
-        users_found = search_by_username(uname )
+        users_found = search_by_username(uname)
         return render_template("search.html", users_found=users_found)
     else:
-        return render_template("search.html", users_found=users_found)
+        return render_template("search.html")
 
 
 if __name__ == '__main__':

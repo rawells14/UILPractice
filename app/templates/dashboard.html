@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 {% block title %} My Dashboard {% endblock %}
-<body>
+{% block head %}
+<link rel="stylesheet" href="static/dashboard.css">
+{% endblock %}
 {% block content %}
 <div class="jumbotron">
     <div id="main-content">
@@ -18,4 +20,3 @@
     {% endwith %}
 </div>
 {% endblock %}
-</body>

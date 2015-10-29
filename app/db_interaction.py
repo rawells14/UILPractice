@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from flask_login import unicode
 
 Base = declarative_base()
-engine = create_engine('sqlite:///data.db', echo=True)
+engine = create_engine('sqlite:///data.db', echo=False)
 
 
 class User(Base):

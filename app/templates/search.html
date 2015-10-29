@@ -2,10 +2,15 @@
 {% block title %}
 Search
 {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="static/search.css">
+{% endblock %}
+
+
+{% block content %}
 <div id="FoundUsers">
-    {% block content %}
-    {% if users_found %}
-    <div class="alert alert-success center-text" role="alert">Found {{users_found|length}} Users</div>
+    {% if (users_found) and (users_found.count() > 0) %}
+    <div class="alert alert-success center-text" role="alert">Found {{ users_found.count() }} Users</div>
     <table class="table table-striped">
         <tr>
             <th>
@@ -29,5 +34,6 @@ Search
     {% else %}
     <div class="alert alert-danger" role="alert"><strong>0 </strong>Users found</div>
     {% endif %}
-    {% endblock %}
 </div>
+{% endblock %}
+
