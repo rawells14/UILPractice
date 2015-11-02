@@ -23,7 +23,9 @@ Search
         {% for i in users_found %}
         <tr>
             <td>
+                <a href="/user/{{ i.username }}">
                 {{ i.username }}
+                </a>
             </td>
             <td>
                 {{ i.score }}

@@ -95,6 +95,11 @@ def search():
         return render_template("search.html")
 
 
+@app.route('/user/<username>', methods=['GET'])
+def profile(username):
+    return render_template('profile.html', user=get_user_by_username(username))
+
+
 if __name__ == '__main__':
     app.debug = True
     app.run()

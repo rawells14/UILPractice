@@ -5,9 +5,7 @@
 {% endblock %}
 {% block content %}
 <div class="jumbotron">
-    <div id="main-content">
 
-    </div>
     <h1>Your Dashboard</h1>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -18,5 +16,8 @@
     </div>
     {% endif %}
     {% endwith %}
+    <div id="main-content">
+
+    </div>
 </div>
 {% endblock %}

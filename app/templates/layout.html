@@ -33,7 +33,7 @@
                         aria-hidden="true"></span></button>
             </form>
             <a class="navbar-brand navbar-right" href="logout">Logout</a>
-            <a class="navbar-brand navbar-right" href="#">
+            <a class="navbar-brand navbar-right" href="/user/{{ current_user.username }}">
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 Hello, {{ current_user.username }}!
             </a>
