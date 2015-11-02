@@ -2,9 +2,12 @@
 {% block title %} My Dashboard {% endblock %}
 {% block head %}
 <link rel="stylesheet" href="static/dashboard.css">
+<script src="static/Chart.js"></script>
+<script src="static/analytics.js"></script>
+
 {% endblock %}
 {% block content %}
-<div class="jumbotron">
+<div class="jumbotron center-text">
 
     <h1>Your Dashboard</h1>
     {% with messages = get_flashed_messages() %}
@@ -16,8 +19,10 @@
     </div>
     {% endif %}
     {% endwith %}
-    <div id="main-content">
 
+    <div id="main-content">
+        Analytics:
+        <canvas id="score-chart" width="600" height="400"></canvas>
     </div>
 </div>
 {% endblock %}

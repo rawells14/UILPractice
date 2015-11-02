@@ -74,6 +74,7 @@ def signin():
 def dashboard():
     if current_user == None or not current_user.is_active or not current_user.is_authenticated:
         return redirect(url_for('signin'))
+    testPts = [1,2,3]
     return render_template('dashboard.html')
 
 

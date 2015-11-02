@@ -1,12 +1,15 @@
 {% extends "layout.html" %}
-{% block title %} My Dashboard {% endblock %}
+{% block title %} {{ user.username }}'s Profile{% endblock %}
 {% block head %}
 <link rel="stylesheet" href="static/profile.css">
 {% endblock %}
 {% block content %}
 {% if user %}
+{{ user.username }}'s Profile
 
 
+{% else %}
+This user doesn't exist!
 {% endif %}
 
 {% endblock %}
