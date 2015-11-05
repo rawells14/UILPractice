@@ -74,8 +74,10 @@ def signin():
 def dashboard():
     if current_user == None or not current_user.is_active or not current_user.is_authenticated:
         return redirect(url_for('signin'))
-    testPts = [1,2,3]
-    return render_template('dashboard.html')
+    xAxisLabels = ["January", "March", "May"]
+    yAxisLabels = [100, 200, 300]
+    xPts = [101, 130, 180, 190, 200]
+    return render_template('dashboard.html', xAxisLabels=xAxisLabels, yAxisLabels=yAxisLabels, xPts=xPts)
 
 
 @app.route('/logout', methods=['GET'])
