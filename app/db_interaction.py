@@ -1,11 +1,14 @@
+import datetime
 from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-
+import time
 from flask_login import unicode
 
 Base = declarative_base()
 engine = create_engine('sqlite:///data.db', echo=False)
+Session = sessionmaker(bind=engine)
+session = Session()
 
 
 class User(Base):
@@ -15,6 +18,8 @@ class User(Base):
     fullname = Column(String(50))
     password = Column(String(12))
     score = Column(Integer)
+    totalattempted = Column(Integer)
+    totalcorrect = Column(Integer)
 
     def __repr__(self):
         return "<User(username='%s', fullname='%s', password='%s', score='%d')>" % (
@@ -33,17 +38,32 @@ class User(Base):
         return unicode(self.username)
 
 
+class Submission(Base):
+    __tablename__ = 'submissions'
+
+    username = Column(String(50), primary_key=True)
+    status = Column(String(50))
+    time_stamp = Column()
+
+    def __repr__(self):
+        return "<Submission(username='%s', status='%s', time_stamp='%d')>" % (
+            self.username, self.status, self.time_stamp)
+
+
+def new_submission(uname, status):
+    t = time.time()
+    sub = Submission(username=uname, status=status, time_stamp=t)
+    session.add(sub)
+    session.commit()
+
+
 def create_user(uname, full, pwd, scr):
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    u = User(username=uname, fullname=full, password=pwd, score=scr)
+    u = User(username=uname, fullname=full, password=pwd, score=scr, totalattempted=0, totalcorrect=0)
     session.add(u)
     session.commit()
 
 
 def get_all_users():
-    Session = sessionmaker(bind=engine)
-    session = Session()
     list = []
     for i in session.query(User).order_by(User.username):
         list.append(i)
@@ -51,22 +71,15 @@ def get_all_users():
 
 
 def get_user_by_username(username):
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    users = session.query(User).filter(User.username.contains(username))
     return session.query(User).get(username)
 
 
 def search_by_username(username):
-    Session = sessionmaker(bind=engine)
-    session = Session()
     users = session.query(User).filter(User.username.contains(username))
     return users
 
 
 def is_taken(u):
-    Session = sessionmaker(bind=engine)
-    session = Session()
     q = session.query(User).filter_by(username=u[0]).first()
     return not (q is None)
 
@@ -74,9 +87,28 @@ def is_taken(u):
 def is_valid(u, p):
     username = u[0]
     password = p[0]
-    Session = sessionmaker(bind=engine)
-    session = Session()
     for i in session.query(User).order_by(User.username):
         if i.username == username and i.password == password:
             return True
     return False
+
+
+def correct_and_total_num(username):
+    u = get_user_by_username(username)
+    data = []
+    data.append(u.totalcorrect)
+    data.append(u.totalattempted)
+    return data
+
+
+def incorrect(username):
+    u = get_user_by_username(username)
+    u.totalattempted += 1
+    session.commit()
+
+
+def correct(username):
+    u = get_user_by_username(username)
+    u.totalattempted += 1
+    u.totalcorrect += 1
+    session.commit()

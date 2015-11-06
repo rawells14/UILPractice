@@ -21,10 +21,11 @@
 
     <div id="main-content">
         Analytics:
-        <canvas id="score-chart" width="600" height="400"></canvas>
+        <canvas id="correct-incorrect-chart" width="600" height="400"></canvas>
         <script>
-            graphData(["January","February", "March", "April", "May"],[1,2,3,8,5,6]);
-
+            var correct = {{ number_correct|safe }};
+            var incorrect = {{ number_attempted|safe }} - correct;
+            graphData(correct, incorrect);
 
         </script>
     </div>
