@@ -19,15 +19,59 @@
     {% endif %}
     {% endwith %}
 
-    <div id="main-content">
-        Analytics:
+    <div id="analytics">
+        <h2>Analytics:</h2>
+
+        <h3>Your Overall Performance</h3>
         <canvas id="correct-incorrect-chart" width="600" height="400"></canvas>
         <script>
             var correct = {{ number_correct|safe }};
             var incorrect = {{ number_attempted|safe }} - correct;
             graphData(correct, incorrect);
 
+
+
         </script>
+        <table class="table">
+            <tr class="active">
+                <td>
+                    <strong>Total Questions Answered</strong>
+                </td>
+                <td>
+                    {{ number_attempted }}
+                </td>
+            </tr>
+            <tr class="success">
+                <td>
+                    <strong>Questions Correct</strong>
+                </td>
+                <td>
+                    {{ number_correct }}
+                </td>
+            </tr>
+            <tr class="danger">
+                <td>
+                    <strong>Questions Incorrect</strong>
+                </td>
+                <td>
+                    {{ number_attempted - number_correct }}
+                </td>
+            </tr>
+            <tr class="info">
+                <td>
+                    <strong>Accuracy</strong>
+                </td>
+                <td>
+                    <div id="accuracy-percent">
+                        {{ number_correct/number_attempted*100 }}%
+                    </div>
+                </td>
+            </tr>
+            <script>
+                changeColor({{ number_correct/number_attempted*100 }});
+
+            </script>
+        </table>
     </div>
 </div>
 {% endblock %}

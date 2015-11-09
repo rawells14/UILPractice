@@ -92,7 +92,7 @@ def logout():
 def search():
     users_found = []
     if request.method == 'POST':
-        uname = username = [request.form['uname']][0]
+        uname = username = [request.form['unam  e']][0]
         users_found = search_by_username(uname)
         return render_template("search.html", users_found=users_found)
     else:
