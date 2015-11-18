@@ -65,9 +65,26 @@ def create_user(uname, full, pwd, scr):
 
 def get_all_users():
     list = []
-    for i in session.query(User).order_by(User.username):
+    for i in session.query(User).order_by(User.score):
         list.append(i)
     return list
+
+
+def compute_rank(user):
+    users = get_all_users()
+    rank = -1
+    values = []
+    value = 0
+    for i in users:
+        if i.username == user.username:
+            value = i.score
+        values.append(i.score)
+    values.reverse()
+    for i in range(len(values)):
+        if values[i] == value:
+            return i + 1
+
+    return rank
 
 
 def get_user_by_username(username):
@@ -87,7 +104,7 @@ def is_taken(u):
 def is_valid(u, p):
     username = u[0]
     password = p[0]
-    for i in session.query(User).order_by(User.username):
+    for i in session.query(User).order_by(User.score):
         if i.username == username and i.password == password:
             return True
     return False
@@ -104,6 +121,7 @@ def correct_and_total_num(username):
 def incorrect(username):
     u = get_user_by_username(username)
     u.totalattempted += 1
+    u.score = round(u.totalcorrect * u.totalcorrect / u.totalattempted)
     session.commit()
 
 
@@ -111,4 +129,5 @@ def correct(username):
     u = get_user_by_username(username)
     u.totalattempted += 1
     u.totalcorrect += 1
+    u.score = round(u.totalcorrect * u.totalcorrect / u.totalattempted)
     session.commit()

@@ -4,7 +4,7 @@ from flask_login import LoginManager, login_required, logout_user, login_user, c
 from werkzeug.utils import redirect
 
 from app.db_interaction import create_user, get_all_users, is_taken, is_valid, get_user_by_username, search_by_username, \
-    new_submission, correct_and_total_num, correct
+    new_submission, correct_and_total_num, compute_rank, correct
 
 app = Flask(__name__)
 app.secret_key = '123'
@@ -75,10 +75,10 @@ def signin():
 def dashboard():
     if current_user == None or not current_user.is_active or not current_user.is_authenticated:
         return redirect(url_for('signin'))
-
     correct(current_user.username)
+    rank = compute_rank(current_user)
     data = correct_and_total_num(current_user.username)
-    return render_template('dashboard.html', number_correct=data[0], number_attempted=data[1])
+    return render_template('dashboard.html', number_correct=data[0], number_attempted=data[1], rank=rank)
 
 
 @app.route('/logout', methods=['GET'])
@@ -92,7 +92,7 @@ def logout():
 def search():
     users_found = []
     if request.method == 'POST':
-        uname = username = [request.form['unam  e']][0]
+        uname = username = [request.form['uname']][0]
         users_found = search_by_username(uname)
         return render_template("search.html", users_found=users_found)
     else:
