@@ -3,8 +3,9 @@ from flask import render_template
 from flask_login import LoginManager, login_required, logout_user, login_user, current_user
 from werkzeug.utils import redirect
 
-from app.db_interaction import create_user, get_all_users, is_taken, is_valid, get_user_by_username, search_by_username, \
-    new_submission, correct_and_total_num, compute_rank, correct
+from db_interaction import create_user, get_all_users, is_taken, is_valid, get_user_by_username, search_by_username, \
+    correct_and_total_num, compute_rank, correct
+
 
 app = Flask(__name__)
 app.secret_key = '123'
