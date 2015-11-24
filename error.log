@@ -1,0 +1,10 @@
+[Tue Nov 24 15:46:20.644127 2015] [mpm_event:notice] [pid 13693:tid 140098570344320] AH00489: Apache/2.4.7 (Ubuntu) mod_wsgi/3.4 Python/2.7.6 configured -- resuming normal operations
+[Tue Nov 24 15:46:20.644389 2015] [core:notice] [pid 13693:tid 140098570344320] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Nov 24 15:46:25.699571 2015] [:error] [pid 13696:tid 140098472953600] [client 162.216.46.67:59608] mod_wsgi (pid=13696): Target WSGI script '/var/www/FlaskApp/flaskapp.wsgi' cannot be loaded as Python module.
+[Tue Nov 24 15:46:25.699657 2015] [:error] [pid 13696:tid 140098472953600] [client 162.216.46.67:59608] mod_wsgi (pid=13696): Exception occurred processing WSGI script '/var/www/FlaskApp/flaskapp.wsgi'.
+[Tue Nov 24 15:46:25.699717 2015] [:error] [pid 13696:tid 140098472953600] [client 162.216.46.67:59608] Traceback (most recent call last):
+[Tue Nov 24 15:46:25.699768 2015] [:error] [pid 13696:tid 140098472953600] [client 162.216.46.67:59608]   File "/var/www/FlaskApp/flaskapp.wsgi", line 7, in <module>
+[Tue Nov 24 15:46:25.699911 2015] [:error] [pid 13696:tid 140098472953600] [client 162.216.46.67:59608]     from main import app as application
+[Tue Nov 24 15:46:25.699945 2015] [:error] [pid 13696:tid 140098472953600] [client 162.216.46.67:59608]   File "/var/www/FlaskApp/app/main.py", line 6, in <module>
+[Tue Nov 24 15:46:25.700100 2015] [:error] [pid 13696:tid 140098472953600] [client 162.216.46.67:59608]     from db_interaction import create_user, get_all_users, is_taken, is_valid, get_user_by_username, search_by_username, \\
+[Tue Nov 24 15:46:25.700407 2015] [:error] [pid 13696:tid 140098472953600] [client 162.216.46.67:59608] ImportError: No module named db_interaction

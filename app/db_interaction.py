@@ -3,7 +3,6 @@ from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import time
-from flask_login import unicode
 
 Base = declarative_base()
 engine = create_engine('sqlite:///data.db', echo=False)
@@ -35,7 +34,7 @@ class User(Base):
         return False
 
     def get_id(self):
-        return unicode(self.username)
+        return self.username
 
 
 class Submission(Base):
