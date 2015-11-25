@@ -1,8 +1,9 @@
-import datetime
+import time
+
 from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-import time
+
 
 Base = declarative_base()
 engine = create_engine('sqlite:///data.db', echo=False)
