@@ -6,10 +6,14 @@ from sqlalchemy.orm import sessionmaker
 
 
 Base = declarative_base()
-engine = create_engine('sqlite:///data.db', echo=True)
+LINUX_PATH = '/var/www/FlaskApp/FlaskApp/data.db'
+WINDOWS_PATH = 'data.db'
+DATABASE_LOCATION = 'sqlite:///' + LINUX_PATH
+print(DATABASE_LOCATION)
+engine = create_engine(DATABASE_LOCATION, echo=True)
+
 Session = sessionmaker(bind=engine)
 session = Session()
-
 
 
 class User(Base):
