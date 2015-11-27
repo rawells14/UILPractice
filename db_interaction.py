@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker
 Base = declarative_base()
 LINUX_PATH = '/var/www/FlaskApp/FlaskApp/data.db'
 WINDOWS_PATH = 'data.db'
-DATABASE_LOCATION = 'sqlite://' + WINDOWS_PATH
+DATABASE_LOCATION = 'sqlite:///' + WINDOWS_PATH
 engine = create_engine(DATABASE_LOCATION, echo=True)
 print(DATABASE_LOCATION)
 
