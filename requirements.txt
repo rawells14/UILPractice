@@ -1,6 +1,7 @@
 Flask==0.10.1
 Flask-Login==0.3.2
 gunicorn==19.4.1
+itsdangerous==0.24
 Jinja2==2.8
 MarkupSafe==0.23
 pyparsing==2.0.3
