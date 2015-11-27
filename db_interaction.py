@@ -10,7 +10,8 @@ engine = create_engine('sqlite:///data.db', echo=False)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-
+print(engine)
+print(session)
 class User(Base):
     __tablename__ = 'users'
 
