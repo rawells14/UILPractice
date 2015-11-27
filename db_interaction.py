@@ -8,9 +8,9 @@ from sqlalchemy.orm import sessionmaker
 Base = declarative_base()
 LINUX_PATH = '/var/www/FlaskApp/FlaskApp/data.db'
 WINDOWS_PATH = 'data.db'
-DATABASE_LOCATION = 'sqlite:///' + LINUX_PATH
-print(DATABASE_LOCATION)
+DATABASE_LOCATION = 'sqlite:///' + WINDOWS_PATH
 engine = create_engine(DATABASE_LOCATION, echo=True)
+print(DATABASE_LOCATION)
 
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -48,7 +48,7 @@ class Submission(Base):
 
     username = Column(String(50), primary_key=True)
     status = Column(String(50))
-    time_stamp = Column()
+    time_stamp = Column(Integer)
 
     def __repr__(self):
         return "<Submission(username='%s', status='%s', time_stamp='%d')>" % (
@@ -136,3 +136,6 @@ def correct(username):
     u.totalcorrect += 1
     u.score = round(u.totalcorrect * u.totalcorrect / u.totalattempted)
     session.commit()
+
+
+Base.metadata.create_all(engine)
