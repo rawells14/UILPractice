@@ -8,7 +8,6 @@ from db_interaction import create_user, get_all_users, is_taken, is_valid, get_u
 
 
 app = Flask(__name__)
-app.secret_key = '123'
 login_manager = LoginManager()
 login_manager.init_app(app)
 

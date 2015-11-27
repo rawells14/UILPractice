@@ -1,0 +1,198 @@
+[Fri Nov 27 15:34:53.084433 2015] [mpm_event:notice] [pid 2163:tid 140567120844672] AH00489: Apache/2.4.7 (Ubuntu) configured -- resuming normal operations
+[Fri Nov 27 15:34:53.084594 2015] [core:notice] [pid 2163:tid 140567120844672] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Nov 27 15:35:08.662582 2015] [mpm_event:notice] [pid 2163:tid 140567120844672] AH00491: caught SIGTERM, shutting down
+[Fri Nov 27 15:35:09.731010 2015] [mpm_event:notice] [pid 2340:tid 140306856408960] AH00489: Apache/2.4.7 (Ubuntu) mod_wsgi/3.4 Python/2.7.6 configured -- resuming normal operations
+[Fri Nov 27 15:35:09.731137 2015] [core:notice] [pid 2340:tid 140306856408960] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Nov 27 15:45:54.731700 2015] [mpm_event:notice] [pid 2340:tid 140306856408960] AH00493: SIGUSR1 received.  Doing graceful restart
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+[Fri Nov 27 15:45:54.759739 2015] [mpm_event:notice] [pid 2340:tid 140306856408960] AH00489: Apache/2.4.7 (Ubuntu) mod_wsgi/3.4 Python/2.7.6 configured -- resuming normal operations
+[Fri Nov 27 15:45:54.759757 2015] [core:notice] [pid 2340:tid 140306856408960] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Nov 27 15:53:42.051262 2015] [mpm_event:notice] [pid 2340:tid 140306856408960] AH00493: SIGUSR1 received.  Doing graceful restart
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+[Fri Nov 27 15:53:42.072711 2015] [mpm_event:notice] [pid 2340:tid 140306856408960] AH00489: Apache/2.4.7 (Ubuntu) mod_wsgi/3.4 Python/2.7.6 configured -- resuming normal operations
+[Fri Nov 27 15:53:42.072725 2015] [core:notice] [pid 2340:tid 140306856408960] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Nov 27 15:55:03.330318 2015] [mpm_event:notice] [pid 2340:tid 140306856408960] AH00491: caught SIGTERM, shutting down
+[Fri Nov 27 15:55:04.387437 2015] [mpm_event:notice] [pid 19018:tid 139825102317440] AH00489: Apache/2.4.7 (Ubuntu) mod_wsgi/3.4 Python/2.7.6 configured -- resuming normal operations
+[Fri Nov 27 15:55:04.387628 2015] [core:notice] [pid 19018:tid 139825102317440] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Nov 27 15:55:11.942580 2015] [:error] [pid 19021:tid 139825004939008] ERROR:FlaskApp.main:Exception on / [GET]
+[Fri Nov 27 15:55:11.942620 2015] [:error] [pid 19021:tid 139825004939008] Traceback (most recent call last):
+[Fri Nov 27 15:55:11.942625 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+[Fri Nov 27 15:55:11.942628 2015] [:error] [pid 19021:tid 139825004939008]     response = self.full_dispatch_request()
+[Fri Nov 27 15:55:11.942632 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+[Fri Nov 27 15:55:11.942635 2015] [:error] [pid 19021:tid 139825004939008]     rv = self.handle_user_exception(e)
+[Fri Nov 27 15:55:11.942638 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+[Fri Nov 27 15:55:11.942641 2015] [:error] [pid 19021:tid 139825004939008]     reraise(exc_type, exc_value, tb)
+[Fri Nov 27 15:55:11.942644 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+[Fri Nov 27 15:55:11.942647 2015] [:error] [pid 19021:tid 139825004939008]     rv = self.dispatch_request()
+[Fri Nov 27 15:55:11.942649 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+[Fri Nov 27 15:55:11.942653 2015] [:error] [pid 19021:tid 139825004939008]     return self.view_functions[rule.endpoint](**req.view_args)
+[Fri Nov 27 15:55:11.942655 2015] [:error] [pid 19021:tid 139825004939008]   File "/var/www/FlaskApp/FlaskApp/main.py", line 29, in home
+[Fri Nov 27 15:55:11.942668 2015] [:error] [pid 19021:tid 139825004939008]     return render_template('homepage.html', users=get_all_users())
+[Fri Nov 27 15:55:11.942671 2015] [:error] [pid 19021:tid 139825004939008]   File "/var/www/FlaskApp/FlaskApp/db_interaction.py", line 68, in get_all_users
+[Fri Nov 27 15:55:11.942674 2015] [:error] [pid 19021:tid 139825004939008]     for i in session.query(User).order_by(User.score):
+[Fri Nov 27 15:55:11.942676 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2516, in __iter__
+[Fri Nov 27 15:55:11.942679 2015] [:error] [pid 19021:tid 139825004939008]     return self._execute_and_instances(context)
+[Fri Nov 27 15:55:11.942682 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2529, in _execute_and_instances
+[Fri Nov 27 15:55:11.942685 2015] [:error] [pid 19021:tid 139825004939008]     close_with_result=True)
+[Fri Nov 27 15:55:11.942687 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2520, in _connection_from_session
+[Fri Nov 27 15:55:11.942690 2015] [:error] [pid 19021:tid 139825004939008]     **kw)
+[Fri Nov 27 15:55:11.942692 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 882, in connection
+[Fri Nov 27 15:55:11.942695 2015] [:error] [pid 19021:tid 139825004939008]     execution_options=execution_options)
+[Fri Nov 27 15:55:11.942698 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 887, in _connection_for_bind
+[Fri Nov 27 15:55:11.942700 2015] [:error] [pid 19021:tid 139825004939008]     engine, execution_options)
+[Fri Nov 27 15:55:11.942703 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _connection_for_bind
+[Fri Nov 27 15:55:11.942706 2015] [:error] [pid 19021:tid 139825004939008]     conn = bind.contextual_connect()
+[Fri Nov 27 15:55:11.942708 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2039, in contextual_connect
+[Fri Nov 27 15:55:11.942711 2015] [:error] [pid 19021:tid 139825004939008]     self._wrap_pool_connect(self.pool.connect, None),
+[Fri Nov 27 15:55:11.942714 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2078, in _wrap_pool_connect
+[Fri Nov 27 15:55:11.942716 2015] [:error] [pid 19021:tid 139825004939008]     e, dialect, self)
+[Fri Nov 27 15:55:11.942719 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1405, in _handle_dbapi_exception_noconnection
+[Fri Nov 27 15:55:11.942722 2015] [:error] [pid 19021:tid 139825004939008]     exc_info
+[Fri Nov 27 15:55:11.942725 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 199, in raise_from_cause
+[Fri Nov 27 15:55:11.942727 2015] [:error] [pid 19021:tid 139825004939008]     reraise(type(exception), exception, tb=exc_tb)
+[Fri Nov 27 15:55:11.942761 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+[Fri Nov 27 15:55:11.942764 2015] [:error] [pid 19021:tid 139825004939008]     return fn()
+[Fri Nov 27 15:55:11.942767 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 376, in connect
+[Fri Nov 27 15:55:11.942770 2015] [:error] [pid 19021:tid 139825004939008]     return _ConnectionFairy._checkout(self)
+[Fri Nov 27 15:55:11.942773 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 713, in _checkout
+[Fri Nov 27 15:55:11.942781 2015] [:error] [pid 19021:tid 139825004939008]     fairy = _ConnectionRecord.checkout(pool)
+[Fri Nov 27 15:55:11.942784 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 480, in checkout
+[Fri Nov 27 15:55:11.942787 2015] [:error] [pid 19021:tid 139825004939008]     rec = pool._do_get()
+[Fri Nov 27 15:55:11.942789 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 1151, in _do_get
+[Fri Nov 27 15:55:11.942792 2015] [:error] [pid 19021:tid 139825004939008]     return self._create_connection()
+[Fri Nov 27 15:55:11.942795 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 323, in _create_connection
+[Fri Nov 27 15:55:11.942797 2015] [:error] [pid 19021:tid 139825004939008]     return _ConnectionRecord(self)
+[Fri Nov 27 15:55:11.942800 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 449, in __init__
+[Fri Nov 27 15:55:11.942803 2015] [:error] [pid 19021:tid 139825004939008]     self.connection = self.__connect()
+[Fri Nov 27 15:55:11.942805 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 607, in __connect
+[Fri Nov 27 15:55:11.942808 2015] [:error] [pid 19021:tid 139825004939008]     connection = self.__pool._invoke_creator(self)
+[Fri Nov 27 15:55:11.942810 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+[Fri Nov 27 15:55:11.942813 2015] [:error] [pid 19021:tid 139825004939008]     return dialect.connect(*cargs, **cparams)
+[Fri Nov 27 15:55:11.942816 2015] [:error] [pid 19021:tid 139825004939008]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 385, in connect
+[Fri Nov 27 15:55:11.942818 2015] [:error] [pid 19021:tid 139825004939008]     return self.dbapi.connect(*cargs, **cparams)
+[Fri Nov 27 15:55:11.942821 2015] [:error] [pid 19021:tid 139825004939008] OperationalError: (sqlite3.OperationalError) unable to open database file
+[Fri Nov 27 15:59:50.800720 2015] [mpm_event:notice] [pid 19018:tid 139825102317440] AH00491: caught SIGTERM, shutting down
+[Fri Nov 27 15:59:51.825465 2015] [mpm_event:notice] [pid 19601:tid 140617290536832] AH00489: Apache/2.4.7 (Ubuntu) mod_wsgi/3.4 Python/2.7.6 configured -- resuming normal operations
+[Fri Nov 27 15:59:51.825598 2015] [core:notice] [pid 19601:tid 140617290536832] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Nov 27 15:59:55.942313 2015] [:error] [pid 19603:tid 140617078265600] ERROR:FlaskApp.main:Exception on / [GET]
+[Fri Nov 27 15:59:55.943391 2015] [:error] [pid 19603:tid 140617078265600] Traceback (most recent call last):
+[Fri Nov 27 15:59:55.943408 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+[Fri Nov 27 15:59:55.943416 2015] [:error] [pid 19603:tid 140617078265600]     response = self.full_dispatch_request()
+[Fri Nov 27 15:59:55.943422 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+[Fri Nov 27 15:59:55.943429 2015] [:error] [pid 19603:tid 140617078265600]     rv = self.handle_user_exception(e)
+[Fri Nov 27 15:59:55.943435 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+[Fri Nov 27 15:59:55.943441 2015] [:error] [pid 19603:tid 140617078265600]     reraise(exc_type, exc_value, tb)
+[Fri Nov 27 15:59:55.943447 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+[Fri Nov 27 15:59:55.943453 2015] [:error] [pid 19603:tid 140617078265600]     rv = self.dispatch_request()
+[Fri Nov 27 15:59:55.943459 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+[Fri Nov 27 15:59:55.943481 2015] [:error] [pid 19603:tid 140617078265600]     return self.view_functions[rule.endpoint](**req.view_args)
+[Fri Nov 27 15:59:55.943487 2015] [:error] [pid 19603:tid 140617078265600]   File "/var/www/FlaskApp/FlaskApp/main.py", line 29, in home
+[Fri Nov 27 15:59:55.943493 2015] [:error] [pid 19603:tid 140617078265600]     return render_template('homepage.html', users=get_all_users())
+[Fri Nov 27 15:59:55.943499 2015] [:error] [pid 19603:tid 140617078265600]   File "/var/www/FlaskApp/FlaskApp/db_interaction.py", line 68, in get_all_users
+[Fri Nov 27 15:59:55.943504 2015] [:error] [pid 19603:tid 140617078265600]     for i in session.query(User).order_by(User.score):
+[Fri Nov 27 15:59:55.943509 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2516, in __iter__
+[Fri Nov 27 15:59:55.943514 2015] [:error] [pid 19603:tid 140617078265600]     return self._execute_and_instances(context)
+[Fri Nov 27 15:59:55.943520 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2529, in _execute_and_instances
+[Fri Nov 27 15:59:55.943526 2015] [:error] [pid 19603:tid 140617078265600]     close_with_result=True)
+[Fri Nov 27 15:59:55.943531 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2520, in _connection_from_session
+[Fri Nov 27 15:59:55.943536 2015] [:error] [pid 19603:tid 140617078265600]     **kw)
+[Fri Nov 27 15:59:55.943541 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 882, in connection
+[Fri Nov 27 15:59:55.943547 2015] [:error] [pid 19603:tid 140617078265600]     execution_options=execution_options)
+[Fri Nov 27 15:59:55.943552 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 887, in _connection_for_bind
+[Fri Nov 27 15:59:55.943557 2015] [:error] [pid 19603:tid 140617078265600]     engine, execution_options)
+[Fri Nov 27 15:59:55.943562 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _connection_for_bind
+[Fri Nov 27 15:59:55.943567 2015] [:error] [pid 19603:tid 140617078265600]     conn = bind.contextual_connect()
+[Fri Nov 27 15:59:55.943572 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2039, in contextual_connect
+[Fri Nov 27 15:59:55.943577 2015] [:error] [pid 19603:tid 140617078265600]     self._wrap_pool_connect(self.pool.connect, None),
+[Fri Nov 27 15:59:55.943582 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2078, in _wrap_pool_connect
+[Fri Nov 27 15:59:55.943588 2015] [:error] [pid 19603:tid 140617078265600]     e, dialect, self)
+[Fri Nov 27 15:59:55.943593 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1405, in _handle_dbapi_exception_noconnection
+[Fri Nov 27 15:59:55.943599 2015] [:error] [pid 19603:tid 140617078265600]     exc_info
+[Fri Nov 27 15:59:55.943604 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 199, in raise_from_cause
+[Fri Nov 27 15:59:55.943609 2015] [:error] [pid 19603:tid 140617078265600]     reraise(type(exception), exception, tb=exc_tb)
+[Fri Nov 27 15:59:55.943614 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+[Fri Nov 27 15:59:55.943620 2015] [:error] [pid 19603:tid 140617078265600]     return fn()
+[Fri Nov 27 15:59:55.943625 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 376, in connect
+[Fri Nov 27 15:59:55.943637 2015] [:error] [pid 19603:tid 140617078265600]     return _ConnectionFairy._checkout(self)
+[Fri Nov 27 15:59:55.943643 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 713, in _checkout
+[Fri Nov 27 15:59:55.943649 2015] [:error] [pid 19603:tid 140617078265600]     fairy = _ConnectionRecord.checkout(pool)
+[Fri Nov 27 15:59:55.943654 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 480, in checkout
+[Fri Nov 27 15:59:55.943659 2015] [:error] [pid 19603:tid 140617078265600]     rec = pool._do_get()
+[Fri Nov 27 15:59:55.943664 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 1151, in _do_get
+[Fri Nov 27 15:59:55.943669 2015] [:error] [pid 19603:tid 140617078265600]     return self._create_connection()
+[Fri Nov 27 15:59:55.943674 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 323, in _create_connection
+[Fri Nov 27 15:59:55.943679 2015] [:error] [pid 19603:tid 140617078265600]     return _ConnectionRecord(self)
+[Fri Nov 27 15:59:55.943684 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 449, in __init__
+[Fri Nov 27 15:59:55.943689 2015] [:error] [pid 19603:tid 140617078265600]     self.connection = self.__connect()
+[Fri Nov 27 15:59:55.943694 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 607, in __connect
+[Fri Nov 27 15:59:55.943699 2015] [:error] [pid 19603:tid 140617078265600]     connection = self.__pool._invoke_creator(self)
+[Fri Nov 27 15:59:55.943704 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+[Fri Nov 27 15:59:55.943742 2015] [:error] [pid 19603:tid 140617078265600]     return dialect.connect(*cargs, **cparams)
+[Fri Nov 27 15:59:55.943750 2015] [:error] [pid 19603:tid 140617078265600]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 385, in connect
+[Fri Nov 27 15:59:55.943756 2015] [:error] [pid 19603:tid 140617078265600]     return self.dbapi.connect(*cargs, **cparams)
+[Fri Nov 27 15:59:55.943762 2015] [:error] [pid 19603:tid 140617078265600] OperationalError: (sqlite3.OperationalError) unable to open database file
+[Fri Nov 27 16:06:01.750859 2015] [mpm_event:notice] [pid 19601:tid 140617290536832] AH00491: caught SIGTERM, shutting down
+[Fri Nov 27 16:06:02.789671 2015] [mpm_event:notice] [pid 19848:tid 139924889028480] AH00489: Apache/2.4.7 (Ubuntu) mod_wsgi/3.4 Python/2.7.6 configured -- resuming normal operations
+[Fri Nov 27 16:06:02.789827 2015] [core:notice] [pid 19848:tid 139924889028480] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Nov 27 16:07:17.765866 2015] [mpm_event:notice] [pid 19848:tid 139924889028480] AH00491: caught SIGTERM, shutting down
+[Fri Nov 27 16:07:18.805351 2015] [mpm_event:notice] [pid 20000:tid 140092006201216] AH00489: Apache/2.4.7 (Ubuntu) mod_wsgi/3.4 Python/2.7.6 configured -- resuming normal operations
+[Fri Nov 27 16:07:18.805515 2015] [core:notice] [pid 20000:tid 140092006201216] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Nov 27 16:07:23.327046 2015] [:error] [pid 20002:tid 140091833972480] Engine(sqlite:///data.db)
+[Fri Nov 27 16:07:23.328050 2015] [:error] [pid 20002:tid 140091833972480] <sqlalchemy.orm.session.Session object at 0x7f699d84c210>
+[Fri Nov 27 16:07:23.354889 2015] [:error] [pid 20002:tid 140091833972480] ERROR:FlaskApp.main:Exception on / [GET]
+[Fri Nov 27 16:07:23.354921 2015] [:error] [pid 20002:tid 140091833972480] Traceback (most recent call last):
+[Fri Nov 27 16:07:23.354928 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+[Fri Nov 27 16:07:23.354951 2015] [:error] [pid 20002:tid 140091833972480]     response = self.full_dispatch_request()
+[Fri Nov 27 16:07:23.354957 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+[Fri Nov 27 16:07:23.354962 2015] [:error] [pid 20002:tid 140091833972480]     rv = self.handle_user_exception(e)
+[Fri Nov 27 16:07:23.354966 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+[Fri Nov 27 16:07:23.354971 2015] [:error] [pid 20002:tid 140091833972480]     reraise(exc_type, exc_value, tb)
+[Fri Nov 27 16:07:23.354976 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+[Fri Nov 27 16:07:23.354981 2015] [:error] [pid 20002:tid 140091833972480]     rv = self.dispatch_request()
+[Fri Nov 27 16:07:23.354985 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+[Fri Nov 27 16:07:23.354990 2015] [:error] [pid 20002:tid 140091833972480]     return self.view_functions[rule.endpoint](**req.view_args)
+[Fri Nov 27 16:07:23.354995 2015] [:error] [pid 20002:tid 140091833972480]   File "/var/www/FlaskApp/FlaskApp/main.py", line 29, in home
+[Fri Nov 27 16:07:23.354999 2015] [:error] [pid 20002:tid 140091833972480]     return render_template('homepage.html', users=get_all_users())
+[Fri Nov 27 16:07:23.355004 2015] [:error] [pid 20002:tid 140091833972480]   File "/var/www/FlaskApp/FlaskApp/db_interaction.py", line 69, in get_all_users
+[Fri Nov 27 16:07:23.355008 2015] [:error] [pid 20002:tid 140091833972480]     for i in session.query(User).order_by(User.score):
+[Fri Nov 27 16:07:23.355013 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2516, in __iter__
+[Fri Nov 27 16:07:23.355017 2015] [:error] [pid 20002:tid 140091833972480]     return self._execute_and_instances(context)
+[Fri Nov 27 16:07:23.355022 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2529, in _execute_and_instances
+[Fri Nov 27 16:07:23.355027 2015] [:error] [pid 20002:tid 140091833972480]     close_with_result=True)
+[Fri Nov 27 16:07:23.355031 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/query.py", line 2520, in _connection_from_session
+[Fri Nov 27 16:07:23.355036 2015] [:error] [pid 20002:tid 140091833972480]     **kw)
+[Fri Nov 27 16:07:23.355040 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 882, in connection
+[Fri Nov 27 16:07:23.355045 2015] [:error] [pid 20002:tid 140091833972480]     execution_options=execution_options)
+[Fri Nov 27 16:07:23.355050 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 887, in _connection_for_bind
+[Fri Nov 27 16:07:23.355054 2015] [:error] [pid 20002:tid 140091833972480]     engine, execution_options)
+[Fri Nov 27 16:07:23.355059 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 334, in _connection_for_bind
+[Fri Nov 27 16:07:23.355063 2015] [:error] [pid 20002:tid 140091833972480]     conn = bind.contextual_connect()
+[Fri Nov 27 16:07:23.355068 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2039, in contextual_connect
+[Fri Nov 27 16:07:23.355072 2015] [:error] [pid 20002:tid 140091833972480]     self._wrap_pool_connect(self.pool.connect, None),
+[Fri Nov 27 16:07:23.355077 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2078, in _wrap_pool_connect
+[Fri Nov 27 16:07:23.355103 2015] [:error] [pid 20002:tid 140091833972480]     e, dialect, self)
+[Fri Nov 27 16:07:23.355109 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1405, in _handle_dbapi_exception_noconnection
+[Fri Nov 27 16:07:23.355114 2015] [:error] [pid 20002:tid 140091833972480]     exc_info
+[Fri Nov 27 16:07:23.355119 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 199, in raise_from_cause
+[Fri Nov 27 16:07:23.355124 2015] [:error] [pid 20002:tid 140091833972480]     reraise(type(exception), exception, tb=exc_tb)
+[Fri Nov 27 16:07:23.355129 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+[Fri Nov 27 16:07:23.355133 2015] [:error] [pid 20002:tid 140091833972480]     return fn()
+[Fri Nov 27 16:07:23.355138 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 376, in connect
+[Fri Nov 27 16:07:23.355143 2015] [:error] [pid 20002:tid 140091833972480]     return _ConnectionFairy._checkout(self)
+[Fri Nov 27 16:07:23.355147 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 713, in _checkout
+[Fri Nov 27 16:07:23.355152 2015] [:error] [pid 20002:tid 140091833972480]     fairy = _ConnectionRecord.checkout(pool)
+[Fri Nov 27 16:07:23.355156 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 480, in checkout
+[Fri Nov 27 16:07:23.355161 2015] [:error] [pid 20002:tid 140091833972480]     rec = pool._do_get()
+[Fri Nov 27 16:07:23.355165 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 1151, in _do_get
+[Fri Nov 27 16:07:23.355170 2015] [:error] [pid 20002:tid 140091833972480]     return self._create_connection()
+[Fri Nov 27 16:07:23.355174 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 323, in _create_connection
+[Fri Nov 27 16:07:23.355179 2015] [:error] [pid 20002:tid 140091833972480]     return _ConnectionRecord(self)
+[Fri Nov 27 16:07:23.355183 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 449, in __init__
+[Fri Nov 27 16:07:23.355188 2015] [:error] [pid 20002:tid 140091833972480]     self.connection = self.__connect()
+[Fri Nov 27 16:07:23.355192 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 607, in __connect
+[Fri Nov 27 16:07:23.355197 2015] [:error] [pid 20002:tid 140091833972480]     connection = self.__pool._invoke_creator(self)
+[Fri Nov 27 16:07:23.355201 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+[Fri Nov 27 16:07:23.355206 2015] [:error] [pid 20002:tid 140091833972480]     return dialect.connect(*cargs, **cparams)
+[Fri Nov 27 16:07:23.355210 2015] [:error] [pid 20002:tid 140091833972480]   File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 385, in connect
+[Fri Nov 27 16:07:23.355215 2015] [:error] [pid 20002:tid 140091833972480]     return self.dbapi.connect(*cargs, **cparams)
+[Fri Nov 27 16:07:23.355220 2015] [:error] [pid 20002:tid 140091833972480] OperationalError: (sqlite3.OperationalError) unable to open database file
