@@ -3,14 +3,14 @@ import time
 from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-
-
+from sqlalchemy import *
 Base = declarative_base()
-LINUX_PATH = '/var/www/FlaskApp/FlaskApp/data.db'
-WINDOWS_PATH = 'data.db'
-DATABASE_LOCATION = 'sqlite:///' + WINDOWS_PATH
-engine = create_engine(DATABASE_LOCATION, echo=True)
-print(DATABASE_LOCATION)
+#mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
+
+sqlite_database = 'sqlite:///' + 'data.db'
+mysql_database = 'mysql://root:ryan@localhost/uilpractice'
+engine = create_engine(mysql_database, echo=False)
+print(engine)
 
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -21,7 +21,7 @@ class User(Base):
 
     username = Column(String(50), primary_key=True)
     fullname = Column(String(50))
-    password = Column(String(12))
+    password = Column(String(50))
     score = Column(Integer)
     totalattempted = Column(Integer)
     totalcorrect = Column(Integer)
