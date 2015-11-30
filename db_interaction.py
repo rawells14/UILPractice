@@ -1,6 +1,5 @@
 import time
 
-from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import *
@@ -11,7 +10,6 @@ Base = declarative_base()
 sqlite_database = 'sqlite:///' + 'data.db'
 mysql_database = 'mysql://root:ryan@localhost/uilpractice'
 engine = create_engine(mysql_database, echo=False)
-print(engine)
 
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -103,13 +101,13 @@ def search_by_username(username):
 
 
 def is_taken(u):
-    q = session.query(User).filter_by(username=u[0]).first()
+    q = session.query(User).filter_by(username=u).first()
     return not (q is None)
 
 
 def is_valid(u, p):
-    username = u[0]
-    password = p[0]
+    username = u
+    password = p
     for i in session.query(User).order_by(User.score):
         if i.username == username and i.password == password:
             return True

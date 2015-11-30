@@ -33,9 +33,9 @@ def home():
 def signup():
     error = ''
     if request.method == 'POST':
-        username = [request.form['uname']]
-        fullname = [request.form['fname']]
-        password = [request.form['pwd']]
+        username = [request.form['uname']][0]
+        fullname = [request.form['fname']][0]
+        password = [request.form['pwd']][0]
         if is_taken(username):
             error = 'Username is already taken, You\'ll have to pick a new one'
             flash(error, 'error')
@@ -54,10 +54,10 @@ def signup():
 def signin():
     error = ''
     if request.method == 'POST':
-        username = [request.form['uname']]
-        password = [request.form['pwd']]
+        username = [request.form['uname']][0]
+        password = [request.form['pwd']][0]
         if not is_taken(username):
-            error = '%s does not exist' % username[0]
+            error = '%s does not exist' % username
             flash(error, 'error')
             return redirect(url_for('home'))
         if not is_valid(username, password):
@@ -65,7 +65,7 @@ def signin():
             flash(error, 'error')
             return redirect(url_for('home'))
         else:
-            u = get_user_by_username(username[0])
+            u = get_user_by_username(username)
             login_user(u)
             flash("Successfully Logged In!")
             return redirect(url_for('dashboard'))
@@ -93,7 +93,7 @@ def logout():
 def search():
     users_found = []
     if request.method == 'POST':
-        uname = username = [request.form['uname']][0]
+        uname = [request.form['uname']][0]
         users_found = search_by_username(uname)
         return render_template("search.html", users_found=users_found)
     else:
