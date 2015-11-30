@@ -4,12 +4,13 @@ from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import *
+
 Base = declarative_base()
-#mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
+# mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 sqlite_database = 'sqlite:///' + 'data.db'
 mysql_database = 'mysql://root:ryan@localhost/uilpractice'
-engine = create_engine(mysql_database, echo=False)
+engine = create_engine(sqlite_database, echo=False)
 print(engine)
 
 Session = sessionmaker(bind=engine)
