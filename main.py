@@ -42,7 +42,7 @@ def signup():
             return render_template('homepage.html', users=get_all_users())
 
         else:
-            create_user(username, fullname, password, 0)
+            create_user(username, fullname, password)
             message = 'Account Successfully Created!'
             flash(message, 'success')
             return redirect(url_for('home'))

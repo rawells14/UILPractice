@@ -9,7 +9,7 @@ Base = declarative_base()
 
 sqlite_database = 'sqlite:///' + 'data.db'
 mysql_database = 'mysql://root:ryan@localhost/uilpractice'
-engine = create_engine(mysql_database, echo=False)
+engine = create_engine(sqlite_database, echo=False)
 
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -64,16 +64,14 @@ def new_submission(uname, status):
     session.commit()
 
 
-def create_user(uname, full, pwd, scr):
-    u = User(username=uname, fullname=full, password=pwd, score=scr, totalattempted=0, totalcorrect=0)
+def create_user(uname, full, pwd):
+    u = User(username=uname, fullname=full, password=pwd, score=0, totalattempted=0, totalcorrect=0)
     session.add(u)
     session.commit()
 
 
 def get_all_users():
-    list = []
-    for i in session.query(User).order_by(User.score):
-        list.append(i)
+    list = session.query(User).order_by(User.score)
     return list
 
 
