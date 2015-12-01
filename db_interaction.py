@@ -17,8 +17,8 @@ session = Session()
 
 class User(Base):
     __tablename__ = 'users'
-
-    username = Column(String(50), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    username = Column(String(50))
     fullname = Column(String(50))
     password = Column(String(50))
     score = Column(Integer)

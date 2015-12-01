@@ -106,5 +106,5 @@ def profile(username):
 
 
 if __name__ == '__main__':
-    app.debug = False
-    app.run(use_reloader=False)
+    app.debug = True
+    app.run(use_reloader=True)
