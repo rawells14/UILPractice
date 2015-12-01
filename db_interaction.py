@@ -9,7 +9,7 @@ Base = declarative_base()
 
 sqlite_database = 'sqlite:///' + 'data.db'
 mysql_database = 'mysql://root:ryan@localhost/uilpractice'
-engine = create_engine(sqlite_database, echo=False)
+engine = create_engine(mysql_database, echo=False)
 
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -17,7 +17,7 @@ session = Session()
 
 class User(Base):
     __tablename__ = 'users'
-    username = Column(String(50), primary_key=True)
+    username = Column(String(50), primary_key=True, unique=True)
     fullname = Column(String(50))
     password = Column(String(50))
     score = Column(Integer)
