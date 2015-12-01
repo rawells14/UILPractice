@@ -17,16 +17,20 @@ session = Session()
 
 class User(Base):
     __tablename__ = 'users'
-    username = Column(String(50), primary_key=True, unique=True)
+    uid = Column(Integer, primary_key=True, unique=True, autoincrement=True)
+    username = Column(String(50))
     fullname = Column(String(50))
     password = Column(String(50))
     score = Column(Integer)
     totalattempted = Column(Integer)
     totalcorrect = Column(Integer)
+    settings = Column(String(1000))
 
     def __repr__(self):
-        return "<User(username='%s', fullname='%s', password='%s', score='%d')>" % (
-            self.username, self.fullname, self.password, self.score)
+        return "<User(uid='%d', username='%s', fullname='%s', password='%s', score='%d')>" % (self.uid,
+                                                                                              self.username,
+                                                                                              self.fullname,
+                                                                                              self.password, self.score)
 
     def is_authenticated(self):
         return True
@@ -38,15 +42,15 @@ class User(Base):
         return False
 
     def get_id(self):
-        return self.username
+        return self.uid
 
 
 class Submission(Base):
     __tablename__ = 'submissions'
 
-    username = Column(String(50), primary_key=True)
+    uid = Column(String(50))
     status = Column(String(50))
-    time_stamp = Column(Integer)
+    time_stamp = Column(Integer, primary_key=True)
 
     def __repr__(self):
         return "<Submission(username='%s', status='%s', time_stamp='%d')>" % (
@@ -91,12 +95,16 @@ def compute_rank(user):
 
 
 def get_user_by_username(username):
-    return session.query(User).get(username)
+    return session.query(User).filter(User.username == username).first()
 
 
 def search_by_username(username):
     users = session.query(User).filter(User.username.contains(username))
     return users
+
+
+def get_user_by_uid(uid):
+    return session.query(User).filter(User.uid == uid).first()
 
 
 def is_taken(u):

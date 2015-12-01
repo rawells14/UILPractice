@@ -44,3 +44,4 @@ Temporary Items
 .idea
 data.db
 *.pyc
+__pycache__/db_interaction.cpython-33.pyc
