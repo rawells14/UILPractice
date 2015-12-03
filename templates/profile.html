@@ -4,9 +4,13 @@
 <link rel="stylesheet" href="static/profile.css">
 {% endblock %}
 {% block content %}
-	{% if user %}
-	{{ user.username }}'s Profile
-	 {% else %}
-	 User doesn't exist!
-	{% endif %}
+{% if user %}
+{{ user.username }}'s Profile
+<!-- Actual Profile Logic-->
+<div id="rank">
+    Rank: {{ rank }}
+</div>
+{% else %}
+User doesn't exist!
+{% endif %}
 {% endblock %}

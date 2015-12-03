@@ -6,7 +6,6 @@ from werkzeug.utils import redirect
 from db_interaction import create_user, get_all_users, is_taken, is_valid, get_user_by_username, search_by_username, \
     correct_and_total_num, compute_rank, correct, get_user_by_uid
 
-
 app = Flask(__name__)
 app.secret_key = '123'
 login_manager = LoginManager()
@@ -102,7 +101,9 @@ def search():
 
 @app.route('/user/<username>', methods=['GET'])
 def profile(username):
-    return render_template('profile.html', user=get_user_by_username(username))
+    user_prof = get_user_by_username(username)
+    rank = compute_rank(user_prof)
+    return render_template('profile.html', user=user_prof, rank=rank)
 
 
 if __name__ == '__main__':
