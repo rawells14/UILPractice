@@ -101,16 +101,13 @@ def search_by_username(username):
     return users
 
 
-
-
-
 def get_user_by_uid(uid):
     uid = int(uid)
     return session.query(User).filter(User.uid == uid).first()
 
 
 def is_taken(u):
-    q = session.query(User).filter_by(username=u).first()
+    q = session.query(User).filter(User.username == u).first()
     return not (q is None)
 
 
