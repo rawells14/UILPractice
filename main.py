@@ -38,14 +38,16 @@ def signup():
         password = [request.form['pwd']][0]
         if is_taken(username):
             error = 'Username is already taken, You\'ll have to pick a new one'
-            flash(error, 'error')
-            return render_template('homepage.html', users=get_all_users())
-
+        if (len(username) < 4) or (' ' in username):
+            error = 'Usernames must be at least 4 characters in length and contain no spaces'
         else:
             create_user(username, fullname, password)
             message = 'Account Successfully Created!'
             flash(message, 'success')
             return redirect(url_for('home'))
+        flash(error, 'error')
+        return render_template('homepage.html', users=get_all_users())
+
     else:
         return render_template('homepage.html', error=error, users=get_all_users())
 
