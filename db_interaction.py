@@ -9,7 +9,7 @@ Base = declarative_base()
 
 sqlite_database = 'sqlite:///' + 'data.db'
 mysql_database = 'mysql://root:ryan@localhost/uilpractice'
-engine = create_engine(mysql_database, echo=False)
+engine = create_engine(sqlite_database, echo=False)
 
 Session = sessionmaker(bind=engine)
 session = Session()

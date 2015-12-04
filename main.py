@@ -110,6 +110,10 @@ def profile(username):
     return render_template('profile.html', user=user_prof, rank=rank)
 
 
+@app.route('/feedback', methods=['GET', 'POST'])
+def feedback():
+    return render_template('feedback.html')
+
 if __name__ == '__main__':
     app.debug = True
     app.run(use_reloader=True)
