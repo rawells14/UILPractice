@@ -5,6 +5,7 @@ from werkzeug.utils import redirect
 
 from db_interaction import create_user, get_all_users, is_taken, is_valid, get_user_by_username, search_by_username, \
     correct_and_total_num, compute_rank, correct, get_user_by_uid
+from feedback import new_feedback
 
 app = Flask(__name__)
 app.secret_key = '123'
