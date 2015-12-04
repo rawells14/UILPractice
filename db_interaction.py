@@ -128,15 +128,15 @@ def correct_and_total_num(username):
     return data
 
 
-def incorrect(username):
-    u = get_user_by_username(username)
+def incorrect(user):
+    u = user
     u.totalattempted += 1
     u.score = round(u.totalcorrect * u.totalcorrect / u.totalattempted)
     session.commit()
 
 
-def correct(username):
-    u = get_user_by_username(username)
+def correct(user):
+    u = user
     u.totalattempted += 1
     u.totalcorrect += 1
     u.score = round(u.totalcorrect * u.totalcorrect / u.totalattempted)
