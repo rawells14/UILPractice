@@ -1,2 +1,3 @@
 def new_feedback(name, message):
-    print("hello")
+    file = open('feedback.txt', "a")
+    file.write(name + '  wrote:' + message + '\n'+'***********************************'+'\n\n')
