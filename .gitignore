@@ -47,3 +47,4 @@ data.db
 __pycache__/db_interaction.cpython-33.pyc
 *.pyc
 *.pyc
+feedback.txt
