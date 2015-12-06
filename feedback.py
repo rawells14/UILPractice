@@ -5,6 +5,3 @@ def new_feedback(name, message):
     file = open(settings.PROJECT_PATH + 'feedback.txt', "a")
     file.write(name + '  wrote:  ' + message + '\n' + '***********************************' + '\n\n')
     file.close()
-
-
-new_feedback('Hello', 'Dank memes')
