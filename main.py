@@ -27,7 +27,7 @@ def load_user(uid):
 @app.route('/', methods=['GET'])
 def home():
     error = ''
-    return render_template('homepage.html', users=get_all_users())
+    return render_template('homepage.html')
 
 
 @app.route('/signup', methods=['POST'])
@@ -47,10 +47,10 @@ def signup():
             flash(message, 'success')
             return redirect(url_for('home'))
         flash(error, 'error')
-        return render_template('homepage.html', users=get_all_users())
+        return render_template('homepage.html')
 
     else:
-        return render_template('homepage.html', error=error, users=get_all_users())
+        return render_template('homepage.html', error=error)
 
 
 @app.route('/signin', methods=['POST', 'GET'])
