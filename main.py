@@ -3,13 +3,13 @@ from flask import render_template
 from flask_login import LoginManager, login_required, logout_user, login_user, current_user
 from werkzeug.utils import redirect
 
-from db_interaction import create_user, get_all_users, is_taken, is_valid, get_user_by_username, search_by_username, \
-    correct_and_total_num, compute_rank, correct, get_user_by_uid, incorrect
-from feedback import new_feedback
+from UILPractice.db_interaction import *
+from feedback import *
+import settings
 
 
 app = Flask(__name__)
-app.secret_key = '123'
+app.secret_key = settings.SECRET_KEY
 login_manager = LoginManager()
 login_manager.init_app(app)
 
@@ -118,11 +118,11 @@ def feedback():
     if request.method == 'POST':
         name = [request.form['name']][0]
         message = [request.form['message']][0]
-        new_feedback(name,message)
+        new_feedback(name, message)
         flash('Feedback Submitted', 'success')
         return redirect(url_for('home'))
 
 
 if __name__ == '__main__':
-    app.debug = True
-    app.run(use_reloader=True)
+    app.debug = settings.DEBUG
+    app.run(use_reloader=settings.USE_RELOADER)
