@@ -3,7 +3,7 @@ from flask import render_template
 from flask_login import LoginManager, login_required, logout_user, login_user, current_user
 from werkzeug.utils import redirect
 
-from UILPractice.db_interaction import *
+from FlaskApp.db_interaction import *
 from feedback import *
 import settings
 
