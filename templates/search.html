@@ -3,15 +3,13 @@
 Search
 {% endblock %}
 {% block head %}
-<link rel="stylesheet" href="static/search.css">
 {% endblock %}
 
 
 {% block content %}
-<div id="FoundUsers">
+<div id="FoundUsers" class="message">
     {% if (users_found) and (users_found.count() > 0) %}
-    <div class="alert alert-success center-text" role="alert">Found {{ users_found.count() }} Users</div>
-    <table class="table table-striped">
+    <table class="table table-striped message">
         <tr>
             <th>
                 Username
@@ -33,8 +31,6 @@ Search
         </tr>
         {% endfor %}
     </table>
-    {% else %}
-    <div class="alert alert-danger" role="alert"><strong>0 </strong>Users found</div>
     {% endif %}
 </div>
 {% endblock %}

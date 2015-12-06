@@ -1,6 +1,7 @@
 from flask import Flask, request, url_for, flash, g
 from flask import render_template
 from flask_login import LoginManager, login_required, logout_user, login_user, current_user
+from markupsafe import Markup
 from werkzeug.utils import redirect
 
 from FlaskApp.db_interaction import *
@@ -99,6 +100,10 @@ def search():
         uname = [request.form['uname']][0]
         users_found = search_by_username(uname)
         incorrect(current_user)
+        if users_found.count() > 0:
+            flash(str(users_found.count()) + ' users were found', 'success')
+        else:
+            flash(Markup('<strong>0</strong> users were found'), 'error')
         return render_template("search.html", users_found=users_found)
     else:
         return render_template("search.html")

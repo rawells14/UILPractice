@@ -16,10 +16,13 @@
 
 
 
-    </script>
-    {% block head %}
 
-    {% endblock %}
+
+
+
+
+
+    </script>
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -55,6 +58,36 @@
 <br>
 
 <div id="content">
+    <!--Errors-->
+    {% with messages = get_flashed_messages(category_filter=["error"]) %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="message center-text">
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <!--Successes -->
+    {% with messages = get_flashed_messages(category_filter=["success"]) %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="message center-text">
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% block head %}
+
+    {% endblock %}
+
+    <!--This is where all the actual html goes-->
     {% block content %}
 
     {% endblock %}
