@@ -4,7 +4,7 @@ SECRET_KEY = '123'
 USE_RELOADER = True
 
 #W for windows, L for linux
-OS = 'W'
+OS = 'L'
 
 sqlite_database = 'sqlite:///' + 'data.db'
 mysql_database = 'mysql://root:ryan@localhost/uilpractice'
