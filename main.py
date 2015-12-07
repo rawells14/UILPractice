@@ -4,10 +4,9 @@ from flask_login import LoginManager, login_required, logout_user, login_user, c
 from markupsafe import Markup
 from werkzeug.utils import redirect
 
-from FlaskApp.db_interaction import *
+from db_interaction import *
 from feedback import *
 import settings
-
 
 app = Flask(__name__)
 app.secret_key = settings.SECRET_KEY
@@ -40,7 +39,7 @@ def signup():
         password = [request.form['pwd']][0]
         if is_taken(username):
             error = 'Username is already taken, You\'ll have to pick a new one'
-        if (len(username) < 4) or (' ' in username):
+        elif (len(username) < 4) or (' ' in username):
             error = 'Usernames must be at least 4 characters in length and contain no spaces'
         else:
             create_user(username, fullname, password)
