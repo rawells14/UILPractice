@@ -3,7 +3,7 @@ DEBUG = True
 SECRET_KEY = '123'
 USE_RELOADER = True
 
-#W for windows, L for linux
+# W for windows, L for linux
 OS = 'L'
 
 sqlite_database = 'sqlite:///' + 'data.db'
