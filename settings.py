@@ -1,7 +1,7 @@
 SERVER_NAME = 'UILPractice.com'
-DEBUG = True
+DEBUG = False
 SECRET_KEY = '123'
-USE_RELOADER = True
+USE_RELOADER = False
 
 # W for windows, L for linux
 OS = 'L'
