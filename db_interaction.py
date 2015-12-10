@@ -12,7 +12,7 @@ Base = declarative_base()
 data_base_address = settings.DB_ADDRESS
 engine = create_engine(data_base_address, echo=False)
 
-Session = sessionmaker(bind=engine)
+Session = sessionmaker(bind=engine, autoflush=True)
 session = Session()
 
 
@@ -140,7 +140,9 @@ def incorrect(user):
 def correct(user):
     u = user
     u.totalattempted += 1
+    session.commit()
     u.totalcorrect += 1
+    session.commit()
     u.score = round(u.totalcorrect * u.totalcorrect / u.totalattempted)
     session.commit()
 
