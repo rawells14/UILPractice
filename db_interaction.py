@@ -109,7 +109,6 @@ def get_user_by_uid(uid):
 
 def is_taken(username):
     q = session.query(User).filter(User.username == username).first()
-    print(q)
     return not (q is None)
 
 
