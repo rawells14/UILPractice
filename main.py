@@ -14,9 +14,6 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
-@app.before_request
-def before_request():
-    g.user = current_user
 
 
 @login_manager.user_loader
