@@ -8,12 +8,16 @@ from db_interaction import *
 from feedback import *
 import settings
 
+
 app = Flask(__name__)
 app.secret_key = settings.SECRET_KEY
 login_manager = LoginManager()
 login_manager.init_app(app)
 
 
+@app.before_request
+def before_request():
+    g.user = current_user
 
 
 @login_manager.user_loader

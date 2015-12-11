@@ -131,17 +131,15 @@ def correct_and_total_num(username):
 
 def incorrect(user):
     u = user
-    u.totalattempted += 1
+    u.totalattempted = u.totalattempted + 1
     u.score = round(u.totalcorrect * u.totalcorrect / u.totalattempted)
     session.commit()
 
 
 def correct(user):
     u = user
-    u.totalattempted += 1
-    session.commit()
-    u.totalcorrect += 1
-    session.commit()
+    u.totalattempted = u.totalattempted + 1
+    u.totalcorrect = u.totalcorrect + 1
     u.score = round(u.totalcorrect * u.totalcorrect / u.totalattempted)
     session.commit()
 
