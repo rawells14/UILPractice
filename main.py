@@ -79,7 +79,7 @@ def signin():
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
-    if current_user == None or not current_user.is_active or not current_user.is_authenticated:
+    if current_user == None or not current_user.is_authenticated:
         return redirect(url_for('signin'))
     correct(current_user)
     rank = compute_rank(current_user)
