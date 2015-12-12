@@ -1,4 +1,5 @@
 import time
+from flask import flash
 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -104,6 +105,7 @@ def search_by_username(username):
 
 def get_user_by_uid(uid):
     uid = int(uid)
+    flash(uid,'success')
     return session.query(User).filter(User.uid == uid).first()
 
 
