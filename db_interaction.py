@@ -105,7 +105,8 @@ def search_by_username(username):
 
 def get_user_by_uid(uid):
     uid = int(uid)
-    flash(uid,'success')
+    print("UID: "+uid)
+    print()
     return session.query(User).filter(User.uid == uid).first()
 
 
