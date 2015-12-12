@@ -22,6 +22,7 @@ def before_request():
 
 @login_manager.user_loader
 def load_user(uid):
+    flash(uid, 'success')
     return get_user_by_uid(uid)
 
 
