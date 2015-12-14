@@ -8,12 +8,13 @@ from db_interaction import *
 from feedback import *
 import settings
 
-
 app = Flask(__name__)
 app.secret_key = settings.SECRET_KEY
 login_manager = LoginManager()
 login_manager.init_app(app)
-
+login_manager.login_view = 'home'
+login_manager.login_message = 'Please log in to view this'
+login_manager.login_message_category = "info"
 
 @app.before_request
 def before_request():
@@ -22,8 +23,7 @@ def before_request():
 
 @login_manager.user_loader
 def load_user(uid):
-    if uid is not None:
-        return get_user_by_uid(uid)
+    return get_user_by_uid(uid)
 
 
 @app.route('/', methods=['GET'])
@@ -80,9 +80,8 @@ def signin():
 
 
 @app.route('/dashboard', methods=['GET'])
+@login_required
 def dashboard():
-    if current_user == None or not current_user.is_authenticated:
-        return redirect(url_for('signin'))
     correct(current_user)
     rank = compute_rank(current_user)
     data = correct_and_total_num(current_user.username)
@@ -97,6 +96,7 @@ def logout():
 
 
 @app.route('/search', methods=['GET', 'POST'])
+@login_required
 def search():
     users_found = []
     if request.method == 'POST':
@@ -113,6 +113,7 @@ def search():
 
 
 @app.route('/user/<username>', methods=['GET'])
+@login_required
 def profile(username):
     user_prof = get_user_by_username(username)
     rank = compute_rank(user_prof)
@@ -120,6 +121,7 @@ def profile(username):
 
 
 @app.route('/feedback', methods=['GET', 'POST'])
+@login_required
 def feedback():
     if request.method == 'GET':
         return render_template('feedback.html')
