@@ -16,6 +16,7 @@ login_manager.login_view = 'home'
 login_manager.login_message = 'Please log in to view this'
 login_manager.login_message_category = "info"
 
+
 @app.before_request
 def before_request():
     g.user = current_user
