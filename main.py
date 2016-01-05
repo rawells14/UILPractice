@@ -8,6 +8,7 @@ from db_interaction import *
 from feedback import *
 import settings
 
+
 app = Flask(__name__)
 app.secret_key = settings.SECRET_KEY
 login_manager = LoginManager()
@@ -83,7 +84,6 @@ def signin():
 @app.route('/dashboard', methods=['GET'])
 @login_required
 def dashboard():
-    correct(current_user)
     rank = compute_rank(current_user)
     data = correct_and_total_num(current_user.username)
     return render_template('dashboard.html', number_correct=data[0], number_attempted=data[1], rank=rank)
