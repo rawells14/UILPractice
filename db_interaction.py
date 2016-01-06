@@ -12,8 +12,7 @@ Base = declarative_base()
 data_base_address = settings.DB_ADDRESS
 engine = create_engine(data_base_address, echo=False, pool_recycle=2)
 
-Session = sessionmaker(bind=engine, autoflush=True)
-session = Session()
+Session = sessionmaker(bind=engine)
 
 
 class User(Base):
@@ -59,6 +58,7 @@ class Submission(Base):
 
 
 def new_submission(uname, status):
+    session = Session()
     t = time.time()
     sub = Submission(username=uname, status=status, time_stamp=t)
     session.add(sub)
@@ -66,12 +66,14 @@ def new_submission(uname, status):
 
 
 def create_user(uname, full, pwd):
+    session = Session()
     u = User(username=uname, fullname=full, password=pwd, score=0, totalattempted=0, totalcorrect=0)
     session.add(u)
     session.commit()
 
 
 def get_all_users():
+    session = Session()
     list = session.query(User).order_by(User.score)
     return list
 
@@ -94,15 +96,18 @@ def compute_rank(user):
 
 
 def get_user_by_username(username):
+    session = Session()
     return session.query(User).filter(User.username == username).first()
 
 
 def search_by_username(username):
+    session = Session()
     users = session.query(User).filter(User.username.contains(username))
     return users
 
 
 def get_user_by_uid(uid):
+    session = Session()
     uid = int(uid)
     print('UID', uid)
     print()
@@ -110,11 +115,13 @@ def get_user_by_uid(uid):
 
 
 def is_taken(username):
+    session = Session()
     q = session.query(User).filter(User.username == username).first()
     return not (q is None)
 
 
 def is_valid(u, p):
+    session = Session()
     username = u
     password = p
     for i in session.query(User).order_by(User.score):
@@ -132,6 +139,7 @@ def correct_and_total_num(username):
 
 
 def incorrect(user):
+    session = Session()
     u = user
     u.totalattempted = u.totalattempted + 1
     u.score = round(u.totalcorrect * u.totalcorrect / u.totalattempted)
@@ -139,6 +147,7 @@ def incorrect(user):
 
 
 def correct(user):
+    session = Session()
     u = user
     u.totalattempted = u.totalattempted + 1
     u.totalcorrect = u.totalcorrect + 1
