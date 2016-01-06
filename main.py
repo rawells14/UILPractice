@@ -14,7 +14,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'home'
 login_manager.login_message = 'Please log in to view this'
-login_manager.login_message_category = "info"
+login_manager.login_message_category = 'error'
 
 
 @app.before_request
@@ -89,7 +89,6 @@ def dashboard():
 
 
 @app.route('/logout', methods=['GET'])
-@login_required
 def logout():
     logout_user()
     return redirect(url_for('home'))
@@ -122,7 +121,6 @@ def profile(username):
 
 
 @app.route('/feedback', methods=['GET', 'POST'])
-@login_required
 def feedback():
     if request.method == 'GET':
         return render_template('feedback.html')
