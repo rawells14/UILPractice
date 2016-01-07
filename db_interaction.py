@@ -140,15 +140,18 @@ def correct_and_total_num(username):
 
 def incorrect(user):
     session = Session()
-    u = user
-    u.totalattempted = u.totalattempted + 1
-    u.score = round(u.totalcorrect * u.totalcorrect / u.totalattempted)
+    session.query(User).filter(User.username == user.username).update({User.totalattempted: User.totalattempted + 1}, {
+        User.score: User.totalcorrect * User.totalcorrect / User.totalattempted})
+
+    #
+    # u.update(totalattempted=u.totalattempted + 1
+    # u.score = round(u.totalcorrect * u.totalcorrect / u.totalattempted)
     session.commit()
 
 
 def correct(user):
     session = Session()
-    u = user
+    session.query(User).filter(uname)
     u.totalattempted = u.totalattempted + 1
     u.totalcorrect = u.totalcorrect + 1
     u.score = round(u.totalcorrect * u.totalcorrect / u.totalattempted)

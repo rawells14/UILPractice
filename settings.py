@@ -1,10 +1,10 @@
 SERVER_NAME = 'UILPractice.com'
-DEBUG = False
+DEBUG = True
 SECRET_KEY = '123'
 USE_RELOADER = False
 
 # W for windows, L for linux
-OS = 'L'
+OS = 'W'
 
 sqlite_database = 'sqlite:///' + 'data.db'
 mysql_database = 'mysql://root:ryan@localhost/uilpractice'
