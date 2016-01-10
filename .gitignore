@@ -2,6 +2,6 @@ __pycache__
 feedback.txt
 data.db
 .idea
-
+settings.py
 
 .idea/workspace.xml
