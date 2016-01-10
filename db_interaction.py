@@ -1,7 +1,9 @@
 import time
 
 from sqlalchemy.ext.declarative import declarative_base
+
 from sqlalchemy.orm import sessionmaker
+
 from sqlalchemy import *
 
 import settings
@@ -13,7 +15,6 @@ data_base_address = settings.DB_ADDRESS
 engine = create_engine(data_base_address, echo=False, pool_recycle=2)
 
 Session = sessionmaker(bind=engine)
-session = Session()
 
 
 class User(Base):
@@ -59,20 +60,25 @@ class Submission(Base):
 
 
 def new_submission(uname, status):
+    session = Session()
     t = time.time()
     sub = Submission(username=uname, status=status, time_stamp=t)
     session.add(sub)
     session.commit()
-
+    session.close()
 
 def create_user(uname, full, pwd):
+    session = Session()
     u = User(username=uname, fullname=full, password=pwd, score=0, totalattempted=0, totalcorrect=0)
     session.add(u)
     session.commit()
+    session.close()
 
 
 def get_all_users():
+    session = Session()
     list = session.query(User).order_by(User.score)
+    session.close()
     return list
 
 
@@ -89,37 +95,49 @@ def compute_rank(user):
     for i in range(len(values)):
         if values[i] == value:
             return i + 1
-
     return rank
 
 
 def get_user_by_username(username):
-    return session.query(User).filter(User.username == username).first()
+    session = Session()
+    u = session.query(User).filter(User.username == username).first()
+    session.close()
+    return u
 
 
 def search_by_username(username):
+    session = Session()
     users = session.query(User).filter(User.username.contains(username))
+    session.close()
     return users
 
 
 def get_user_by_uid(uid):
+    session = Session()
     uid = int(uid)
     print('UID', uid)
     print()
+    session.close()
     return session.query(User).filter(User.uid == uid).first()
 
 
 def is_taken(username):
+    session = Session()
     q = session.query(User).filter(User.username == username).first()
+    session.close()
     return not (q is None)
 
 
 def is_valid(u, p):
+    session = Session()
     username = u
     password = p
     for i in session.query(User).order_by(User.score):
         if i.username == username and i.password == password:
+            session.close()
             return True
+
+    session.close()
     return False
 
 
@@ -132,6 +150,7 @@ def correct_and_total_num(username):
 
 
 def incorrect(user):
+    session = Session()
     session.query(User).filter(User.username == user.username).update({User.totalattempted: User.totalattempted + 1})
     session.query(User).filter(User.username == user.username).update({
         User.score: User.totalcorrect * User.totalcorrect / User.totalattempted})
@@ -141,14 +160,17 @@ def incorrect(user):
     # u.update(totalattempted=u.totalattempted + 1
     # u.score = round(u.totalcorrect * u.totalcorrect / u.totalattempted)
     session.commit()
+    session.close()
 
 
 def correct(user):
+    session = Session()
     session.query(User).filter(User.username == user.username).update({User.totalcorrect: User.totalcorrect + 1})
     session.query(User).filter(User.username == user.username).update({User.totalattempted: User.totalattempted + 1})
     session.query(User).filter(User.username == user.username).update({
         User.score: User.totalcorrect * User.totalcorrect / User.totalattempted})
     session.commit()
+    session.close()
 
 
 Base.metadata.create_all(engine)
