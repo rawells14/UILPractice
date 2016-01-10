@@ -1,9 +1,7 @@
 import time
 
 from sqlalchemy.ext.declarative import declarative_base
-
 from sqlalchemy.orm import sessionmaker
-
 from sqlalchemy import *
 
 import settings
@@ -12,7 +10,7 @@ Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
-engine = create_engine(data_base_address, echo=False, pool_recycle=2)
+engine = create_engine(data_base_address, echo=False, pool_size=20, max_overflow=100)
 
 Session = sessionmaker(bind=engine)
 
@@ -66,6 +64,7 @@ def new_submission(uname, status):
     session.add(sub)
     session.commit()
     session.close()
+
 
 def create_user(uname, full, pwd):
     session = Session()
