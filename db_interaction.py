@@ -10,7 +10,7 @@ Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
-engine = create_engine(data_base_address, echo=False, pool_size=20, max_overflow=100)
+engine = create_engine(data_base_address, echo=False)
 
 Session = sessionmaker(bind=engine)
 

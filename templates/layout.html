@@ -14,28 +14,23 @@
   ga('create', 'UA-70751894-1', 'auto');
   ga('send', 'pageview');
 
-
-
-
-
-
-
-
-
     </script>
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/dashboard"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-            Dashboard</a>
 
         <div class="collapse navbar-collapse" id="navigation-bar">
             <ul id="nav-buttons" class="nav navbar-nav">
+                <li id="dashboard" class="">
+                    <a class="navbar-brand" href="/dashboard"><span class="glyphicon glyphicon-home"
+                                                                    aria-hidden="true"></span>
+                        Dashboard</a>
+                </li>
                 <li id="cs" class="">
-                    <a href="#">Computer Science</a>
+                    <a href="/cs">Computer Science</a>
                 </li>
                 <li id="math">
-                    <a href="#">Math<span class="sr-only"></span></a>
+                    <a href="/math">Math<span class="sr-only"></span></a>
                 </li>
             </ul>
             <form class="navbar-form navbar-left" role="Search" action="/search" method="post">

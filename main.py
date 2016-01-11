@@ -132,6 +132,16 @@ def feedback():
         return redirect(url_for('home'))
 
 
+@app.route('/cs', methods=['GET'])
+def cs():
+    return render_template('cs.html')
+
+
+@app.route('/math', methods=['GET'])
+def math():
+    return render_template('math.html')
+
+
 if __name__ == '__main__':
     app.debug = settings.DEBUG
     app.run(use_reloader=settings.USE_RELOADER)

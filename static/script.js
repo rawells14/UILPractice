@@ -1,12 +1,14 @@
 $( document ).ready(function() {
-    $("#cs").click(function(){
-        clearStates();
+    var page = window.location.pathname;
+    console.log(page)
+    if(page == "/cs"){
         $("#cs").addClass("active");
-    });
-    $("#math").click(function(){
-        clearStates();
+    }
+    else if(page== "/math"){
         $("#math").addClass("active");
-    });
+    }else if(page == "/dashboard"){
+        $("#dashboard").addClass("active");
+    }
 });
 
 function clearStates(){
