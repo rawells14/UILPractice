@@ -7,5 +7,17 @@
 {% endblock %}
 {% block content %}
 <div class=""></div>
+<div class="well well-lg center-text">
+    {% if not question %}
 
+    <h1>Welcome to Computer Science Quick Practice!</h1>
+
+    <h2>Press begin to start practicing</h2>
+    <button type="button" id="begin-cs" data-loading-text="Starting..." class="btn btn-primary" autocomplete="off">
+        <h5> Begin</h5>
+    </button>
+    {% else %}
+        {{ question }}
+    {% endif %}
+</div>
 {% endblock %}

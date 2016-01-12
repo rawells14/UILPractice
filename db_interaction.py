@@ -45,6 +45,25 @@ class User(Base):
         return self.uid
 
 
+class Question(Base):
+    __tablename__ = 'questions'
+    qid = Column(Integer, primary_key=True, unique=True, autoincrement=True)
+    questiontext = Column(String(16000))
+    answerchoices = Column(String(16000))
+    correctanswer = Column(Integer)
+    explanation = Column(String(16000))
+
+    def get_qid(self):
+        return self.qid
+
+    def __repr__(self):
+        return "<Question(qid='%d', questiontext='%s', answerchoices='%s', correctanswer='%s', explanation='%d')>" % (
+        self.qid,
+        self.questiontext,
+        self.answerchoices,
+        self.correctanswer, self.explanation)
+
+
 class Submission(Base):
     __tablename__ = 'submissions'
 

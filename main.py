@@ -136,6 +136,9 @@ def feedback():
 def cs():
     return render_template('cs.html')
 
+@app.route('/cs/question', methods=['GET', 'POST'])
+def cs_question():
+    return render_template('cs.html', question='What is the following output?')
 
 @app.route('/math', methods=['GET'])
 def math():
