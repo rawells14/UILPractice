@@ -58,10 +58,10 @@ class Question(Base):
 
     def __repr__(self):
         return "<Question(qid='%d', questiontext='%s', answerchoices='%s', correctanswer='%s', explanation='%d')>" % (
-        self.qid,
-        self.questiontext,
-        self.answerchoices,
-        self.correctanswer, self.explanation)
+            self.qid,
+            self.questiontext,
+            self.answerchoices,
+            self.correctanswer, self.explanation)
 
 
 class Submission(Base):
