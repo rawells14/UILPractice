@@ -132,6 +132,7 @@ def feedback():
         return redirect(url_for('home'))
 
 
+# Computer Science Methods:
 @app.route('/cs', methods=['GET'])
 def cs():
     return render_template('cs.html')
