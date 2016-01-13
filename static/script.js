@@ -12,7 +12,7 @@ $( document ).ready(function() {
     console.log("dank")
     var $btn = $(this).button('loading')
     setTimeout(function(){
-    window.location.replace("/cs/question");
+    window.location.replace("/cs/new");
      }, 600);
 
   })

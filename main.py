@@ -137,15 +137,15 @@ def cs():
     return render_template('cs.html')
 
 
-@app.route('/cs/question', methods=['GET', 'POST'])
+@app.route('/cs/new', methods=['GET', 'POST'])
 def cs_question():
     question = get_random_question()
-    return render_template('cs.html', question=question)
+    return redirect('/cs/question/' + (str)(question.qid))
 
 
 @app.route('/cs/question/<qid>', methods=['GET', 'POST'])
 def cs_question_specific(qid):
-    question = get_question_by_qid()
+    question = get_question_by_qid(qid)
     return render_template('cs.html', question=question)
 
 
