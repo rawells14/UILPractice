@@ -6,7 +6,6 @@
 <script src="static/analytics.js"></script>
 {% endblock %}
 {% block content %}
-<div class=""></div>
 <div class="well well-lg center-text">
     {% if not question %}
 
@@ -17,10 +16,10 @@
         <h5> Begin</h5>
     </button>
     {% else %}
-    <div class="center-text">
+    <div class="center-text question-pad">
         <h2>
-            {{ question.questiontext }}
-            <pre class="prettyprint linenums"><code class="language-java">System.out.println("Test");System.out.println("Hello");</code></pre>
+            {{ question.questionheader }}
+            <pre class="prettyprint linenums"><code class="language-java">{{ question.questiontext }}</code></pre>
         </h2>
 
         <h3>

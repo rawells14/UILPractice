@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block title %} Practice Computer Science {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="static/dashboard.css">
+<script src="static/Chart.js"></script>
+<script src="static/analytics.js"></script>
+{% endblock %}
+{% block content %}
+<body>
+<h1>Admin Panel:</h1>
+
+<h2>Current User: {{ current_user.username }}</h2>
+<br>
+<br>
+
+
+<div class="message">
+    <h3>Submit New question</h3>
+
+    <form method="post" action="/admin">
+        Question Header:<br>
+        <textarea class="form-control" rows="5" name="questionheader"></textarea>
+        <br>
+        Question Text:<br>
+        <textarea class="form-control" rows="5" name="questiontext"></textarea>
+        <br>
+        Answer Choices: (Separated by SEP)<br>
+        <textarea class="form-control" rows="5" name="answerchoices"></textarea>
+        <br>
+        Correct Answer (index int):<br>
+        <input type="text" class="form-control" name="correctanswer">
+        <br>
+        Explanation:
+        <textarea class="form-control" rows="5" name="explanation"></textarea>
+        <br>
+        <input type="submit" value="Submit Question">
+    </form>
+</div>
+</body>
+{% endblock %}

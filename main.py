@@ -2,11 +2,12 @@ from flask import Flask, request, url_for, flash, g
 from flask import render_template
 from markupsafe import Markup
 from werkzeug.utils import redirect
-
 from flask_login import LoginManager, login_required, logout_user, login_user, current_user
+
 from db_interaction import *
 from feedback import *
 import settings
+
 
 app = Flask(__name__)
 app.secret_key = settings.SECRET_KEY
@@ -102,7 +103,6 @@ def search():
         uname = [request.form['uname']][0]
         users_found = search_by_username(uname)
         incorrect(current_user)
-        print('inc')
         if users_found.count() > 0:
             flash(str(users_found.count()) + ' users were found', 'success')
         else:
@@ -143,9 +143,32 @@ def cs_question():
     return render_template('cs.html', question=question)
 
 
+@app.route('/cs/question/<qid>', methods=['GET', 'POST'])
+def cs_question_specific(qid):
+    question = get_question_by_qid()
+    return render_template('cs.html', question=question)
+
+
 @app.route('/math', methods=['GET'])
 def math():
     return render_template('math.html')
+
+
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    if not current_user.username == 'admin':
+        flash('You are not allowed here', 'error')
+        return redirect(url_for('home'))
+    if request.method == 'POST':
+        questionheader = [request.form['questionheader']][0]
+        questiontext = [request.form['questiontext']][0]
+        answerchoices = [request.form['answerchoices']][0]
+        correctanswer = [request.form['correctanswer']][0]
+        explanation = [request.form['explanation']][0]
+        add_question(questionheader, questiontext, answerchoices, correctanswer, explanation)
+        flash('Added New Question!', 'success')
+        return render_template('admin.html')
+    return render_template('admin.html')
 
 
 if __name__ == '__main__':

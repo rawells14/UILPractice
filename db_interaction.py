@@ -7,6 +7,7 @@ from sqlalchemy import *
 
 import settings
 
+
 Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
@@ -49,6 +50,7 @@ class User(Base):
 class Question(Base):
     __tablename__ = 'questions'
     qid = Column(Integer, primary_key=True, unique=True, autoincrement=True)
+    questionheader = Column(String(16000))
     questiontext = Column(String(16000))
     answerchoices = Column(String(16000))
     correctanswer = Column(Integer)
@@ -58,7 +60,7 @@ class Question(Base):
         return self.qid
 
     def __repr__(self):
-        return "<Question(qid='%d', questiontext='%s', answerchoices='%s', correctanswer='%s', explanation='%d')>" % (
+        return "<Question(qid='%d', questionheader='%s', questiontext='%s', answerchoices='%s', correctanswer='%s', explanation='%d')>" % (
             self.qid,
             self.questiontext,
             self.answerchoices,
@@ -134,8 +136,6 @@ def search_by_username(username):
 def get_user_by_uid(uid):
     session = Session()
     uid = int(uid)
-    print('UID', uid)
-    print()
     session.close()
     return session.query(User).filter(User.uid == uid).first()
 
@@ -200,6 +200,21 @@ def get_random_question():
     session.close()
     return question
 
+
+def get_question_by_qid(qid):
+    session = Session()
+    question = session.query(Question).filter(Question.qid == qid).first()
+    session.close()
+    return question
+
+
+def add_question(questionheader, questiontext, answerchoices, correctanswer, explanation):
+    session = Session()
+    question = Question(questionheader=questionheader, questiontext=questiontext, answerchoices=answerchoices,
+                        correctanswer=correctanswer, explanation=explanation)
+    session.add(question)
+    session.commit()
+    session.close()
 
 
 Base.metadata.create_all(engine)
