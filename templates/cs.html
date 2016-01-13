@@ -1,27 +1,31 @@
 {% extends "layout.html" %}
 {% block title %} Practice Computer Science {% endblock %}
 {% block head %}
-<link rel="stylesheet" href="static/dashboard.css">
-<script src="static/Chart.js"></script>
-<script src="static/analytics.js"></script>
+
 {% endblock %}
 {% block content %}
-<div class="well well-lg center-text">
-    {% if not question %}
+<div class="well well-lg">
+    <div class="center-text">
+        {% if not question %}
 
-    <h1>Welcome to Computer Science Quick Practice!</h1>
+        <h1>Welcome to Computer Science Quick Practice!</h1>
 
-    <h2>Press begin to start practicing</h2>
-    <button type="button" id="begin-cs" data-loading-text="Starting..." class="btn btn-primary" autocomplete="off">
-        <h5> Begin</h5>
-    </button>
-    {% else %}
+        <h2>Press begin to start practicing</h2>
+        <button type="button" id="begin-cs" data-loading-text="Starting..." class="btn btn-primary" autocomplete="off">
+            <h5> Begin</h5>
+        </button>
+        {% else %}
+    </div>
     <div class="center-text question-pad">
         <h2>
             {{ question.questionheader }}
-            <pre class="prettyprint linenums"><code class="language-java">{{ question.questiontext }}</code></pre>
-        </h2>
 
+        </h2>
+    </div>
+    <div class="question-pad">
+        <pre class="prettyprint"><code class="language-java">{{ question.questiontext }}</code></pre>
+    </div>
+    <div class="question-pad center-text">
         <h3>
             {% set choices = question.answerchoices.split("SEP") %}
             {% for c in choices %}
@@ -31,6 +35,7 @@
             {% endfor %}
         </h3>
     </div>
+
     {% endif %}
 </div>
 {% endblock %}
