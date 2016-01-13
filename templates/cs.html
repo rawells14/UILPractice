@@ -17,7 +17,21 @@
         <h5> Begin</h5>
     </button>
     {% else %}
-        {{ question }}
+    <div class="center-text">
+        <h2>
+            {{ question.questiontext }}
+            <pre class="prettyprint linenums"><code class="language-java">System.out.println("Test");System.out.println("Hello");</code></pre>
+        </h2>
+
+        <h3>
+            {% set choices = question.answerchoices.split("SEP") %}
+            {% for c in choices %}
+            <br>
+            {{ c }}
+
+            {% endfor %}
+        </h3>
+    </div>
     {% endif %}
 </div>
 {% endblock %}

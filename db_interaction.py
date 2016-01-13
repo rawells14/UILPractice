@@ -1,3 +1,4 @@
+import random
 import time
 
 from sqlalchemy.ext.declarative import declarative_base
@@ -189,6 +190,16 @@ def correct(user):
         User.score: User.totalcorrect * User.totalcorrect / User.totalattempted})
     session.commit()
     session.close()
+
+
+def get_random_question():
+    session = Session()
+    row_count = session.query(Question).count()
+    qid = random.randint(1, row_count)
+    question = session.query(Question).filter(Question.qid == qid).first()
+    session.close()
+    return question
+
 
 
 Base.metadata.create_all(engine)
