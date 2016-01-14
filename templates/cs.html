@@ -1,12 +1,11 @@
 {% extends "layout.html" %}
 {% block title %} Practice Computer Science {% endblock %}
 {% block head %}
-
+<script src="/static/question.js"></script>
 {% endblock %}
 {% block content %}
 <div class="well well-lg">
     <div class="center-text">
-        {% if not question %}
 
         <h1>Welcome to Computer Science Quick Practice!</h1>
 
@@ -14,28 +13,9 @@
         <button type="button" id="begin-cs" data-loading-text="Starting..." class="btn btn-primary" autocomplete="off">
             <h5> Begin</h5>
         </button>
-        {% else %}
-    </div>
-    <div class="center-text question-pad">
-        <h2>
-            {{ question.questionheader }}
 
-        </h2>
-    </div>
-    <div class="question-pad">
-        <pre class="prettyprint"><code class="language-java">{{ question.questiontext }}</code></pre>
-    </div>
-    <div class="question-pad center-text">
-        <h3>
-            {% set choices = question.answerchoices.split("SEP") %}
-            {% for c in choices %}
-            <br>
-            {{ c }}
-
-            {% endfor %}
-        </h3>
     </div>
 
-    {% endif %}
+
 </div>
 {% endblock %}

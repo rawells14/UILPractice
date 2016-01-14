@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block title %} Practice Computer Science {% endblock %}
+{% block head %}
+<script src="/static/question.js"></script>
+{% endblock %}
+{% block content %}
+<script>
+    var cor = {{ question.correctanswer|safe }};
+    var expl = "";
+    expl+= "{{ question.explanation|safe }}";
+    init(cor, expl);
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<div class="center-text question-pad">
+    <h2>
+        {{ question.questionheader }}
+
+    </h2>
+</div>
+<div class="question-pad">
+    <pre class="prettyprint"><code class="language-java">{{ question.questiontext }}</code></pre>
+</div>
+<div class="question-pad center-text">
+    <div id="answer-choices" class="well well-lg">
+        <h4>
+
+            {% set choices = question.answerchoices.split("SEP") %}
+            {% for c in choices %}
+            <div class="list-group l-align">
+
+                <a id="{{ choices.index(c) }}" href="#" class="list-group-item list-group-item-info">{{ c
+                    }}</a>
+            </div>
+            {% endfor %}
+            <div id="correct" class="panel panel-success">
+                <div class="panel-heading"><i><strong>Correct!</strong></i></div>
+            </div>
+            <div id="incorrect" class="panel panel-danger">
+                <div class="panel-heading"><i><strong>Incorrect</strong></i></div>
+                <div class="explanation panel-body">
+                </div>
+            </div>
+        </h4>
+    </div>
+</div>
+
+{% endblock %}

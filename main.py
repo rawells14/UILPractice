@@ -140,6 +140,7 @@ def cs():
 
 @app.route('/cs/new', methods=['GET', 'POST'])
 def cs_question():
+    correct(current_user)
     question = get_random_question()
     return redirect('/cs/question/' + (str)(question.qid))
 
@@ -147,7 +148,8 @@ def cs_question():
 @app.route('/cs/question/<qid>', methods=['GET', 'POST'])
 def cs_question_specific(qid):
     question = get_question_by_qid(qid)
-    return render_template('cs.html', question=question)
+    question.explanation = (str)(question.explanation)
+    return render_template('question.html', question=question)
 
 
 @app.route('/math', methods=['GET'])
@@ -166,7 +168,7 @@ def admin():
         answerchoices = [request.form['answerchoices']][0]
         correctanswer = [request.form['correctanswer']][0]
         explanation = [request.form['explanation']][0]
-        add_question(questionheader, questiontext, answerchoices, correctanswer, explanation)
+        add_question(questionheader, questiontext, answerchoices, (int)(correctanswer), (str)(explanation))
         flash('Added New Question!', 'success')
         return render_template('admin.html')
     return render_template('admin.html')
