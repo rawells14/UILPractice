@@ -140,7 +140,6 @@ def cs():
 
 @app.route('/cs/new', methods=['GET', 'POST'])
 def cs_question():
-    correct(current_user)
     question = get_random_question()
     return redirect('/cs/question/' + (str)(question.qid))
 
@@ -150,6 +149,19 @@ def cs_question_specific(qid):
     question = get_question_by_qid(qid)
     question.explanation = (str)(question.explanation)
     return render_template('question.html', question=question)
+
+
+# Submit API
+@app.route('/cs/submit', methods=['POST'])
+def cs_submit():
+    isCor = [request.form['isCor']][0]
+    if isCor == 'true':
+        correct(current_user)
+        return 'Question accounted as correct'
+    if isCor == 'false':
+        incorrect(current_user)
+        return 'Question accounted as incorrect'
+    return 'Question not accounted for'
 
 
 @app.route('/math', methods=['GET'])

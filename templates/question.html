@@ -4,25 +4,7 @@
 <script src="/static/question.js"></script>
 {% endblock %}
 {% block content %}
-<script>
-    var cor = {{ question.correctanswer|safe }};
-    var expl = "";
-    expl+= "{{ question.explanation|safe }}";
-    init(cor, expl);
 
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
 <div class="center-text question-pad">
     <h2>
         {{ question.questionheader }}
@@ -53,7 +35,13 @@
                 </div>
             </div>
         </h4>
+        <button id="send-data" action="/cs/new" type="button" class="btn btn-info">Next Question</button>
     </div>
 </div>
-
+<script>
+    var cor = {{ question.correctanswer|safe }};
+    var expl = "";
+    expl+= "{{ question.explanation|safe }}";
+    init(cor, expl);
+</script>
 {% endblock %}
