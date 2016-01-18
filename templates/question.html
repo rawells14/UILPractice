@@ -40,8 +40,9 @@
 </div>
 <script>
     var cor = {{ question.correctanswer|safe }};
-    var expl = "";
-    expl+= "{{ question.explanation|safe }}";
+    var expl = '{{ question.explanation|safe }}';
     init(cor, expl);
+
+
 </script>
 {% endblock %}
