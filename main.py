@@ -8,7 +8,6 @@ from db_interaction import *
 from feedback import *
 import settings
 
-
 app = Flask(__name__)
 app.secret_key = settings.SECRET_KEY
 login_manager = LoginManager()
@@ -180,7 +179,11 @@ def admin():
         answerchoices = [request.form['answerchoices']][0]
         correctanswer = [request.form['correctanswer']][0]
         explanation = [request.form['explanation']][0]
-        add_question(questionheader, questiontext, answerchoices, (int)(correctanswer), (str)(explanation))
+        questionid = [request.form['questionid']][0]
+        if questionid == '':
+            add_question(questionheader, questiontext, answerchoices, (int)(correctanswer), (str)(explanation))
+        else:
+            update_question(questionid, questionheader, questiontext, answerchoices, (int)(correctanswer), (str)(explanation))
         flash('Added New Question!', 'success')
         return render_template('admin.html')
     return render_template('admin.html')
