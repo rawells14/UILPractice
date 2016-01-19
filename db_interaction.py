@@ -7,7 +7,6 @@ from sqlalchemy import *
 
 import settings
 
-
 Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
@@ -215,6 +214,11 @@ def add_question(questionheader, questiontext, answerchoices, correctanswer, exp
     session.add(question)
     session.commit()
     session.close()
+
+
+def update_question(questionid, questionheader, questiontext, answerchoices, correctanswer, explanation):
+    session = Session()
+    print("updating")
 
 
 Base.metadata.create_all(engine)
