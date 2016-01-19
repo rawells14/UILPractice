@@ -171,7 +171,7 @@ def math():
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    if not current_user.username == 'admin':
+    if not current_user.is_authenticated or not current_user.username == 'admin':
         flash('You are not allowed here', 'error')
         return redirect(url_for('home'))
     if request.method == 'POST':
