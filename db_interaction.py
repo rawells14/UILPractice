@@ -218,7 +218,13 @@ def add_question(questionheader, questiontext, answerchoices, correctanswer, exp
 
 def update_question(questionid, questionheader, questiontext, answerchoices, correctanswer, explanation):
     session = Session()
-    print("updating")
+    session.query(Question).filter(Question.qid == questionid).update({Question.questionheader: questionheader})
+    session.query(Question).filter(Question.qid == questionid).update({Question.questiontext: questiontext})
+    session.query(Question).filter(Question.qid == questionid).update({Question.answerchoices: answerchoices})
+    session.query(Question).filter(Question.qid == questionid).update({Question.correctanswer: correctanswer})
+    session.query(Question).filter(Question.qid == questionid).update({Question.explanation: explanation})
+    session.commit()
+    session.close()
 
 
 Base.metadata.create_all(engine)

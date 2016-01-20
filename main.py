@@ -183,7 +183,8 @@ def admin():
         if questionid == '':
             add_question(questionheader, questiontext, answerchoices, (int)(correctanswer), (str)(explanation))
         else:
-            update_question(questionid, questionheader, questiontext, answerchoices, (int)(correctanswer), (str)(explanation))
+            update_question(questionid, questionheader, questiontext, answerchoices, (int)(correctanswer),
+                            (str)(explanation))
         flash('Added New Question!', 'success')
         return render_template('admin.html')
     return render_template('admin.html')
