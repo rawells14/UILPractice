@@ -1,14 +1,21 @@
 {% extends "layout.html" %}
 {% block title %} {{ user.username }}'s Profile{% endblock %}
 {% block head %}
-<link rel="stylesheet" href="static/profile.css">
+<link rel="stylesheet" href="/static/profile.css">
 {% endblock %}
 {% block content %}
 {% if user %}
-{{ user.username }}'s Profile
 <!-- Actual Profile Logic-->
-<div id="rank">
-    Rank: {{ rank }}
+<div>
+    <div class="well well-lg">
+        <div id="profile-title">
+            {{ user.username }}'s Profile
+        </div>
+        <div id="profile-content">
+            Rank: {{ rank }}<br>
+            Score: {{ user.score }}
+        </div>
+    </div>
 </div>
 {% else %}
 User doesn't exist!

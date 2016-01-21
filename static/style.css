@@ -14,3 +14,7 @@
 .l-align{
     text-align: left;
 }
+body{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+}
