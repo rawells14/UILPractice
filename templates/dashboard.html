@@ -11,21 +11,13 @@
     <h1>Your Dashboard</h1>
 
 
-    < id="analytics">
+    <div id="analytics">
     <script>
             var correct = {{ number_correct|safe }};
             var incorrect = {{ number_attempted|safe }} - correct;
             var attempted = {{ number_attempted|safe }};
 
             var accuracy = (Math.round(correct/attempted*100*10)/10);
-
-
-
-
-
-
-
-
 
     </script>
     <h2>Analytics:</h2>
