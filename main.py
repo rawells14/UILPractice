@@ -8,6 +8,7 @@ from db_interaction import *
 from feedback import *
 import settings
 
+
 app = Flask(__name__)
 app.secret_key = settings.SECRET_KEY
 login_manager = LoginManager()
@@ -101,7 +102,6 @@ def search():
     if request.method == 'POST':
         uname = [request.form['uname']][0]
         users_found = search_by_username(uname)
-        incorrect(current_user)
         if users_found.count() > 0:
             flash(str(users_found.count()) + ' users were found', 'success')
         else:
@@ -159,6 +159,7 @@ def cs_submit():
         return 'Question accounted as correct'
     if isCor == 'false':
         incorrect(current_user)
+        print('incorrect')
         return 'Question accounted as incorrect'
     return 'Question not accounted for'
 

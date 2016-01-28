@@ -12,78 +12,80 @@
 
 
     <div id="analytics">
-    <script>
+        <script>
             var correct = {{ number_correct|safe }};
             var incorrect = {{ number_attempted|safe }} - correct;
             var attempted = {{ number_attempted|safe }};
 
             var accuracy = (Math.round(correct/attempted*100*10)/10);
 
-    </script>
-    <h2>Analytics:</h2>
 
-    <h3>Your Overall Performance</h3>
-    <canvas id="correct-incorrect-chart" width="600" height="400"></canvas>
-    <table id="table-rows" class="table">
 
-        <tr>
-            <td>
-                <strong>Rank</strong>
-            </td>
-            <td>
-                {{ rank }}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Score</strong>
+        </script>
+        <h2>Analytics:</h2>
 
-            </td>
-            <td>
-                {{ current_user.score }} <span
-                    class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="score-tooltip"
-                    data-placement="right"
-                    title="Your Score is calculated by (Correct^2)/(Questions Answered)"></span>
-            </td>
-        </tr>
-        <tr class="active">
-            <td>
-                <strong>Total Questions Answered</strong>
-            </td>
-            <td>
-                {{ number_attempted }}
-            </td>
-        </tr>
-        <tr class="success">
-            <td>
-                <strong>Questions Correct</strong>
-            </td>
-            <td>
-                {{ number_correct }}
-            </td>
-        </tr>
-        <tr class="danger">
-            <td>
-                <strong>Questions Incorrect</strong>
-            </td>
-            <td>
-                {{ number_attempted - number_correct }}
-            </td>
-        </tr>
-        <tr class="info">
-            <td>
-                <strong>Accuracy</strong>
-            </td>
-            <td>
-                <div id="accuracy-percent">
-                    {{ (number_correct/(number_attempted+1)*100)|round }}%
-                </div>
-            </td>
-        </tr>
+        <h3>Your Overall Performance</h3>
+        <canvas id="correct-incorrect-chart" width="600" height="400"></canvas>
+        <table id="table-rows" class="table">
 
-    </table>
-</div>
-<script>
+            <tr>
+                <td>
+                    <strong>Rank</strong>
+                </td>
+                <td>
+                    {{ rank }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Score</strong>
+
+                </td>
+                <td>
+                    {{ current_user.score }} <span
+                        class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="score-tooltip"
+                        data-placement="right"
+                        title="Your Score is calculated by (Correct^2)/(Questions Answered)"></span>
+                </td>
+            </tr>
+            <tr class="active">
+                <td>
+                    <strong>Total Questions Answered</strong>
+                </td>
+                <td>
+                    {{ number_attempted }}
+                </td>
+            </tr>
+            <tr class="success">
+                <td>
+                    <strong>Questions Correct</strong>
+                </td>
+                <td>
+                    {{ number_correct }}
+                </td>
+            </tr>
+            <tr class="danger">
+                <td>
+                    <strong>Questions Incorrect</strong>
+                </td>
+                <td>
+                    {{ number_attempted - number_correct }}
+                </td>
+            </tr>
+            <tr class="info">
+                <td>
+                    <strong>Accuracy</strong>
+                </td>
+                <td>
+                    <div id="accuracy-percent">
+                        {{ (number_correct/(number_attempted+1)*100)|round }}%
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <script>
             graphData(correct, incorrect);
             console.log(accuracy);
 
@@ -91,6 +93,8 @@
 
 
 
-</script>
+
+
+    </script>
 </div>
 {% endblock %}

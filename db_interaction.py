@@ -12,7 +12,8 @@ Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
-engine = create_engine(data_base_address, echo=False, pool_size=20, max_overflow=0, pool_recycle=3600)
+engine = create_engine(data_base_address, echo=True)
+# pool_size=20, max_overflow=0, pool_recycle=3600 ADD ON PRODUCTION
 
 Session = sessionmaker(bind=engine)
 
@@ -70,19 +71,19 @@ class Question(Base):
 class Submission(Base):
     __tablename__ = 'submissions'
 
-    uid = Column(String(50))
+    uid = Column(Integer())
     status = Column(String(50))
     time_stamp = Column(Integer, primary_key=True)
 
     def __repr__(self):
-        return "<Submission(username='%s', status='%s', time_stamp='%d')>" % (
+        return "<Submission(uid='%s', status='%s', time_stamp='%d')>" % (
             self.username, self.status, self.time_stamp)
 
 
-def new_submission(uname, status):
+def new_submission(uid, status):
     session = Session()
     t = time.time()
-    sub = Submission(username=uname, status=status, time_stamp=t)
+    sub = Submission(uid=uid, status=status, time_stamp=(int)(t))
     session.add(sub)
     session.commit()
     session.close()
@@ -173,13 +174,10 @@ def incorrect(user):
     session.query(User).filter(User.username == user.username).update({User.totalattempted: User.totalattempted + 1})
     session.query(User).filter(User.username == user.username).update({
         User.score: User.totalcorrect * User.totalcorrect / User.totalattempted})
-
-
-    #
-    # u.update(totalattempted=u.totalattempted + 1
-    # u.score = round(u.totalcorrect * u.totalcorrect / u.totalattempted)
     session.commit()
     session.close()
+    print('in incorrect method')
+    new_submission(user.uid, 'i')
 
 
 def correct(user):
@@ -190,6 +188,7 @@ def correct(user):
         User.score: User.totalcorrect * User.totalcorrect / User.totalattempted})
     session.commit()
     session.close()
+    new_submission(user.uid, 'c')
 
 
 def get_random_question():
