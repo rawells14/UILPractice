@@ -17,30 +17,18 @@
   ga('create', 'UA-70751894-1', 'auto');
   ga('send', 'pageview');
 
+
+
+
+
+
+
+
+
     </script>
 </head>
 
 <body>
-
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="/static/Pictures/brandon.jpg" alt="">
-
-            <div class="carousel-caption">
-                <h2>Improve UIL Scores fast and easy!</h2>
-                <h4><i>"Fun yet simple"</i></h4>
-            </div>
-        </div>
-    </div>
-</div>
 <!--Errors-->
 {% with messages = get_flashed_messages(category_filter=["error"]) %}
 {% if messages %}
@@ -62,21 +50,42 @@
 {% endfor %}
 {% endif %}
 {% endwith %}
+<div id="caro-wrapper">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        </ol>
 
-<p>
-    <button type="button" id="login" class="btn btn-primary btn-lg" data-toggle="modal"
-            data-target="#sign-in-modal">
-        Sign In
-    </button>
-</p>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="/static/Pictures/brandon.jpg" style="height: 100%;">
 
+                <div id="carousel-caption-title" class="carousel-caption">
+                    <h1>Improve UIL Scores fast and easy!</h1>
 
-<p>
-    <button type="button" id="signup" class="btn btn-success btn-lg" data-toggle="modal"
-            data-target="#sign-up-modal">
-        Create an Account
-    </button>
-</p>
+                    <h3><i>"Fun yet simple"</i></h3>
+                </div>
+                <div class="carousel-caption">
+                    <p>
+                        <button type="button" id="login" class="btn btn-primary btn-lg" data-toggle="modal"
+                                data-target="#sign-in-modal">
+                            Sign In
+                        </button>
+                    </p>
+                    <p>
+                        <button type="button" id="signup" class="btn btn-success btn-lg" data-toggle="modal"
+                                data-target="#sign-up-modal">
+                            Create an Account
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -124,7 +133,7 @@
         </div>
     </div>
 </div>
-<div class="alert alert-warning" role="alert">This website is currently in development. Please note the
+<div class="alert alert-warning center-text" role="alert">This website is currently in development. Please note the
     presence of bugs. Feedback/Suggestions can be submitted <a href="/feedback" class="alert-link">here</a>
     <br>
 

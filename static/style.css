@@ -3,6 +3,7 @@
     margin-right: auto;
     text-align: center;
 }
+
 .message{
     padding-left: 7%;
     padding-right: 7%;
@@ -18,7 +19,38 @@ body{
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
 }
-#carousel-example-generic{
+#carousel-caption-title {
+    top: 0;
+    padding-top: 5%;
+    bottom: auto;
+}
+#caro-wrapper{
+    min-height: 100%;
+    margin: 0;
     height: 100%;
-    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+#caro-wrapper img {
+    -webkit-filter: blur(13px);
+    filter: blur(13px);
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.carousel,
+.item,
+.active {
+    height: 100%;
+}
+.carousel-inner {
+    height: 100%;
+    text-align: center;
 }
