@@ -17,102 +17,117 @@
   ga('create', 'UA-70751894-1', 'auto');
   ga('send', 'pageview');
 
-
     </script>
 </head>
 
 <body>
-<div class="jumbotron center-text">
-    <h1>Welcome to UIL Practice</h1>
 
-    <!--Errors-->
-    {% with messages = get_flashed_messages(category_filter=["error"]) %}
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-danger" role="alert">
-        {{ message }}
-    </div>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    </ol>
 
-    <!--Successes -->
-    {% with messages = get_flashed_messages(category_filter=["success"]) %}
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-success" role="alert">
-        {{ message }}
-    </div>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="/static/Pictures/brandon.jpg" alt="">
 
-    <p>
-        <button type="button" id="login" class="btn btn-primary btn-lg" data-toggle="modal"
-                data-target="#sign-in-modal">
-            Sign In
-        </button>
-    </p>
-
-
-    <p>
-        <button type="button" id="signup" class="btn btn-success btn-lg" data-toggle="modal"
-                data-target="#sign-up-modal">
-            Create an Account
-        </button>
-    </p>
-
-
-    <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div id="help-dialog-signin" class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    Sign Into Account
-                </div>
-                <div class="modal-body center">
-                    <form method="post" action="{{ url_for('signin') }}">
-                        Username<br>
-                        <input type="text" name="uname">
-                        <br>
-                        Password
-                        <br>
-                        <input type="password" name="pwd">
-                        <br>
-                        <input type="submit" value="Sign In">
-                    </form>
-                </div>
+            <div class="carousel-caption">
+                <h2>Improve UIL Scores fast and easy!</h2>
+                <h4><i>"Fun yet simple"</i></h4>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div id="help-dialog" class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    Create an Account for Free
-                </div>
-                <div class="modal-body center">
-                    <form method="post" action="{{ url_for('signup') }}">
-                        Username<br>
-                        <input type="text" name="uname">
-                        <br>
-                        Full Name<br>
-                        <input type="text" name="fname">
-                        <br>
-                        Password
-                        <br>
-                        <input type="password" name="pwd">
-                        <br>
-                        <input type="submit" value="Create Account">
-                    </form>
-                </div>
+</div>
+<!--Errors-->
+{% with messages = get_flashed_messages(category_filter=["error"]) %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-danger" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<!--Successes -->
+{% with messages = get_flashed_messages(category_filter=["success"]) %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<p>
+    <button type="button" id="login" class="btn btn-primary btn-lg" data-toggle="modal"
+            data-target="#sign-in-modal">
+        Sign In
+    </button>
+</p>
+
+
+<p>
+    <button type="button" id="signup" class="btn btn-success btn-lg" data-toggle="modal"
+            data-target="#sign-up-modal">
+        Create an Account
+    </button>
+</p>
+
+
+<div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div id="help-dialog-signin" class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Sign Into Account
+            </div>
+            <div class="modal-body center">
+                <form method="post" action="{{ url_for('signin') }}">
+                    Username<br>
+                    <input type="text" name="uname">
+                    <br>
+                    Password
+                    <br>
+                    <input type="password" name="pwd">
+                    <br>
+                    <input type="submit" value="Sign In">
+                </form>
             </div>
         </div>
     </div>
-    <div class="alert alert-warning" role="alert">This website is currently in development. Please note the
-        presence of bugs. Feedback/Suggestions can be submitted <a href="/feedback" class="alert-link">here</a>
-        <br>
-
+</div>
+<div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div id="help-dialog" class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Create an Account for Free
+            </div>
+            <div class="modal-body center">
+                <form method="post" action="{{ url_for('signup') }}">
+                    Username<br>
+                    <input type="text" name="uname">
+                    <br>
+                    Full Name<br>
+                    <input type="text" name="fname">
+                    <br>
+                    Password
+                    <br>
+                    <input type="password" name="pwd">
+                    <br>
+                    <input type="submit" value="Create Account">
+                </form>
+            </div>
+        </div>
     </div>
+</div>
+<div class="alert alert-warning" role="alert">This website is currently in development. Please note the
+    presence of bugs. Feedback/Suggestions can be submitted <a href="/feedback" class="alert-link">here</a>
+    <br>
+
 </div>
 </body>
 
