@@ -227,4 +227,15 @@ def update_question(questionid, questionheader, questiontext, answerchoices, cor
     session.close()
 
 
+def get_top_ten():
+    users = [u.__dict__ for u in get_all_users().all()]
+    users.reverse()
+    top_ten = []
+
+    for i in range(0, 10):
+        top_ten.append(users[i])
+    return top_ten
+
+
 Base.metadata.create_all(engine)
+get_top_ten()

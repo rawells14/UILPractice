@@ -44,8 +44,8 @@ def signup():
         password = [request.form['pwd']][0]
         if is_taken(username):
             error = 'Username is already taken, You\'ll have to pick a new one'
-        elif (len(username) < 4) or (' ' in username):
-            error = 'Usernames must be at least 4 characters in length and contain no spaces'
+        elif (len(username) < 4) or (' ' in username) or len(username) > 30:
+            error = 'Usernames must be at least 4 characters in length, contain no spaces, and a maximum of 30 characters'
         else:
             create_user(username, fullname, password)
             message = 'Account Successfully Created!'
@@ -120,7 +120,8 @@ def profile(username):
 
 @app.route('/leaderboard', methods=['GET'])
 def leaderboard():
-    return render_template('leaderboard.html')
+    top_ten = get_top_ten()
+    return render_template('leaderboard.html', top_ten=top_ten)
 
 
 @app.route('/feedback', methods=['GET', 'POST'])

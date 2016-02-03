@@ -7,4 +7,9 @@
 {% endblock %}
 {% block content %}
 <div class="center-text"><h1>Leaderboard</h1></div>
+{% for u in top_ten: %}
+{{ u.username }}
+{{ u.score }}
+<br>
+{% endfor %}
 {% endblock %}

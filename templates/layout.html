@@ -18,6 +18,13 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-70751894-1', 'auto');
   ga('send', 'pageview');
+
+
+
+
+
+
+
     </script>
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -45,11 +52,16 @@
                         class="glyphicon glyphicon-search"
                         aria-hidden="true"></span></button>
             </form>
+            <a class="navbar-brand navbar-left" href="/leaderboard">
+                <span class="glyphicon glyphicon-king"
+                      aria-hidden="true"></span>
+                Leaderboard</a>
             <a class="navbar-brand navbar-right" href="/../logout">Logout</a>
             <a class="navbar-brand navbar-right" href="/user/{{ current_user.username }}">
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 Hello, {{ current_user.username }}!
             </a>
+
         </div>
     </div>
 </nav>
