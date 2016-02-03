@@ -8,7 +8,6 @@ from db_interaction import *
 from feedback import *
 import settings
 
-
 app = Flask(__name__)
 app.secret_key = settings.SECRET_KEY
 login_manager = LoginManager()
@@ -117,6 +116,11 @@ def profile(username):
     user_prof = get_user_by_username(username)
     rank = compute_rank(user_prof)
     return render_template('profile.html', user=user_prof, rank=rank)
+
+
+@app.route('/leaderboard', methods=['GET'])
+def leaderboard():
+    return render_template('leaderboard.html')
 
 
 @app.route('/feedback', methods=['GET', 'POST'])
