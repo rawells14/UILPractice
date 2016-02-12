@@ -233,7 +233,7 @@ def get_top_ten():
     scores = []
     for i in range(10):
         usernames.append(users[i].username)
-        scores.append(users[i].score)
+        scores.append((int)(users[i].score))
     data = [usernames, scores]
     return data
 
