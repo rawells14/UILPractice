@@ -7,14 +7,17 @@
 <script src="static/leaderboard.js"></script>
 {% endblock %}
 {% block content %}
+
 <div class="center-text"><h1>Leaderboard</h1></div>
-{% for u in top_ten: %}
-{{ u.username }}
-{{ u.score }}
-<br>
-{% endfor %}
+
+<div class="graph-holder">
+    <canvas id="top-ten-graph" width="800" height="600"></canvas>
+</div>
 <script>
     var usernames = [];
-    //var dataIn =
+    var dataIn = {{ top_ten|safe }};
+    graphData(dataIn[0], dataIn[1]);
+
+
 </script>
 {% endblock %}

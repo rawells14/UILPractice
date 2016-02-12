@@ -11,8 +11,8 @@ Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
-engine = create_engine(data_base_address, echo=False, pool_size=20, max_overflow=0, pool_recycle=3600)
-#
+engine = create_engine(data_base_address)
+# , echo=False, pool_size=20, max_overflow=0, pool_recycle=3600
 # add on to production
 
 Session = sessionmaker(bind=engine)
@@ -99,7 +99,7 @@ def create_user(uname, full, pwd):
 
 def get_all_users():
     session = Session()
-    list = session.query(User).order_by(User.score)
+    list = session.query(User).order_by(User.score.desc())
     session.close()
     return list
 
@@ -228,13 +228,14 @@ def update_question(questionid, questionheader, questiontext, answerchoices, cor
 
 
 def get_top_ten():
-    users = [u.__dict__ for u in get_all_users().all()]
-    users.reverse()
-    top_ten = []
-
-    for i in range(0, 10):
-        top_ten.append(users[i])
-    return top_ten
+    users = get_all_users().all()
+    usernames = []
+    scores = []
+    for i in range(10):
+        usernames.append(users[i].username)
+        scores.append(users[i].score)
+    data = [usernames, scores]
+    return data
 
 
 Base.metadata.create_all(engine)

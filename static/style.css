@@ -54,3 +54,8 @@ body {
     height: 100%;
     text-align: center;
 }
+.graph-holder{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
