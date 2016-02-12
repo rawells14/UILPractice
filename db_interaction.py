@@ -1,3 +1,4 @@
+from decimal import Decimal
 import random
 import time
 
@@ -11,8 +12,8 @@ Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
-engine = create_engine(data_base_address, echo=False, pool_size=20, max_overflow=0, pool_recycle=3600)
-#
+engine = create_engine(data_base_address)
+# , echo=False, pool_size=20, max_overflow=0, pool_recycle=3600
 # add on to production
 
 Session = sessionmaker(bind=engine)
@@ -233,7 +234,7 @@ def get_top_ten():
     scores = []
     for i in range(10):
         usernames.append(users[i].username)
-        scores.append((int)(users[i].score))
+        scores.append(int(Decimal((users[i].score))))
     data = [usernames, scores]
     return data
 
