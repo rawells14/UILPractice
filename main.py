@@ -121,6 +121,7 @@ def profile(username):
 @app.route('/leaderboard', methods=['GET'])
 def leaderboard():
     top_ten = get_top_ten()
+    print(top_ten[1][0])
     return render_template('leaderboard.html', top_ten=top_ten)
 
 

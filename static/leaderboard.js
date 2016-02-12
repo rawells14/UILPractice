@@ -14,7 +14,7 @@ function graphData(usernames, scores){
         }
     ]
 };
-        
+
         var ctx = document.getElementById("top-ten-graph").getContext("2d");
         var topTenChart = new Chart(ctx).Bar(data);
         console.log(usernames)
