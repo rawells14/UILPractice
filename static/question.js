@@ -32,7 +32,7 @@ $(document).ready(function() {
         $('#send-data').click(function() {
             $.ajax({
                 url: '/cs/submit',
-                data: {[isCor : ""+isCor], []},
+                data: {isCor : ""+isCor, qid : qid},
                 type: 'POST',
                 success: function(response) {
                     console.log(response);

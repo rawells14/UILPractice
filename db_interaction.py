@@ -178,7 +178,6 @@ def incorrect(user, qid):
     session.query(User).filter(User.username == user.username).update({User.settings: 'Last: ' + qid})
     session.commit()
     session.close()
-    print('in incorrect method')
     new_submission(user.uid, 'i')
 
 

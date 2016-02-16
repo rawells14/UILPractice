@@ -160,13 +160,14 @@ def cs_question_specific(qid):
 @app.route('/cs/submit', methods=['POST'])
 def cs_submit():
     isCor = [request.form['isCor']][0]
-
+    qid = [request.form['qid']][0]
+    if get_last_question(current_user) == int(qid):
+        return 'Question not accounted for - Previously answered'
     if isCor == 'true':
-        correct(current_user, )
+        correct(current_user, qid)
         return 'Question accounted as correct'
     if isCor == 'false':
-        incorrect(current_user)
-        print('incorrect')
+        incorrect(current_user, qid)
         return 'Question accounted as incorrect'
     return 'Question not accounted for'
 
