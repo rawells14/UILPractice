@@ -12,8 +12,8 @@ Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
-engine = create_engine(data_base_address, echo=False, pool_size=20, max_overflow=0, pool_recycle=3600)
-# ,
+engine = create_engine(data_base_address)
+# , echo=False, pool_size=20, max_overflow=0, pool_recycle=3600
 # add on to production
 
 Session = sessionmaker(bind=engine)
@@ -114,7 +114,6 @@ def compute_rank(user):
         if i.username == user.username:
             value = i.score
         values.append(i.score)
-    values.reverse()
     for i in range(len(values)):
         if values[i] == value:
             return i + 1
