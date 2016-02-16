@@ -73,7 +73,9 @@
                 </td>
                 <td>
                     <div id="accuracy-percent">
-                        {{ (number_correct/(number_attempted+1)*100)|round }}%
+                        {% if  not number_attempted == 0 %}
+                            {{ (number_correct/(number_attempted)*100)|round }}%
+                        {% endif %}
                     </div>
                 </td>
             </tr>

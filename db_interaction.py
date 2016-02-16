@@ -242,5 +242,6 @@ def get_top_ten():
 def get_last_question(user):
     return 1;
 
+
 Base.metadata.create_all(engine)
 get_top_ten()
