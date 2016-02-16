@@ -170,23 +170,25 @@ def correct_and_total_num(username):
     return data
 
 
-def incorrect(user):
+def incorrect(user, qid):
     session = Session()
     session.query(User).filter(User.username == user.username).update({User.totalattempted: User.totalattempted + 1})
     session.query(User).filter(User.username == user.username).update({
         User.score: User.totalcorrect * User.totalcorrect / User.totalattempted})
+    session.query(User).filter(User.username == user.username).update({User.settings: 'Last: ' + qid})
     session.commit()
     session.close()
     print('in incorrect method')
     new_submission(user.uid, 'i')
 
 
-def correct(user):
+def correct(user, qid):
     session = Session()
     session.query(User).filter(User.username == user.username).update({User.totalcorrect: User.totalcorrect + 1})
     session.query(User).filter(User.username == user.username).update({User.totalattempted: User.totalattempted + 1})
     session.query(User).filter(User.username == user.username).update({
         User.score: User.totalcorrect * User.totalcorrect / User.totalattempted})
+    session.query(User).filter(User.username == user.username).update({User.settings: 'Last: ' + qid})
     session.commit()
     session.close()
     new_submission(user.uid, 'c')
@@ -238,6 +240,9 @@ def get_top_ten():
     data = [usernames, scores]
     return data
 
+
+def get_last_question(user):
+    return 1;
 
 Base.metadata.create_all(engine)
 get_top_ten()

@@ -160,8 +160,9 @@ def cs_question_specific(qid):
 @app.route('/cs/submit', methods=['POST'])
 def cs_submit():
     isCor = [request.form['isCor']][0]
+
     if isCor == 'true':
-        correct(current_user)
+        correct(current_user, )
         return 'Question accounted as correct'
     if isCor == 'false':
         incorrect(current_user)

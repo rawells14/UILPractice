@@ -3,9 +3,11 @@ var explan = "";
 var isCor;
 var chosen;
 var answered = false;
-function init(correct, explanation){
+var qid;
+function init(correct, explanation, qid){
     cor = correct;
     explan = explanation
+    this.qid = qid;
 
 }
 
@@ -30,7 +32,7 @@ $(document).ready(function() {
         $('#send-data').click(function() {
             $.ajax({
                 url: '/cs/submit',
-                data: {isCor : ""+isCor},
+                data: {[isCor : ""+isCor], []},
                 type: 'POST',
                 success: function(response) {
                     console.log(response);

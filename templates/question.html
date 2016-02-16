@@ -41,7 +41,10 @@
 <script>
     var cor = {{ question.correctanswer|safe }};
     var expl = ('{{ question.explanation|safe }}');
-    init(cor, expl);
+    var qid = ('{{ question.qid|safe }}');
+    init(cor, expl, qid);
+
+
 
 
 
