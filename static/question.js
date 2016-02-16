@@ -28,8 +28,6 @@ $(document).ready(function() {
 
     $(function() {
         $('#send-data').click(function() {
-            var user = $('#txtUsername').val();
-            var pass = $('#txtPassword').val();
             $.ajax({
                 url: '/cs/submit',
                 data: {isCor : ""+isCor},
