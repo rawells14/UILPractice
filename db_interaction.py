@@ -12,9 +12,8 @@ Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
-engine = create_engine(data_base_address, echo=False, pool_size=20, max_overflow=0, pool_recycle=3600)
-
-#
+engine = create_engine(data_base_address)
+#, echo=False, pool_size=20, max_overflow=0, pool_recycle=3600
 # add on to production
 
 Session = sessionmaker(bind=engine)
@@ -93,7 +92,7 @@ def new_submission(uid, status):
 
 def create_user(uname, full, pwd):
     session = Session()
-    u = User(username=uname, fullname=full, password=pwd, score=0, totalattempted=0, totalcorrect=0)
+    u = User(username=uname, fullname=full, password=pwd, score=0, totalattempted=0, totalcorrect=0, settings='')
     session.add(u)
     session.commit()
     session.close()
