@@ -238,5 +238,14 @@ def get_last_question(user):
         return
     return (int)(question_id)
 
+def get_table_amts():
+    session = Session()
+    data = []
+    data.append(session.query(User.uid).count())
+    data.append(session.query(Question.qid).count())
+    data.append(session.query(Submission.uid).count())
+    return data
 
+
+get_table_amts()
 Base.metadata.create_all(engine)

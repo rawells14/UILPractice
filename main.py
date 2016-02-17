@@ -195,8 +195,8 @@ def admin():
             update_question(questionid, questionheader, questiontext, answerchoices, (int)(correctanswer),
                             (str)(explanation))
         flash('Added New Question!', 'success')
-        return render_template('admin.html')
-    return render_template('admin.html')
+        return render_template('admin.html', database_stats=get_table_amts())
+    return render_template('admin.html', database_stats=get_table_amts())
 
 
 if __name__ == '__main__':
