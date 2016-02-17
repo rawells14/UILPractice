@@ -162,11 +162,12 @@ def cs_submit():
     isCor = [request.form['isCor']][0]
     qid = [request.form['qid']][0]
     if get_last_question(current_user) == int(qid):
+        print(qid + ' was duplicately answsered')
         return 'Question not accounted for - Previously answered'
-    if isCor == 'true':
+    elif isCor == 'true':
         correct(current_user, qid)
         return 'Question accounted as correct'
-    if isCor == 'false':
+    elif isCor == 'false':
         incorrect(current_user, qid)
         return 'Question accounted as incorrect'
     return 'Question not accounted for'

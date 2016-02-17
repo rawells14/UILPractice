@@ -186,7 +186,7 @@ def correct(user, qid):
     session.query(User).filter(User.username == user.username).update({User.totalattempted: User.totalattempted + 1})
     session.query(User).filter(User.username == user.username).update({
         User.score: User.totalcorrect * User.totalcorrect / User.totalattempted})
-    session.query(User).filter(User.username == user.username).update({User.settings: 'Last: ' + qid})
+    session.query(User).filter(User.username == user.username).update({User.settings: 'Last: ' + qid + '|'})
     session.commit()
     session.close()
     new_submission(user.uid, 'c')
@@ -240,7 +240,9 @@ def get_top_ten():
 
 
 def get_last_question(user):
-    return 1;
+    settings = user.settings.split('|')
+    question_id = (int)(settings[0].replace('Last: ', ''))
+    return question_id
 
 
 Base.metadata.create_all(engine)
