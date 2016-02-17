@@ -246,6 +246,4 @@ def get_table_amts():
     data.append(session.query(Submission.uid).count())
     return data
 
-
-get_table_amts()
 Base.metadata.create_all(engine)
