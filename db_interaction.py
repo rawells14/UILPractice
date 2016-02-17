@@ -13,7 +13,7 @@ Base = declarative_base()
 
 data_base_address = settings.DB_ADDRESS
 engine = create_engine(data_base_address)
-#, echo=False, pool_size=20, max_overflow=0, pool_recycle=3600
+# , echo=False, pool_size=20, max_overflow=0, pool_recycle=3600
 # add on to production
 
 Session = sessionmaker(bind=engine)
@@ -228,11 +228,11 @@ def update_question(questionid, questionheader, questiontext, answerchoices, cor
     session.close()
 
 
-
-
-
 def get_last_question(user):
-    settings = user.settings.split('|')
+    str = user.settings
+    if str is None or '':
+        return
+    settings = str.split('|')
     question_id = (int)(settings[0].replace('Last: ', ''))
     return question_id
 
