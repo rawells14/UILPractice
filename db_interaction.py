@@ -233,8 +233,10 @@ def get_last_question(user):
     if str is None or '':
         return
     settings = str.split('|')
-    question_id = (int)(settings[0].replace('Last: ', ''))
-    return question_id
+    question_id = settings[0].replace('Last: ', '')
+    if question_id == '':
+        return
+    return (int)(question_id)
 
 
 Base.metadata.create_all(engine)
