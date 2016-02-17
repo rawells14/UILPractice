@@ -8,16 +8,31 @@
 {% endblock %}
 {% block content %}
 
-<div class="center-text"><h1>Leaderboard</h1>
-<h3>Top 10 Scores</h3></div>
+<div id="top-10-score-wrapper" class="center-text"><h1>Leaderboard</h1>
 
-<div class="graph-holder">
-    <canvas id="top-ten-graph" width="800" height="600"></canvas>
+    <h3>Top 10 Scores</h3>
+
+    <div class="graph-holder">
+        <canvas id="top-ten-graph" width="800" height="600"></canvas>
+    </div>
+    <h6>Top 10 highest scoring users</h6>
+</div>
+
+<div id="most-accurate-wrapper" class="center-text">
+    <h3>Most Accurate (Coming Soon)</h3>
+    <canvas id="most-accurate-graph" width="800" height="600"></canvas>
 </div>
 <script>
     var usernames = [];
     var dataIn = {{ top_ten|safe }};
     graphData(dataIn[0], dataIn[1]);
+
+
+
+
+
+
+
 
 </script>
 {% endblock %}
