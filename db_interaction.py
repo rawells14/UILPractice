@@ -12,8 +12,8 @@ Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
-engine = create_engine(data_base_address)
-# , echo=False, pool_size=20, max_overflow=0, pool_recycle=3600
+engine = create_engine(data_base_address, echo=False, pool_size=20, max_overflow=0, pool_recycle=3600)
+#
 # add on to production
 
 Session = sessionmaker(bind=engine)
@@ -238,6 +238,7 @@ def get_last_question(user):
         return
     return (int)(question_id)
 
+
 def get_table_amts():
     session = Session()
     data = []
@@ -245,5 +246,6 @@ def get_table_amts():
     data.append(session.query(Question.qid).count())
     data.append(session.query(Submission.uid).count())
     return data
+
 
 Base.metadata.create_all(engine)
