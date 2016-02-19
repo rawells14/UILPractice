@@ -13,7 +13,7 @@ Base = declarative_base()
 
 data_base_address = settings.DB_ADDRESS
 engine = create_engine(data_base_address)
-#, echo=False, pool_size=20, max_overflow=0, pool_recycle=3600
+# , echo=False, pool_size=20, max_overflow=0, pool_recycle=3600
 # add on to production
 
 Session = sessionmaker(bind=engine)
@@ -101,6 +101,13 @@ def create_user(uname, full, pwd):
 def get_all_users():
     session = Session()
     list = session.query(User).order_by(User.score.desc())
+    session.close()
+    return list
+
+
+def users_by_accuracy():
+    session = Session()
+    list = session.query(User).order_by((User.totalcorrect*100 / User.totalattempted).desc())
     session.close()
     return list
 

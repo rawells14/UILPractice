@@ -25,14 +25,9 @@
 <script>
     var usernames = [];
     var dataIn = {{ top_ten|safe }};
-    graphData(dataIn[0], dataIn[1]);
-
-
-
-
-
-
-
+    graphDataScore(dataIn[0], dataIn[1]);
+    dataIn = {{ accurate| safe }};
+    graphDataAccurate(dataIn[0], dataIn[1]);
 
 </script>
 {% endblock %}

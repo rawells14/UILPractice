@@ -3,7 +3,7 @@ from flask import render_template
 from markupsafe import Markup
 from werkzeug.utils import redirect
 from flask_login import LoginManager, login_required, logout_user, login_user, current_user
-from leaderboard import get_top_ten_score
+from leaderboard import get_top_ten_score, get_top_ten_accuracy
 from db_interaction import *
 from feedback import *
 import settings
@@ -121,7 +121,8 @@ def profile(username):
 @app.route('/leaderboard', methods=['GET'])
 def leaderboard():
     top_ten = get_top_ten_score()
-    return render_template('leaderboard.html', top_ten=top_ten)
+    accurate = get_top_ten_accuracy()
+    return render_template('leaderboard.html', top_ten=top_ten, accurate=accurate)
 
 
 @app.route('/feedback', methods=['GET', 'POST'])

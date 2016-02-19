@@ -1,5 +1,5 @@
 from decimal import Decimal
-from db_interaction import Session, get_all_users
+from db_interaction import Session, get_all_users, users_by_accuracy
 
 
 def get_top_ten_score():
@@ -12,5 +12,22 @@ def get_top_ten_score():
     data = [usernames, scores]
     return data
 
+
 def get_top_ten_accuracy():
-    return
+    users = users_by_accuracy()
+    usernames = []
+    accuracies = []
+
+    tot = 0
+    for user in users:
+        if (user.totalattempted > 10):
+            usernames.append(user.username)
+            accuracies.append(round(100 * (user.totalcorrect / user.totalattempted), 2))
+            tot += 1
+        if (tot >= 10):
+            break
+    data = [usernames, accuracies]
+    return data
+
+
+print(get_top_ten_accuracy())
