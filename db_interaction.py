@@ -12,8 +12,8 @@ Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
-engine = create_engine(data_base_address, echo=False, pool_size=20, max_overflow=0, pool_recycle=3600)
-#
+engine = create_engine(data_base_address)
+#, echo=False, pool_size=20, max_overflow=0, pool_recycle=3600
 # add on to production
 
 Session = sessionmaker(bind=engine)
@@ -142,6 +142,7 @@ def get_user_by_uid(uid):
 
 
 def is_taken(username):
+    username = username.lower()
     session = Session()
     q = session.query(User).filter(User.username == username).first()
     session.close()
@@ -153,7 +154,7 @@ def is_valid(u, p):
     username = u
     password = p
     for i in session.query(User).order_by(User.score):
-        if i.username == username and i.password == password:
+        if i.username.lower() == username.lower() and i.password == password:
             session.close()
             return True
 
