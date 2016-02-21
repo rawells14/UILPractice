@@ -1,19 +1,22 @@
-from decimal import Decimal
 import random
 import time
 
 from sqlalchemy.ext.declarative import declarative_base
+
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import *
 
 import settings
 
+
 Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
-engine = create_engine(data_base_address)
-# , echo=False, pool_size=20, max_overflow=0, pool_recycle=3600
+if settings.OS == 'W':
+    engine = create_engine(data_base_address, echo=False)
+else:
+    engine = create_engine(data_base_address, echo=False, pool_size=20, max_overflow=0, pool_recycle=3600)
 # add on to production
 
 Session = sessionmaker(bind=engine)
@@ -107,7 +110,7 @@ def get_all_users():
 
 def users_by_accuracy():
     session = Session()
-    list = session.query(User).order_by((User.totalcorrect*100 / User.totalattempted).desc())
+    list = session.query(User).order_by((User.totalcorrect * 100 / User.totalattempted).desc())
     session.close()
     return list
 
