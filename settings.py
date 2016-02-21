@@ -11,6 +11,5 @@ mysql_database = 'mysql://root:ryan@localhost/uilpractice'
 DB_ADDRESS = sqlite_database
 PROJECT_PATH = ''
 if OS == 'L':
-    DEBUG = False
     DB_ADDRESS = mysql_database
     PROJECT_PATH = '/var/www/FlaskApp/FlaskApp/'
