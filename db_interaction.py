@@ -4,9 +4,10 @@ import time
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import *
+from werkzeug.security import generate_password_hash, check_password_hash
 
 import settings
-from werkzeug.security import generate_password_hash, check_password_hash
+
 
 Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
@@ -26,7 +27,7 @@ class User(Base):
     uid = Column(Integer, primary_key=True, unique=True, autoincrement=True)
     username = Column(String(50))
     fullname = Column(String(50))
-    password = Column(String(250))
+    password = Column(String(1000))
     score = Column(Integer)
     totalattempted = Column(Integer)
     totalcorrect = Column(Integer)
