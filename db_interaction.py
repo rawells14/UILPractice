@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import *
 
 import settings
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
@@ -94,7 +94,8 @@ def new_submission(uid, status):
 
 def create_user(uname, full, pwd):
     session = Session()
-    u = User(username=uname, fullname=full, password=pwd, score=0, totalattempted=0, totalcorrect=0, settings='')
+    u = User(username=uname, fullname=full, password=generate_password_hash(pwd), score=0, totalattempted=0,
+             totalcorrect=0, settings='')
     session.add(u)
     session.commit()
     session.close()
@@ -160,13 +161,10 @@ def is_taken(username):
 
 def is_valid(u, p):
     session = Session()
-    username = u
-    password = p
-    for i in session.query(User).order_by(User.score):
-        if i.username.lower() == username.lower() and i.password == password:
-            session.close()
-            return True
-
+    user = session.query(User).filter(User.username == u.lower()).first()
+    if (check_password_hash(user.password, p)):
+        session.close()
+        return True
     session.close()
     return False
 
@@ -256,6 +254,17 @@ def get_table_amts():
     data.append(session.query(Question.qid).count())
     data.append(session.query(Submission.uid).count())
     return data
+
+
+def encrypt_all_pwds():
+    session = Session()
+    print(generate_password_hash('hello'))
+    for user in session.query(User):
+        print('Old: ' + user.password)
+        user.password = generate_password_hash(user.password)
+        print('New: ' + user.password)
+    session.commit()
+    session.close()
 
 
 Base.metadata.create_all(engine)
