@@ -26,7 +26,7 @@ class User(Base):
     uid = Column(Integer, primary_key=True, unique=True, autoincrement=True)
     username = Column(String(50))
     fullname = Column(String(50))
-    password = Column(String(50))
+    password = Column(String(250))
     score = Column(Integer)
     totalattempted = Column(Integer)
     totalcorrect = Column(Integer)
