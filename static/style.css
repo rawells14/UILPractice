@@ -65,3 +65,9 @@ body {
 #most-accurate-wrapper{
     padding-bottom: 5%;
 }
+#footer{
+    position: absolute;
+    right:45%;
+    left:45%;
+    bottom: 0;
+}

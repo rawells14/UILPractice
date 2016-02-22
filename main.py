@@ -3,10 +3,12 @@ from flask import render_template
 from markupsafe import Markup
 from werkzeug.utils import redirect
 from flask_login import LoginManager, login_required, logout_user, login_user, current_user
+
 from leaderboard import get_top_ten_score, get_top_ten_accuracy
 from db_interaction import *
 from feedback import *
 import settings
+
 
 app = Flask(__name__)
 app.secret_key = settings.SECRET_KEY
