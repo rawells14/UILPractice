@@ -1,2 +1,3 @@
-from werkzeug.security import generate_password_hash, check_password_hash
+from db_interaction import encrypt_all_pwds
 
+encrypt_all_pwds()
