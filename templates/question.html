@@ -35,13 +35,14 @@
                 </div>
             </div>
         </h4>
-        <button id="send-data" action="/cs/new" type="button" class="btn btn-info">Next Question</button>
+        <button id="send-data" type="button" class="btn btn-info">Next Question</button>
     </div>
 </div>
 <script>
     var cor = {{ question.correctanswer|safe }};
     var expl = ('{{ question.explanation|safe }}');
     var qid = ('{{ question.qid|safe }}');
-    init(cor, expl, qid);
+    var subject = ('{{ question.subject|safe }}');
+    init(cor, expl, qid, subject);
 </script>
 {% endblock %}

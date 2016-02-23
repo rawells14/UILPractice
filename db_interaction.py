@@ -8,7 +8,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 import settings
 
-
 Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
@@ -60,16 +59,17 @@ class Question(Base):
     answerchoices = Column(String(16000))
     correctanswer = Column(Integer)
     explanation = Column(String(16000))
+    subject = Column(String(250))
 
     def get_qid(self):
         return self.qid
 
     def __repr__(self):
-        return "<Question(qid='%d', questionheader='%s', questiontext='%s', answerchoices='%s', correctanswer='%s', explanation='%d')>" % (
+        return "<Question(qid='%d', questionheader='%s', questiontext='%s', answerchoices='%s', correctanswer='%s', explanation='%d', subject='%s')>" % (
             self.qid,
             self.questiontext,
             self.answerchoices,
-            self.correctanswer, self.explanation)
+            self.correctanswer, self.explanation, self.subject)
 
 
 class Submission(Base):
@@ -201,13 +201,17 @@ def correct(user, qid):
     new_submission(user.uid, 'c')
 
 
-def get_random_question():
+def get_random_question(subject):
     session = Session()
-    row_count = session.query(Question).count()
-    qid = random.randint(1, row_count)
-    question = session.query(Question).filter(Question.qid == qid).first()
+    matching_subject = session.query(Question).filter(Question.subject == subject)
+
+    row_count = matching_subject.count()
+    rnd = random.randint(0, row_count - 1)
     session.close()
-    return question
+    return matching_subject[rnd]
+
+
+print(get_random_question('math').qid)
 
 
 def get_question_by_qid(qid):
@@ -217,10 +221,10 @@ def get_question_by_qid(qid):
     return question
 
 
-def add_question(questionheader, questiontext, answerchoices, correctanswer, explanation):
+def add_question(questionheader, questiontext, answerchoices, correctanswer, explanation, subject):
     session = Session()
     question = Question(questionheader=questionheader, questiontext=questiontext, answerchoices=answerchoices,
-                        correctanswer=correctanswer, explanation=explanation)
+                        correctanswer=correctanswer, explanation=explanation, subject=subject)
     session.add(question)
     session.commit()
     session.close()
@@ -257,13 +261,10 @@ def get_table_amts():
     return data
 
 
-def encrypt_all_pwds():
+def cs_all_qs():
     session = Session()
-    print(generate_password_hash('hello'))
-    for user in session.query(User):
-        print('Old: ' + user.password)
-        user.password = generate_password_hash(user.password)
-        print('New: ' + user.password)
+    for question in session.query(Question):
+        question.subject = 'cs'
     session.commit()
     session.close()
 

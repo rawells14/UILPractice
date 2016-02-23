@@ -15,10 +15,14 @@
 <h4>Users on Website: {{ database_stats[0] }} </h4>
 <h4>Questions on Website: {{ database_stats[1] }} </h4>
 <h4>Total Questions Submitted on Website: {{ database_stats[2] }} </h4>
+
 <div class="message">
     <h3>Submit New question</h3>
 
     <form method="post" action="/admin">
+        Subject:<br>
+        <textarea class="form-control" rows="5" name="subject"></textarea>
+        <br>
         Question Header:<br>
         <textarea class="form-control" rows="5" name="questionheader"></textarea>
         <br>

@@ -4,10 +4,13 @@ var isCor;
 var chosen;
 var answered = false;
 var qid;
-function init(correct, explanation, qid){
+var subject;
+
+function init(correct, explanation, qid, subject){
     cor = correct;
     explan = explanation
     this.qid = qid;
+    this.subject = subject;
 
 }
 
@@ -30,8 +33,9 @@ $(document).ready(function() {
 
     $(function() {
         $('#send-data').click(function() {
+        var url_to_submit =
             $.ajax({
-                url: '/cs/submit',
+                url: '/'+subject+'/submit',
                 data: {isCor : ""+isCor, qid : qid},
                 type: 'POST',
                 success: function(response) {
@@ -41,7 +45,7 @@ $(document).ready(function() {
                     console.log(error);
                 }
             });
-            window.location.replace("/cs/new");
+            window.location.replace("/"+subject+"/new");
         });
     });
 });
