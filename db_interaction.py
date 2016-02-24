@@ -230,13 +230,14 @@ def add_question(questionheader, questiontext, answerchoices, correctanswer, exp
     session.close()
 
 
-def update_question(questionid, questionheader, questiontext, answerchoices, correctanswer, explanation):
+def update_question(questionid, questionheader, questiontext, answerchoices, correctanswer, explanation, subject):
     session = Session()
     session.query(Question).filter(Question.qid == questionid).update({Question.questionheader: questionheader})
     session.query(Question).filter(Question.qid == questionid).update({Question.questiontext: questiontext})
     session.query(Question).filter(Question.qid == questionid).update({Question.answerchoices: answerchoices})
     session.query(Question).filter(Question.qid == questionid).update({Question.correctanswer: correctanswer})
     session.query(Question).filter(Question.qid == questionid).update({Question.explanation: explanation})
+    session.query(Question).filter(Question.qid == questionid).update({Question.subject: subject})
     session.commit()
     session.close()
 
