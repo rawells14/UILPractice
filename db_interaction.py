@@ -8,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 import settings
 
+
 Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
@@ -204,14 +205,13 @@ def correct(user, qid):
 def get_random_question(subject):
     session = Session()
     matching_subject = session.query(Question).filter(Question.subject == subject)
-
     row_count = matching_subject.count()
     rnd = random.randint(0, row_count - 1)
     session.close()
     return matching_subject[rnd]
 
 
-print(get_random_question('math').qid)
+print(get_random_question('cs').qid)
 
 
 def get_question_by_qid(qid):
@@ -261,6 +261,9 @@ def get_table_amts():
     return data
 
 
+Base.metadata.create_all(engine)
+
+
 def cs_all_qs():
     session = Session()
     for question in session.query(Question):
@@ -268,5 +271,3 @@ def cs_all_qs():
     session.commit()
     session.close()
 
-
-Base.metadata.create_all(engine)

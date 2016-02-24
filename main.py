@@ -9,6 +9,7 @@ from db_interaction import *
 from feedback import *
 import settings
 
+
 app = Flask(__name__)
 app.secret_key = settings.SECRET_KEY
 login_manager = LoginManager()
@@ -146,7 +147,7 @@ def cs():
 
 @app.route('/cs/new', methods=['GET', 'POST'])
 def cs_question():
-    question = get_random_question()
+    question = get_random_question('cs')
     return redirect('/cs/question/' + (str)(question.qid))
 
 
@@ -154,16 +155,15 @@ def cs_question():
 def cs_question_specific(qid):
     question = get_question_by_qid(qid)
     question.explanation = (str)(question.explanation)
-    return render_template('question.html', question=question)
+    return render_template('question.html', question=question, subject='cs')
 
 
 # Submit API
-@app.route('/cs/submit', methods=['POST'])
-def cs_submit():
+@app.route('/submit/', methods=['POST'])
+def submit():
     isCor = [request.form['isCor']][0]
     qid = [request.form['qid']][0]
     if get_last_question(current_user) == int(qid):
-        print(qid + ' was duplicately answsered')
         return 'Question not accounted for - Previously answered'
     elif isCor == 'true':
         correct(current_user, qid)
@@ -179,6 +179,19 @@ def math():
     return render_template('math.html')
 
 
+@app.route('/math/new', methods=['GET', 'POST'])
+def math_question():
+    question = get_random_question('math')
+    return redirect('/math/question/' + (str)(question.qid))
+
+
+@app.route('/math/question/<qid>', methods=['GET', 'POST'])
+def math_question_specific(qid):
+    question = get_question_by_qid(qid)
+    question.explanation = (str)(question.explanation)
+    return render_template('question.html', question=question, subject='math')
+
+
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
     if not current_user.is_authenticated or not current_user.username == 'admin':
@@ -192,16 +205,21 @@ def admin():
         explanation = [request.form['explanation']][0]
         questionid = [request.form['questionid']][0]
         subject = [request.form['subject']][0]
-        print(subject)
         if questionid == '':
             add_question(questionheader, questiontext, answerchoices, (int)(correctanswer), (str)(explanation),
                          (str)(subject))
         else:
             update_question(questionid, questionheader, questiontext, answerchoices, (int)(correctanswer),
-                            (str)(explanation))
+                            (str)(explanation), (str)(subject))
         flash('Added New Question!', 'success')
         return render_template('admin.html', database_stats=get_table_amts())
     return render_template('admin.html', database_stats=get_table_amts())
+
+
+# errors
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 
 if __name__ == '__main__':

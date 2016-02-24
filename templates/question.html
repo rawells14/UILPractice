@@ -2,6 +2,9 @@
 {% block title %} Practice Computer Science {% endblock %}
 {% block head %}
 <script src="/static/question.js"></script>
+<script type="text/javascript" async
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_CHTML"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 {% endblock %}
 {% block content %}
 
@@ -11,9 +14,17 @@
 
     </h2>
 </div>
-<div class="question-pad">
+
+<div class="center-text question-pad">
+    {% if subject == 'cs' %}
     <pre class="prettyprint"><code class="language-java">{{ question.questiontext }}</code></pre>
+    {% else %}
+    {{ question.questiontext }}
+    {% endif %}
+
 </div>
+
+
 <div class="question-pad center-text">
     <div id="answer-choices" class="well well-lg">
         <h4>
@@ -44,5 +55,11 @@
     var qid = ('{{ question.qid|safe }}');
     var subject = ('{{ question.subject|safe }}');
     init(cor, expl, qid, subject);
+
+
+
+
+
+
 </script>
 {% endblock %}

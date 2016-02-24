@@ -35,7 +35,7 @@ $(document).ready(function() {
         $('#send-data').click(function() {
         var url_to_submit =
             $.ajax({
-                url: '/'+subject+'/submit',
+                url: '/submit/',
                 data: {isCor : ""+isCor, qid : qid},
                 type: 'POST',
                 success: function(response) {

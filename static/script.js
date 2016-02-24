@@ -1,21 +1,25 @@
 $( document ).ready(function() {
     var page = window.location.pathname;
-    if(page == "/cs"){
+    if(page.includes("cs")){
         $("#cs").addClass("active");
     }
-    else if(page== "/math"){
+    else if(page.includes("math")){
         $("#math").addClass("active");
     }else if(page == "/dashboard"){
         $("#dashboard").addClass("active");
     }
     $('#begin-cs').on('click', function () {
-    console.log("dank")
-    var $btn = $(this).button('loading')
-    setTimeout(function(){
-    window.location.replace("/cs/new");
+        var $btn = $(this).button('loading')
+        setTimeout(function(){
+        window.location.replace("/cs/new");
      }, 600);
-
-  })
+     });
+  $('#begin-math').on('click', function () {
+        var $btn = $(this).button('loading')
+        setTimeout(function(){
+        window.location.replace("/math/new");
+         }, 600);
+  });
 });
 
 function clearStates(){
