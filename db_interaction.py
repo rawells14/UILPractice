@@ -211,7 +211,7 @@ def get_random_question(subject):
     return matching_subject[rnd]
 
 
-print(get_random_question('cs').qid)
+
 
 
 def get_question_by_qid(qid):
