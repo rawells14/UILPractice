@@ -263,12 +263,3 @@ def get_table_amts():
 
 Base.metadata.create_all(engine)
 
-
-def cs_all_qs():
-    session = Session()
-    for question in session.query(Question):
-        question.subject = 'cs'
-    session.commit()
-    session.close()
-
-cs_all_qs()
