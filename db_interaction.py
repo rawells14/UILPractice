@@ -271,3 +271,4 @@ def cs_all_qs():
     session.commit()
     session.close()
 
+cs_all_qs()
