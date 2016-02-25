@@ -9,7 +9,10 @@
 <div>
     <div class="well well-lg">
         <div id="center-text profile-title">
-            {{ user.username }}'s Profile
+            <h1>{{ user.username }}'s Profile</h1>
+            {% if current_user.username == 'admin' %}
+                    <span class="label label-primary">Moderator</span>
+                {% endif %}
         </div>
         <div id="profile-content">
             Rank: {{ rank }}<br>
