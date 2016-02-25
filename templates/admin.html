@@ -14,19 +14,25 @@
 <br>
 <br>
 <table id="website-statistics" class="table table-bordered">
-    <tr>
+    <tr class="info">
         <th>
             Users on Website
         </th>
         <th>
             Questions on Website
         </th>
-        <th>Questions answered</th>
+        <th>Total Questions answered</th>
     </tr>
     <tr>
         <td>{{ database_stats[0] }}</td>
-        <td>{{ database_stats[1] }}</td>
-        <td>{{ database_stats[2] }}</td>
+        <td><strong>Total:</strong> {{ database_stats[1] }}
+            <br>
+            <strong>Computer Science:</strong> {{ database_stats[2] }}
+            <br>
+            <strong>Mathematics: </strong> {{ database_stats[3] }}</td>
+        <td>
+            {{ database_stats[4] }}
+        </td>
     </tr>
 
 </table>

@@ -211,9 +211,6 @@ def get_random_question(subject):
     return matching_subject[rnd]
 
 
-
-
-
 def get_question_by_qid(qid):
     session = Session()
     question = session.query(Question).filter(Question.qid == qid).first()
@@ -258,7 +255,10 @@ def get_table_amts():
     data = []
     data.append(session.query(User.uid).count())
     data.append(session.query(Question.qid).count())
+    data.append(session.query(Question).filter(Question.subject == 'cs').count())
+    data.append(session.query(Question).filter(Question.subject == 'math').count())
     data.append(session.query(Submission.uid).count())
+
     session.close()
     return data
 
