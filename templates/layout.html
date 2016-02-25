@@ -26,6 +26,10 @@
 
 
 
+
+
+
+
     </script>
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -61,10 +65,12 @@
             <a class="navbar-brand navbar-right" href="/user/{{ current_user.username }}">
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 Hello, {{ current_user.username }}!
-
+                {% if current_user.username == 'admin' %}
+                <span class="label label-primary">Moderator</span>
+                {% endif %}
             </a>
             {% if current_user.username == 'admin' %}
-            <span class="label label-primary">Moderator</span>
+
             <a class="navbar-brand navbar-right" href="/admin"> <span class="glyphicon glyphicon-cog"
                                                                       aria-hidden="true"></span> Control Panel</a>
             {% endif %}
