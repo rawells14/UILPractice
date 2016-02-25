@@ -19,6 +19,11 @@
   ga('create', 'UA-70751894-1', 'auto');
   ga('send', 'pageview')
 
+
+
+
+
+
     </script>
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -55,11 +60,10 @@
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 Hello, {{ current_user.username }}!
                 {% if current_user.username == 'admin' %}
-                    <span class="label label-primary">Moderator</span>
-                {% endif %}
-
+                <span class="label label-primary">Moderator</span>
             </a>
-
+            <a class="navbar-brand navbar-right" href="/admin"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Control Panel</a>
+            {% endif %}
         </div>
     </div>
 </nav>
