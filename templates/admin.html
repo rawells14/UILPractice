@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %} Practice Computer Science {% endblock %}
+{% block title %} Admin Panel {% endblock %}
 {% block head %}
 <link rel="stylesheet" href="static/dashboard.css">
 <script src="static/Chart.js"></script>
@@ -7,21 +7,45 @@
 {% endblock %}
 {% block content %}
 <body>
-<h1>Admin Panel:</h1>
-
-<h2>Current User: {{ current_user.username }}</h2>
+<div class="center-text">
+    <h1>Admin Panel</h1>
+</div>
+<h4>Current User: <i>{{ current_user.username }}</i></h4>
 <br>
 <br>
-<h4>Users on Website: {{ database_stats[0] }} </h4>
-<h4>Questions on Website: {{ database_stats[1] }} </h4>
-<h4>Total Questions Submitted on Website: {{ database_stats[2] }} </h4>
+<table id="website-statistics" class="table table-bordered">
+    <tr class="info">
+        <th>
+            Users on Website
+        </th>
+        <th>
+            Questions on Website
+        </th>
+        <th>Total Questions answered</th>
+    </tr>
+    <tr>
+        <td>{{ database_stats[0] }}</td>
+        <td><strong>Total:</strong> {{ database_stats[1] }}
+            <br>
+            <strong>Computer Science:</strong> {{ database_stats[2] }}
+            <br>
+            <strong>Mathematics: </strong> {{ database_stats[3] }}</td>
+        <td>
+            {{ database_stats[4] }}
+        </td>
+    </tr>
 
+</table>
 <div class="message">
     <h3>Submit New question</h3>
 
     <form method="post" action="/admin">
         Subject:<br>
-        <textarea class="form-control" rows="5" name="subject"></textarea>
+        <select name="subject">
+            <option value="cs">Computer Science</option>
+            <option value="math">Mathematics</option>
+        </select>
+        <br>
         <br>
         Question Header:<br>
         <textarea class="form-control" rows="5" name="questionheader"></textarea>
