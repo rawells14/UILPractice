@@ -259,6 +259,7 @@ def get_table_amts():
     data.append(session.query(User.uid).count())
     data.append(session.query(Question.qid).count())
     data.append(session.query(Submission.uid).count())
+    session.close()
     return data
 
 
