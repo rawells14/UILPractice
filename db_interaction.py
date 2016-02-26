@@ -8,7 +8,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 import settings
 
-
 Base = declarative_base()
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
@@ -50,6 +49,17 @@ class User(Base):
 
     def get_id(self):
         return self.uid
+
+
+class Flag(Base):
+    __tablename__ = 'questions'
+    qid = Column(Integer, primary_key=True, unique=True, autoincrement=True)
+    flags = Column(Integer, primary_key=True, unique=True)
+
+    def __repr__(self):
+        return "<Question(qid='%d', flags='%s')>" % (
+            self.qid,
+            self.flags)
 
 
 class Question(Base):
@@ -263,5 +273,15 @@ def get_table_amts():
     return data
 
 
-Base.metadata.create_all(engine)
+def flag_question(qid):
+    session = Session()
+    if session.query(Flag).filter(Flag.qid == qid).count() == 0:
+        session.add(Flag(qid=qid, flags=0))
+    else:
+        session(Flag).filter(Flag.qid==qid).update({Flag.flags: Flag.flags+=1})
 
+    session.commit()
+    session.close()
+
+
+Base.metadata.create_all(engine)

@@ -9,7 +9,6 @@ from db_interaction import *
 from feedback import *
 import settings
 
-
 app = Flask(__name__)
 app.secret_key = settings.SECRET_KEY
 login_manager = LoginManager()
@@ -213,7 +212,6 @@ def admin():
                             (str)(explanation), (str)(subject))
         flash('Added New Question!', 'success')
         return render_template('admin.html', database_stats=get_table_amts())
-    return render_template('admin.html', database_stats=get_table_amts())
 
 
 # errors
