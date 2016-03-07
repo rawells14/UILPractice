@@ -212,6 +212,8 @@ def admin():
                             (str)(explanation), (str)(subject))
         flash('Added New Question!', 'success')
         return render_template('admin.html', database_stats=get_table_amts())
+    else:
+        return render_template('admin.html', database_stats=get_table_amts())
 
 
 # flag API

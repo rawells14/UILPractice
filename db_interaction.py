@@ -20,6 +20,7 @@ else:
 
 Session = sessionmaker(bind=engine)
 
+
 class User(Base):
     __tablename__ = 'users'
     uid = Column(Integer, primary_key=True, unique=True, autoincrement=True)
