@@ -20,7 +20,6 @@ else:
 
 Session = sessionmaker(bind=engine)
 
-
 class User(Base):
     __tablename__ = 'users'
     uid = Column(Integer, primary_key=True, unique=True, autoincrement=True)
@@ -52,7 +51,7 @@ class User(Base):
 
 
 class Flag(Base):
-    __tablename__ = 'questions'
+    __tablename__ = 'flags'
     qid = Column(Integer, primary_key=True, unique=True, autoincrement=True)
     flags = Column(Integer, primary_key=True, unique=True)
 
@@ -283,4 +282,5 @@ def flag_question(qid):
         session.commit()
         session.close()
 
-    Base.metadata.create_all(engine)
+
+Base.metadata.create_all(engine)

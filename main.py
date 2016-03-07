@@ -214,6 +214,12 @@ def admin():
         return render_template('admin.html', database_stats=get_table_amts())
 
 
+# flag API
+@app.route('/flag', methods=['POST'])
+def flag():
+    return 1
+
+
 # errors
 @app.errorhandler(404)
 def page_not_found(e):
