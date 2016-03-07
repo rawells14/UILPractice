@@ -278,10 +278,9 @@ def flag_question(qid):
     if session.query(Flag).filter(Flag.qid == qid).count() == 0:
         session.add(Flag(qid=qid, flags=0))
     else:
-        session(Flag).filter(Flag.qid==qid).update({Flag.flags: Flag.flags+=1})
+        session(Flag).filter(Flag.qid == qid).update({Flag.flags: Flag.flags + 1})
 
-    session.commit()
-    session.close()
+        session.commit()
+        session.close()
 
-
-Base.metadata.create_all(engine)
+    Base.metadata.create_all(engine)
