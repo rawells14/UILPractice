@@ -51,6 +51,11 @@
             </div>
         </h4>
         <button id="send-data" type="button" class="btn btn-info">Next Question</button>
+        <button id="flagger" type="button" class="btn"><span class="glyphicon glyphicon-flag"
+                                                             data-toggle="flagger-tooltip" data-placement="right"
+                                                             aria-hidden="true" style="color:#D46A6A"
+                                                             title="This question has a mistake"></span>
+        </button>
     </div>
 </div>
 <script>
@@ -59,6 +64,9 @@
     var qid = ('{{ question.qid|safe }}');
     var subject = ('{{ question.subject|safe }}');
     init(cor, expl, qid, subject);
+
+
+
 
 
 </script>
