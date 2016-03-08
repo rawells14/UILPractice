@@ -22,7 +22,7 @@ def get_top_ten_accuracy():
     for user in users:
         if (user.totalattempted > 10):
             usernames.append(user.username)
-            accuracies.append(100 * (user.totalcorrect / user.totalattempted))
+            accuracies.append((int)(100 * (user.totalcorrect / user.totalattempted)))
             tot += 1
         if (tot >= 10):
             break
