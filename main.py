@@ -120,6 +120,7 @@ def profile(username):
 
 
 @app.route('/leaderboard', methods=['GET'])
+@login_required
 def leaderboard():
     top_ten = get_top_ten_score()
     accurate = get_top_ten_accuracy()
@@ -140,6 +141,7 @@ def feedback():
 
 # Computer Science Methods:
 @app.route('/cs', methods=['GET'])
+@login_required
 def cs():
     return render_template('cs.html')
 
@@ -174,6 +176,7 @@ def submit():
 
 
 @app.route('/math', methods=['GET'])
+@login_required
 def math():
     return render_template('math.html')
 
@@ -192,6 +195,7 @@ def math_question_specific(qid):
 
 
 @app.route('/admin', methods=['GET', 'POST'])
+@login_required
 def admin():
     if not current_user.is_authenticated or not current_user.username == 'admin':
         flash('You are not allowed here', 'error')
@@ -219,13 +223,18 @@ def admin():
 # flag API
 @app.route('/flag', methods=['POST'])
 def flag():
-    return 1
+    return '1'
 
 
 # errors
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
+
+@app.errorhandler(405)
+def page_not_found(e):
+    return render_template('404.html'), 405
 
 
 if __name__ == '__main__':
