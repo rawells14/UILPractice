@@ -221,8 +221,10 @@ def admin():
 
 
 # flag API
-@app.route('/flag', methods=['POST'])
+@app.route('/flag/', methods=['POST'])
 def flag():
+    qid = [request.form['qid']][0]
+    print(qid)
     return '1'
 
 

@@ -2,12 +2,7 @@ $(document).ready(function() {
     $(function () {
       $('[data-toggle="score-tooltip"]').tooltip()
     });
-    $(function () {
-      $('[data-toggle="flagger-tooltip"]').tooltip()
-    });
-    $('#flagger').click(function(){
-        console.log("AJAX GOES HERE");
-    });
+
 });
 
 function graphData(correct, incorrect){

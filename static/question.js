@@ -16,6 +16,9 @@ function init(correct, explanation, qid, subject){
 
 $(document).ready(function() {
     clearFeedback();
+    $(function () {
+      $('[data-toggle="flagger-tooltip"]').tooltip()
+    });
     $("#answer-choices a").click(function() {
         if(answered == false){
             answered = true;
@@ -48,7 +51,24 @@ $(document).ready(function() {
             window.location.replace("/"+subject+"/new");
         });
     });
-});
+    $('#flagger').click(function(){
+        $("#flagger-pic").removeClass("glyphicon-flag");
+
+        var url_to_submit =
+            $.ajax({
+                url: '/flag/',
+                data: {qid : qid},
+                type: 'POST',
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        $("#flagger-pic").addClass("glyphicon-ok");
+        });
+    });
 
 function incorrect(){
 
