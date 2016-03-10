@@ -224,8 +224,8 @@ def admin():
 @app.route('/flag/', methods=['POST'])
 def flag():
     qid = [request.form['qid']][0]
-    print(qid)
-    return '1'
+    flag_question(qid)
+    return 'Thanks for the flag on question ' + qid
 
 
 # errors

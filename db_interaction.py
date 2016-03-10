@@ -268,20 +268,24 @@ def get_table_amts():
     data.append(session.query(Question).filter(Question.subject == 'cs').count())
     data.append(session.query(Question).filter(Question.subject == 'math').count())
     data.append(session.query(Submission.uid).count())
-
+    total_flags = 0
+    for i in session.query(Flag):
+        print(i.flags)
+        total_flags += i.flags
     session.close()
+    data.append(total_flags)
     return data
 
 
 def flag_question(qid):
     session = Session()
     if session.query(Flag).filter(Flag.qid == qid).count() == 0:
-        session.add(Flag(qid=qid, flags=0))
+        session.add(Flag(qid=qid, flags=1))
     else:
-        session(Flag).filter(Flag.qid == qid).update({Flag.flags: Flag.flags + 1})
+        session.query(Flag).filter(Flag.qid == qid).update({Flag.flags: Flag.flags + 1})
+    session.commit()
+    session.close()
 
-        session.commit()
-        session.close()
 
-
+flag_question(4)
 Base.metadata.create_all(engine)
