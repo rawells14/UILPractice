@@ -53,8 +53,8 @@ class User(Base):
 
 class Flag(Base):
     __tablename__ = 'flags'
-    qid = Column(Integer, primary_key=True, unique=True, autoincrement=True)
-    flags = Column(Integer, primary_key=True, unique=True)
+    qid = Column(Integer, primary_key=True, autoincrement=True)
+    flags = Column(Integer)
 
     def __repr__(self):
         return "<Question(qid='%d', flags='%s')>" % (
