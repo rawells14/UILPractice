@@ -67,6 +67,7 @@ $(document).ready(function() {
                 }
             });
         $("#flagger-pic").addClass("glyphicon-ok");
+        $("#flagger").off();
         });
     });
 
