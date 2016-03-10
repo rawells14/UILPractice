@@ -287,5 +287,4 @@ def flag_question(qid):
     session.close()
 
 
-flag_question(4)
 Base.metadata.create_all(engine)
