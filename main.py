@@ -23,7 +23,7 @@ def before_request():
     g.user = current_user
 
 
-@login_manager.user_loaderx
+@login_manager.user_loader
 def load_user(uid):
     return get_user_by_uid(uid)
 
