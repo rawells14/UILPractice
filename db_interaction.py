@@ -21,9 +21,6 @@ else:
 Session = sessionmaker(bind=engine)
 
 
-
-
-
 def new_submission(uid, status):
     session = Session()
     t = time.time()

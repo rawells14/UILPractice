@@ -28,6 +28,3 @@ def get_top_ten_accuracy():
                 break
     data = [usernames, accuracies]
     return data
-
-
-print(get_top_ten_accuracy())

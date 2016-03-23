@@ -1,0 +1,7 @@
+Badge ID - Title - Requirements
+
+0 - Academic - Answer 10 questions correctly
+1 - Acadmeic Bronze - Answer 25 questions correctly
+2 - Academic Silver - Answer 50 quesetions correctly
+3 - Academic Gold - Answer 100 Questions correctly
+4 - Academic Master - Answer 250 Questions correctly
