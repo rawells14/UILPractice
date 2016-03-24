@@ -35,6 +35,17 @@ class User(Base):
         return self.uid
 
 
+class Badge(Base):
+    __tablename__ = 'badges'
+    uid = Column(Integer, primary_key=True)
+    badgeid = Column(Integer)
+
+    def __repr__(self):
+        return "<Question(qid='%d', badgeid='%d')>" % (
+            self.qid,
+            self.badgeid)
+
+
 class Flag(Base):
     __tablename__ = 'flags'
     qid = Column(Integer, primary_key=True, autoincrement=True)
