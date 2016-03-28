@@ -12,14 +12,23 @@ def add_badge(uid, bid):
 
 
 def has_badge(uid, bid):
-    session = Session()
-    q = session.query(Badge).filter(Badge.uid == uid and Badge.bid == bid).first()
-    session.commit()
-    session.close()
+    badges =
+    for i in q:
+
     if q is None:
         return False
     else:
         return True
+
+
+def get_badges(uid):
+    badges = []
+    session = Session()
+    q = session.query(Badge).filter(Badge.uid == uid).badgeids
+    q_split = q.split(',')
+
+    session.commit()
+    session.close()
 
 
 print(has_badge(1, 1))
