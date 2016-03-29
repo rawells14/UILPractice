@@ -15,6 +15,23 @@ import settings
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
@@ -202,7 +219,6 @@ def get_table_amts():
     data.append(session.query(Submission.uid).count())
     total_flags = 0
     for i in session.query(Flag):
-        print(i.flags)
         total_flags += i.flags
     session.close()
     data.append(total_flags)
@@ -217,6 +233,20 @@ def flag_question(qid):
         session.query(Flag).filter(Flag.qid == qid).update({Flag.flags: Flag.flags + 1})
     session.commit()
     session.close()
+
+
+def get_top_flagged():
+    session = Session()
+    q = session.query(Flag).order_by(Flag.flags)
+    flags = [[]]
+    for flag in q:
+        qid = flag.qid
+        amt = flag.flags
+        flags.append([qid, amt])
+    flags.reverse()
+    session.commit()
+    session.close()
+    return flags[:5]
 
 
 def clear_flags():

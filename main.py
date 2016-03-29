@@ -216,9 +216,9 @@ def admin():
             update_question(questionid, questionheader, questiontext, answerchoices, (int)(correctanswer),
                             (str)(explanation), (str)(subject))
         flash('Added New Question!', 'success')
-        return render_template('admin.html', database_stats=get_table_amts())
+        return render_template('admin.html', database_stats=get_table_amts(), flagranks=get_top_flagged())
     else:
-        return render_template('admin.html', database_stats=get_table_amts())
+        return render_template('admin.html', database_stats=get_table_amts(), flagranks=get_top_flagged())
 
 
 @app.route('/admin/clear', methods=['POST', 'GET'])

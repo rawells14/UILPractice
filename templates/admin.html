@@ -42,6 +42,20 @@
             <form method="post" action="/admin/clear">
                 <button type="submit" class="btn btn-warning">Clear Flags</button>
             </form>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Question ID</th>
+                    <th>Amount of Flags</th>
+                </tr>
+                {% for i in flagranks %}
+                <tr>
+                    <td>{{i[0]}}</td>
+                    <td>{{i[1]}}</td>
+
+                </tr>
+                {% endfor %}
+            </table>
+
         </td>
     </tr>
 
