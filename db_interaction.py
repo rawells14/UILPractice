@@ -1,12 +1,18 @@
 import random
 import time
 
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import *
 from werkzeug.security import generate_password_hash, check_password_hash
+
 from models import *
 import settings
+
+
+
+
+
+
 
 
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
@@ -209,6 +215,13 @@ def flag_question(qid):
         session.add(Flag(qid=qid, flags=1))
     else:
         session.query(Flag).filter(Flag.qid == qid).update({Flag.flags: Flag.flags + 1})
+    session.commit()
+    session.close()
+
+
+def clear_flags():
+    session = Session()
+    session.query(Flag).delete()
     session.commit()
     session.close()
 

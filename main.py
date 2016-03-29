@@ -9,6 +9,7 @@ from db_interaction import *
 from feedback import *
 import settings
 
+
 app = Flask(__name__)
 app.secret_key = settings.SECRET_KEY
 login_manager = LoginManager()
@@ -217,6 +218,21 @@ def admin():
         flash('Added New Question!', 'success')
         return render_template('admin.html', database_stats=get_table_amts())
     else:
+        return render_template('admin.html', database_stats=get_table_amts())
+
+
+@app.route('/admin/clear', methods=['POST', 'GET'])
+@login_required
+def admin_clear():
+    if not current_user.is_authenticated or not current_user.username == 'admin':
+        flash('You are not allowed here', 'error')
+        return redirect(url_for('home'))
+    if request.method == 'POST':
+        clear_flags()
+        flash('Cleared Flags', 'success')
+        return render_template('admin.html', database_stats=get_table_amts())
+    else:
+        flash('Please Use the clear button instead of navigating here', 'success')
         return render_template('admin.html', database_stats=get_table_amts())
 
 

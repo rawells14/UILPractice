@@ -30,12 +30,18 @@
             <br>
             <strong>Computer Science:</strong> {{ database_stats[2] }}
             <br>
-            <strong>Mathematics: </strong> {{ database_stats[3] }}</td>
+            <strong>Mathematics: </strong> {{ database_stats[3] }}
+        </td>
         <td>
             {{ database_stats[4] }}
         </td>
+        <!-- Flags/-->
         <td>
-            {{ database_stats[5] }}
+            {{ database_stats[5] }}<br>
+
+            <form method="post" action="/admin/clear">
+                <button type="submit" class="btn btn-warning">Clear Flags</button>
+            </form>
         </td>
     </tr>
 
