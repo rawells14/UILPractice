@@ -38,12 +38,12 @@ class User(Base):
 class Badge(Base):
     __tablename__ = 'badges'
     uid = Column(Integer, primary_key=True)
-    badgeids = Column(Integer)
+    badgeids = Column(String(5000))
 
     def __repr__(self):
-        return "<Question(qid='%d', badgeids='%d')>" % (
-            self.qid,
-            self.badgeid)
+        return "<Badge(uid='%d', badgeids='%s')>" % (
+            self.uid,
+            self.badgeids)
 
 
 class Flag(Base):
