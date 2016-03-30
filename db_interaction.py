@@ -9,29 +9,6 @@ from models import *
 import settings
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
@@ -147,6 +124,8 @@ def incorrect(user, qid):
     session.commit()
     session.close()
     new_submission(user.uid, 'i')
+    from badge_system import award_badges
+    award_badges(user.uid)
 
 
 def correct(user, qid):
@@ -159,6 +138,8 @@ def correct(user, qid):
     session.commit()
     session.close()
     new_submission(user.uid, 'c')
+    from badge_system import award_badges
+    award_badges(user.uid)
 
 
 def get_random_question(subject):
