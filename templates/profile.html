@@ -6,34 +6,33 @@
 {% block content %}
 {% if user %}
 <!-- Actual Profile Logic-->
-<div>
-    <div class="well well-lg">
-        <div id="profile-title">
-            {{ user.username }}'s Profile
-        </div>
-        {% if user.username == 'admin' %}
-        <div id="mod-label">
+<div class="well well-lg">
+    <div id="profile-title">
+        {{ user.username }}'s Profile
+    </div>
+    {% if user.username == 'admin' %}
+    <div id="mod-label">
                 <span class="label label-primary">
                     Moderator
                 </span>
-        </div>
-        {% endif %}
-
     </div>
-    <table width=100% height=100%>
-        <tr>
-            <td width=50%>
-                <div id="content-holder">
-                    <div id="profile-content">
-                        Rank: {{ rank }}<br>
-                        Score: {{ user.score }}<br>
-                        Questions answered: {{ user.totalattempted }}
-                    </div>
-                </div>
-            </td>
-            <td width=50%>Badges</td>
-        </tr>
-    </table>
+    {% endif %}
+
+</div>
+
+<div class="profile-stats">
+    <div class="profile-header">Stats
+    </div>
+    <br>
+    Rank: <strong>#{{ rank }}</strong><br>
+    Score: <strong>{{ user.score }}</strong><br>
+    Questions answered: <strong>{{ user.totalattempted }}</strong><br>
+</div>
+<div class="profile-stats">
+    <div class="profile-content profile-header">
+        Badges
+    </div>
+</div>
 
 </div>
 </div>

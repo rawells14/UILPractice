@@ -12,7 +12,17 @@
     text-size 24px;
 }
 #content-holder{
+
+}
+.profile-stats{
+    margin: auto;
+    vertical-align: middle;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+    align: center;
+    font-size: 26px;
+}
+.profile-header{
+    font-size: 32px;
 }
