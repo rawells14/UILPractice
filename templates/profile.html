@@ -2,6 +2,7 @@
 {% block title %} {{ user.username }}'s Profile{% endblock %}
 {% block head %}
 <link rel="stylesheet" href="/static/profile.css">
+<script src="/static/profile.js"></script>
 {% endblock %}
 {% block content %}
 {% if user %}
@@ -32,10 +33,14 @@
     <div class="profile-content profile-header">
         Badges
     </div>
+    <div id="badge-holder">
+        {% for i in range(6) %}
+        <img src="/static/Pictures/Badges/{{i}}.png" data-toggle="tooltip" title="Badge Description">
+        {% endfor %}
+    </div>
 </div>
 
-</div>
-</div>
+
 {% else %}
 User doesn't exist!
 {% endif %}
