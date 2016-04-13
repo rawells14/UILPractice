@@ -1,5 +1,6 @@
 from models import Badge
 from FlaskApp import settings
+from db_interaction import *
 
 
 def add_badge(uid, bid):
@@ -72,4 +73,3 @@ def get_badge_names():
         names.append(line.split('\n')[0])
     f.close()
     return names
-
