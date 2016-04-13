@@ -26,13 +26,21 @@
 .profile-header{
     font-size: 32px;
 }
-#badge-holder img{
+.badge-holder img{
     padding-left: 5%;
     padding-top: 2%;
-    -webkit-filter: grayscale(100%);
+
+}
+.no-badge{
+-webkit-filter: grayscale(100%);
     filter: grayscale(100%);
     opacity: .25;
+
 }
+.has-badge{
+
+}
+
 #badge-holder{
     padding-top: 5%;
     padding-bottom: 5%;

@@ -33,9 +33,13 @@
     <div class="profile-content profile-header">
         Badges
     </div>
-    <div id="badge-holder">
+    <div id="badge-holder" class="badge-holder">
         {% for i in range(badgenames|length) %}
-        <img src="/static/Pictures/Badges/{{i}}.png" data-toggle="tooltip" title="{{badgenames[i]}}">
+        <img class="no-badge" src="/static/Pictures/Badges/{{i}}.png" id="badge{{i}}" data-toggle="tooltip"
+             title="{{badgenames[i]}}">
+        {% if i in badges %}
+        <script>$("#badge{{i}}").removeClass("no-badge");</script>
+        {% endif %}
         {% endfor %}
     </div>
 </div>
