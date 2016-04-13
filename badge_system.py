@@ -1,5 +1,3 @@
-from decimal import Decimal
-from db_interaction import Session, get_all_users, users_by_accuracy, get_user_by_uid
 from models import Badge
 
 
@@ -67,9 +65,12 @@ def badge_0(uid):
 
 def get_badge_names():
     names = []
-    with open('BadgeNames.txt') as f:
-        names.append(f.read().splitlines())
-    return names[0]
+    f = open('BadgeNames.txt', mode='r')
+    lines = f.readlines()
+    for line in lines:
+        names.append(line.split('\n')[0])
+    f.close()
+    return names
 
 
 print(get_badge_names())
