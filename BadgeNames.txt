@@ -3,3 +3,5 @@ Academic
 High School Academic
 College Academic
 PhD Academic
+Comp Sci Master
+Math Master

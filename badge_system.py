@@ -69,6 +69,7 @@ def get_badge_names():
     names = []
     with open('BadgeNames.txt') as f:
         names.append(f.read().splitlines())
-    return names
+    return names[0]
 
 
+print(get_badge_names())

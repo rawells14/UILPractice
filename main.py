@@ -3,7 +3,7 @@ from flask import render_template
 from markupsafe import Markup
 from werkzeug.utils import redirect
 from flask_login import LoginManager, login_required, logout_user, login_user, current_user
-from badge_system import get_badges
+from badge_system import get_badges, get_badge_names
 
 from leaderboard import get_top_ten_score, get_top_ten_accuracy
 from db_interaction import *
@@ -117,7 +117,8 @@ def search():
 def profile(username):
     user_prof = get_user_by_username(username)
     rank = compute_rank(user_prof)
-    return render_template('profile.html', user=user_prof, rank=rank, badges=get_badges(user_prof.uid))
+    return render_template('profile.html', user=user_prof, rank=rank, badges=get_badges(user_prof.uid),
+                           badgenames=get_badge_names())
 
 
 @app.route('/leaderboard', methods=['GET'])
