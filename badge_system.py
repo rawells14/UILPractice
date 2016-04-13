@@ -1,4 +1,5 @@
 from models import Badge
+from FlaskApp import settings
 
 
 def add_badge(uid, bid):
@@ -65,12 +66,10 @@ def badge_0(uid):
 
 def get_badge_names():
     names = []
-    f = open('BadgeNames.txt', mode='r')
+    f = open(settings.PROJECT_PATH + 'BadgeNames.txt', mode='r')
     lines = f.readlines()
     for line in lines:
         names.append(line.split('\n')[0])
     f.close()
     return names
 
-
-print(get_badge_names())
