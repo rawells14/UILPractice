@@ -63,3 +63,13 @@ def badge_0(uid):
         add_badge(uid, 0)
     session.commit()
     session.close()
+
+
+def get_badge_names():
+    names = []
+    with open('BadgeNames.txt') as f:
+        names.append(f.read().splitlines())
+    return names
+
+
+
