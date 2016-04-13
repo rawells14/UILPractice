@@ -31,14 +31,14 @@
 </div>
 <div class="profile-stats">
     <div class="profile-content profile-header">
-        Badges
+        Badges<br>
+        {{ badges }}
     </div>
     <div id="badge-holder" class="badge-holder">
         {% for i in range(badgenames|length) %}
         <img class="no-badge" src="/static/Pictures/Badges/{{i}}.png" id="badge{{i}}" data-toggle="tooltip"
              title="{{badgenames[i]}}">
         {% if i in badges %}
-        {{ i }} Badge
         <script>$("#badge{{i}}").removeClass("no-badge");</script>
         {% endif %}
         {% endfor %}
