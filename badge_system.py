@@ -72,4 +72,3 @@ def get_badge_names():
     return names
 
 
-
