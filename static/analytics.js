@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(function () {
-      $('[data-toggle="score-tooltip"]').tooltip()
+      $('[data-toggle="score-tooltip"]').tooltip();
     });
 
 });

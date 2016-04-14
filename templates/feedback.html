@@ -1,24 +1,25 @@
 {% extends "layout.html" %}
 {% block title %} {{ user.username }}'s Profile{% endblock %}
 {% block head %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="/../static/FeedbackForm/css/reset.css">
-    <!-- CSS reset -->
-    <link rel="stylesheet" href="/../static/FeedbackForm/css/style.css">
-    <!-- Resource style -->
-    <script src="/../static/FeedbackForm/js/modernizr.js"></script>
-    <!-- Modernizr -->
-    <title>Submit Feedback</title>
+<link rel="stylesheet" href="/../static/FeedbackForm/css/reset.css">
+<!-- CSS reset -->
+<link rel="stylesheet" href="/../static/FeedbackForm/css/style.css">
+<!-- Resource style -->
+<script src="/../static/FeedbackForm/js/modernizr.js"></script>
+<!-- Modernizr -->
+<title>Submit Feedback</title>
 {% endblock %}
 {% block content %}
 <form method="post" action="{{ url_for('feedback') }}" class="cd-form floating-labels">
     <fieldset>
         <legend>Submit Feedback</legend>
-        <h4>Suggestions, bug reports, and other messages are appreciated</h4>
+        <h4><i>Suggestions, bug reports, and other messages are appreciated. If you think a question has a typo, or the
+            answer is incorrect, flag the question at the bottom</i></h4>
 
         <div class="icon">
             <label class="cd-label" for="name">Name</label>
