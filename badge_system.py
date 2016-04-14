@@ -49,7 +49,10 @@ def get_badges(uid):
 # Main Badge Award System
 def award_badges(uid):
     badge_0(uid)
-    print('BADGE 0 - ' + (str)(uid))
+    badge_1(uid)
+    badge_2(uid)
+    badge_3(uid)
+    badge_4(uid)
 
 
 # Badge ID - 0
@@ -60,6 +63,58 @@ def badge_0(uid):
     total_correct = u.totalcorrect
     if total_correct >= 10:
         add_badge(uid, 0)
+    session.commit()
+    session.close()
+
+
+# Badge ID - 1
+# Awards the badge if the user has answered 25 questions correctly
+def badge_1(uid):
+    session = Session()
+    session = Session()
+    u = get_user_by_uid(uid)
+    total_correct = u.totalcorrect
+    if total_correct >= 25:
+        add_badge(uid, 1)
+    session.commit()
+    session.close()
+
+
+# Badge ID - 2
+# Awards the badge if the user has answered 50 questions correctly
+def badge_2(uid):
+    session = Session()
+    session = Session()
+    u = get_user_by_uid(uid)
+    total_correct = u.totalcorrect
+    if total_correct >= 50:
+        add_badge(uid, 2)
+    session.commit()
+    session.close()
+
+
+# Badge ID - 3
+# Awards the badge if the user has answered 100 questions correctly
+def badge_3(uid):
+    session = Session()
+    session = Session()
+    u = get_user_by_uid(uid)
+    total_correct = u.totalcorrect
+    if total_correct >= 100:
+        add_badge(uid, 3)
+    session.commit()
+    session.close()
+
+
+# Badge ID - 4
+# Awards the badge if the user has answered 250 questions correctly
+def badge_4(uid):
+    session = Session()
+    session = Session()
+    u = get_user_by_uid(uid)
+    total_correct = u.totalcorrect
+    if total_correct >= 250:
+        add_badge(uid, 4)
     session.commit()
     session.close()
 
