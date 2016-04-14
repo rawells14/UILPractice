@@ -1,5 +1,3 @@
-from models import Badge
-from FlaskApp import settings
 from db_interaction import *
 
 
