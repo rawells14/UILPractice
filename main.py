@@ -231,10 +231,10 @@ def admin_clear():
     if request.method == 'POST':
         clear_flags()
         flash('Cleared Flags', 'success')
-        return render_template('admin.html', database_stats=get_table_amts())
+        return redirect(url_for('admin'))
     else:
         flash('Please Use the clear button instead of navigating here', 'success')
-        return render_template('admin.html', database_stats=get_table_amts())
+        return redirect(url_for('admin'))
 
 
 # flag API
