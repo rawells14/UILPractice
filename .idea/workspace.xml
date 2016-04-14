@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1fc338a-134a-4263-9683-40db9d302e34" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/homepage.html" afterPath="$PROJECT_DIR$/templates/homepage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/layout.html" afterPath="$PROJECT_DIR$/templates/layout.html" />
     </list>
     <ignored path="FlaskApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="homepage.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/homepage.html">
+      <file leaf-file-name="layout.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.780127">
-              <caret line="133" column="20" selection-start-line="133" selection-start-column="20" selection-end-line="133" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.67653275">
+              <caret line="113" column="40" selection-start-line="113" selection-start-column="40" selection-end-line="113" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -86,12 +86,12 @@
         <option value="$PROJECT_DIR$/static/profile.js" />
         <option value="$PROJECT_DIR$/BadgeNames.txt" />
         <option value="$PROJECT_DIR$/badge_system.py" />
-        <option value="$PROJECT_DIR$/templates/layout.html" />
         <option value="$PROJECT_DIR$/templates/profile.html" />
         <option value="$PROJECT_DIR$/templates/feedback.html" />
         <option value="$PROJECT_DIR$/feedback.txt" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/templates/homepage.html" />
+        <option value="$PROJECT_DIR$/templates/layout.html" />
       </list>
     </option>
   </component>
@@ -144,6 +144,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="FlaskApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FlaskApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FlaskApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -777,14 +791,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5427928">
-          <caret line="53" column="63" selection-start-line="53" selection-start-column="63" selection-end-line="53" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/feedback.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2725451">
@@ -817,6 +823,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/homepage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46723044">
+          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -825,10 +839,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage.html">
+    <entry file="file://$PROJECT_DIR$/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.780127">
-          <caret line="133" column="20" selection-start-line="133" selection-start-column="20" selection-end-line="133" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.67653275">
+          <caret line="113" column="40" selection-start-line="113" selection-start-column="40" selection-end-line="113" selection-end-column="40" />
           <folding />
         </state>
       </provider>
