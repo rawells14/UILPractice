@@ -1,6 +1,6 @@
-<!doctype html>
-<html lang="en" class="no-js">
-<head>
+{% extends "layout.html" %}
+{% block title %} {{ user.username }}'s Profile{% endblock %}
+{% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -12,10 +12,9 @@
     <!-- Resource style -->
     <script src="/../static/FeedbackForm/js/modernizr.js"></script>
     <!-- Modernizr -->
-
     <title>Submit Feedback</title>
-</head>
-<body>
+{% endblock %}
+{% block content %}
 <form method="post" action="{{ url_for('feedback') }}" class="cd-form floating-labels">
     <fieldset>
         <legend>Submit Feedback</legend>
@@ -38,5 +37,4 @@
 <script src="/../static/FeedbackForm/js/jquery-2.1.1.js"></script>
 <script src="/../static/FeedbackForm/js/main.js"></script>
 <!-- Resource jQuery -->
-</body>
-</html>
+{% endblock %}

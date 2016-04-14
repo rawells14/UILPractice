@@ -132,13 +132,13 @@ def leaderboard():
 @app.route('/feedback', methods=['GET', 'POST'])
 def feedback():
     if request.method == 'GET':
-        return render_template('feedback.html')
+        return render_template('feedback.html', user=current_user)
     if request.method == 'POST':
         name = [request.form['name']][0]
         message = [request.form['message']][0]
         new_feedback(name, message)
-        flash('Feedback Submitted', 'success')
-        return redirect(url_for('home'))
+        flash('Thanks for the Feedback!', 'success')
+        return redirect(url_for('dashboard'))
 
 
 # Computer Science Methods:
