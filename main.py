@@ -48,6 +48,8 @@ def signup():
             error = 'Username is already taken, You\'ll have to pick a new one'
         elif (len(username) < 4) or (' ' in username) or len(username) > 30:
             error = 'Usernames must be at least 4 characters in length, contain no spaces, and a maximum of 30 characters'
+        elif (len(password) < 4):
+            error = 'Password must be at least 4 characters'
         else:
             create_user(username, fullname, password)
             message = 'Account Successfully Created!'
