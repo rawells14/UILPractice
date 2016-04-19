@@ -16,6 +16,8 @@ import settings
 
 
 
+
+
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
@@ -84,7 +86,7 @@ def get_user_by_username(username):
 
 def search_by_username(username):
     session = Session()
-    users = session.query(User).filter(User.username.contains(username))
+    users = session.query(User).filter(User.username.contains(username)).order_by(User.score.desc())
     session.close()
     return users
 
