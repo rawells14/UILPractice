@@ -1,12 +1,19 @@
 import random
 import time
 
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy import *
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from models import *
 import settings
+
+
+
+
+
+
+
+
+
 
 
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
@@ -125,6 +132,7 @@ def incorrect(user, qid):
     session.close()
     new_submission(user.uid, 'i')
     from badge_system import award_badges
+
     award_badges(user.uid)
 
 
@@ -139,6 +147,7 @@ def correct(user, qid):
     session.close()
     new_submission(user.uid, 'c')
     from badge_system import award_badges
+
     award_badges(user.uid)
 
 
@@ -235,6 +244,19 @@ def clear_flags():
     session.query(Flag).delete()
     session.commit()
     session.close()
+
+
+def is_moderator(u):
+    username = u.username
+    moderators = []
+    f = open(settings.PROJECT_PATH + 'moderators.txt', mode='r')
+    lines = f.readlines()
+    for line in lines:
+        moderators.append(line.split('\n')[0])
+    for m in moderators:
+        if m == username:
+            return True
+    return False
 
 
 Base.metadata.create_all(engine)

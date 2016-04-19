@@ -11,7 +11,7 @@
     <div id="profile-title">
         {{ user.username }}'s Profile
     </div>
-    {% if user.username == 'admin' %}
+    {% if is_moderator(user) %}
     <div id="mod-label">
                 <span class="label label-primary">
                     Moderator
@@ -32,7 +32,7 @@
 <div class="profile-stats">
     <div class="profile-content profile-header">
         Badges<br>
-        
+
     </div>
     <div id="badge-holder" class="badge-holder">
         {% for i in range(badgenames|length) %}

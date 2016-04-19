@@ -25,6 +25,14 @@ def before_request():
     g.user = current_user
 
 
+@app.context_processor
+def moderator():
+    def is_mod(user):
+        return is_moderator(user)
+
+    return dict(is_moderator=is_mod)
+
+
 @login_manager.user_loader
 def load_user(uid):
     return get_user_by_uid(uid)
@@ -203,7 +211,7 @@ def math_question_specific(qid):
 @app.route('/admin', methods=['GET', 'POST'])
 @login_required
 def admin():
-    if not current_user.is_authenticated or not current_user.username == 'admin':
+    if not current_user.is_authenticated or not is_moderator(current_user):
         flash('You are not allowed here', 'error')
         return redirect(url_for('home'))
     if request.method == 'POST':
@@ -231,7 +239,7 @@ def admin():
 @app.route('/admin/clearflags', methods=['POST', 'GET'])
 @login_required
 def admin_clearflags():
-    if not current_user.is_authenticated or not current_user.username == 'admin':
+    if not current_user.is_authenticated or not is_moderator(current_user):
         flash('You are not allowed here', 'error')
         return redirect(url_for('home'))
     if request.method == 'POST':
@@ -246,7 +254,7 @@ def admin_clearflags():
 @app.route('/admin/clearfeedback', methods=['POST', 'GET'])
 @login_required
 def admin_clearfeedback():
-    if not current_user.is_authenticated or not current_user.username == 'admin':
+    if not current_user.is_authenticated or not is_moderator(current_user):
         flash('You are not allowed here', 'error')
         return redirect(url_for('home'))
     if request.method == 'POST':

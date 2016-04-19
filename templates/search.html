@@ -24,6 +24,11 @@ Search
                 <a href="/user/{{ i.username }}">
                     {{ i.username }}
                 </a>
+                {% if is_moderator(i) %}
+                <span class="label label-primary">
+                    Moderator
+                </span>
+                {% endif %}
             </td>
             <td>
                 {{ i.score }}
