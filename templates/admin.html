@@ -3,7 +3,7 @@
 {% block head %}
 <link rel="stylesheet" href="static/dashboard.css">
 <script src="static/Chart.js"></script>
-<script src="static/analytics.js"></script>
+<script src="static/admin.js"></script>
 {% endblock %}
 {% block content %}
 <body>
@@ -40,7 +40,8 @@
             {{ database_stats[5] }}<br>
 
             <form method="post" action="/admin/clear">
-                <button type="submit" class="btn btn-warning">Clear Flags <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                <button type="submit" class="btn btn-warning">Clear Flags <span class="glyphicon glyphicon-trash"
+                                                                                aria-hidden="true"></span></button>
 
             </form>
             <table class="table table-bordered">
@@ -61,40 +62,51 @@
     </tr>
 
 </table>
-<div class="message">
-    <h3>Submit New question</h3>
+<div class="button-wrapper center-text">
+    <button id="open-question" class="btn btn-primary">Add New Questions</button>
+    <button id="open-feedback" class="btn btn-success">Read Feedback</button>
+</div>
+<div id="question-wrapper">
+    <div class="message">
+        <h3>Submit New question</h3>
 
-    <form method="post" action="/admin">
-        Subject:<br>
-        <select name="subject">
-            <option value="cs">Computer Science</option>
-            <option value="math">Mathematics</option>
-        </select>
-        <br>
-        <br>
-        Question Header:<br>
-        <textarea class="form-control" rows="5" name="questionheader"></textarea>
-        <br>
-        Question Text:<br>
-        <textarea class="form-control" rows="5" name="questiontext"></textarea>
-        <br>
-        Answer Choices: (Separated by SEP)<br>
-        <textarea class="form-control" rows="5" name="answerchoices"></textarea>
-        <br>
-        Correct Answer (index int):<br>
-        <input type="text" class="form-control" name="correctanswer">
-        <br>
-        Explanation:
-        <textarea class="form-control" rows="5" name="explanation"></textarea>
-        <br>
+        <form method="post" action="/admin">
+            Subject:<br>
+            <select name="subject">
+                <option value="cs">Computer Science</option>
+                <option value="math">Mathematics</option>
+            </select>
+            <br>
+            <br>
+            Question Header:<br>
+            <textarea class="form-control" rows="5" name="questionheader"></textarea>
+            <br>
+            Question Text:<br>
+            <textarea class="form-control" rows="5" name="questiontext"></textarea>
+            <br>
+            Answer Choices: (Separated by SEP)<br>
+            <textarea class="form-control" rows="5" name="answerchoices"></textarea>
+            <br>
+            Correct Answer (index int):<br>
+            <input type="text" class="form-control" name="correctanswer">
+            <br>
+            Explanation:
+            <textarea class="form-control" rows="5" name="explanation"></textarea>
+            <br>
 
-        <br>
-        <input type="submit" value="Add New Question">
-        <br>
-        Question ID:
-        <input type="text" class="form-control" name="questionid"
-               placeholder="Use this if you would like to change this question's information">
-    </form>
+            <br>
+            <input type="submit" value="Add New Question">
+            <br>
+            Question ID:
+            <input type="text" class="form-control" name="questionid"
+                   placeholder="Use this if you would like to change this question's information">
+        </form>
+    </div>
+</div>
+<div id="feedback-wrapper">
+    <div class="message center-text">
+        <h3>Feedback</h3>
+    </div>
 </div>
 </body>
 {% endblock %}
