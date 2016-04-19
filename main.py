@@ -42,7 +42,7 @@ def home():
 def signup():
     error = ''
     if request.method == 'POST':
-        username = [request.form['uname']][0]
+        username = [request.form['uname']][0].lower()
         fullname = [request.form['fname']][0]
         password = [request.form['pwd']][0]
         if is_taken(username):
@@ -67,7 +67,7 @@ def signup():
 def signin():
     error = ''
     if request.method == 'POST':
-        username = [request.form['uname']][0]
+        username = [request.form['uname']][0].lower()
         password = [request.form['pwd']][0]
         if not is_taken(username):
             error = '%s does not exist' % username
@@ -137,9 +137,10 @@ def feedback():
     if request.method == 'GET':
         return render_template('feedback.html', user=current_user)
     if request.method == 'POST':
-        name = [request.form['name']][0]
+        fullname = current_user.fullname
+        username = current_user.username
         message = [request.form['message']][0]
-        new_feedback(name, message)
+        new_feedback(fullname, username, message)
         flash('Thanks for the Feedback!', 'success')
         return redirect(url_for('dashboard'))
 
