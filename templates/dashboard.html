@@ -17,7 +17,6 @@
             var incorrect = {{ number_attempted|safe }} - correct;
             var attempted = {{ number_attempted|safe }};
             var accuracy = (Math.round(correct/attempted*100*10)/10);
-
         </script>
         <h2>Analytics:</h2>
 
@@ -84,6 +83,7 @@
     </div>
     <script>
             graphData(correct, incorrect);
+
 
     </script>
 </div>

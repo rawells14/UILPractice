@@ -221,20 +221,37 @@ def admin():
             update_question(questionid, questionheader, questiontext, answerchoices, (int)(correctanswer),
                             (str)(explanation), (str)(subject))
         flash('Added New Question!', 'success')
-        return render_template('admin.html', database_stats=get_table_amts(), flagranks=get_top_flagged())
+        return render_template('admin.html', database_stats=get_table_amts(), flagranks=get_top_flagged(),
+                               feedback=get_feedback())
     else:
-        return render_template('admin.html', database_stats=get_table_amts(), flagranks=get_top_flagged())
+        return render_template('admin.html', database_stats=get_table_amts(), flagranks=get_top_flagged(),
+                               feedback=get_feedback())
 
 
-@app.route('/admin/clear', methods=['POST', 'GET'])
+@app.route('/admin/clearflags', methods=['POST', 'GET'])
 @login_required
-def admin_clear():
+def admin_clearflags():
     if not current_user.is_authenticated or not current_user.username == 'admin':
         flash('You are not allowed here', 'error')
         return redirect(url_for('home'))
     if request.method == 'POST':
         clear_flags()
         flash('Cleared Flags', 'success')
+        return redirect(url_for('admin'))
+    else:
+        flash('Please Use the clear button instead of navigating here', 'success')
+        return redirect(url_for('admin'))
+
+
+@app.route('/admin/clearfeedback', methods=['POST', 'GET'])
+@login_required
+def admin_clearfeedback():
+    if not current_user.is_authenticated or not current_user.username == 'admin':
+        flash('You are not allowed here', 'error')
+        return redirect(url_for('home'))
+    if request.method == 'POST':
+        clear_feedback()
+        flash('Cleared Feedback', 'success')
         return redirect(url_for('admin'))
     else:
         flash('Please Use the clear button instead of navigating here', 'success')

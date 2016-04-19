@@ -39,7 +39,7 @@
         <td>
             {{ database_stats[5] }}<br>
 
-            <form method="post" action="/admin/clear">
+            <form method="post" action="/admin/clearflags">
                 <button type="submit" class="btn btn-warning">Clear Flags <span class="glyphicon glyphicon-trash"
                                                                                 aria-hidden="true"></span></button>
 
@@ -106,6 +106,29 @@
 <div id="feedback-wrapper">
     <div class="message center-text">
         <h3>Feedback</h3>
+    </div>
+    <div id="feedback-table-holder">
+        <table class="table table-bordered">
+            <tr>
+                <th class="info">
+                    Name (Username)
+                </th>
+                <th class="success">
+                    Feedback Message
+                </th>
+            </tr>
+            {% for s in feedback %}
+            <tr>
+                <td><strong>{{s[0]}}</strong></td>
+                <td>{{s[1]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <form method="post" action="/admin/clearfeedback">
+            <button action="submit" class="btn btn-danger">Clear Feedback Messages<span
+                    class="glyphicon glyphicon-trash"
+                    aria-hidden="true"></span></button>
+        </form>
     </div>
 </div>
 </body>

@@ -31,5 +31,3 @@ def get_feedback():
     return feedback
 
 
-print(get_feedback())
-
