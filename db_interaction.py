@@ -8,16 +8,6 @@ import settings
 
 
 
-
-
-
-
-
-
-
-
-
-
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
