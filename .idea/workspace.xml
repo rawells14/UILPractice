@@ -4,8 +4,6 @@
     <list default="true" id="f1fc338a-134a-4263-9683-40db9d302e34" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db_interaction.py" afterPath="$PROJECT_DIR$/db_interaction.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models.py" afterPath="$PROJECT_DIR$/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="FlaskApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,21 +24,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5243129">
-              <caret line="105" column="17" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="17" />
+            <state vertical-scroll-proportion="-6.793103">
+              <caret line="100" column="73" selection-start-line="100" selection-start-column="73" selection-end-line="100" selection-end-column="73" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db_interaction.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="db_interaction.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db_interaction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="265" column="23" selection-start-line="265" selection-start-column="23" selection-end-line="265" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.017928287">
+              <caret line="256" column="16" selection-start-line="256" selection-start-column="16" selection-end-line="256" selection-end-column="16" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -192,7 +190,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.db_interaction">
     <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -413,8 +411,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.db_interaction" />
+        <item index="0" class="java.lang.String" itemvalue="Python.db_interaction" />
+        <item index="1" class="java.lang.String" itemvalue="Python.main" />
         <item index="2" class="java.lang.String" itemvalue="Python.feedback" />
         <item index="3" class="java.lang.String" itemvalue="Python.badge_system" />
         <item index="4" class="java.lang.String" itemvalue="Python.models" />
@@ -869,21 +867,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db_interaction.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="265" column="23" selection-start-line="265" selection-start-column="23" selection-end-line="265" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-6.793103">
+          <caret line="100" column="73" selection-start-line="100" selection-start-column="73" selection-end-line="100" selection-end-column="73" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/db_interaction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5243129">
-          <caret line="105" column="17" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="17" />
-          <folding />
+        <state vertical-scroll-proportion="0.017928287">
+          <caret line="256" column="16" selection-start-line="256" selection-start-column="16" selection-end-line="256" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

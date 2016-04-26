@@ -97,8 +97,8 @@ def signin():
 def dashboard():
     rank = compute_rank(current_user)
     data = correct_and_total_num(current_user.username)
-    print(get_overtime_pts(current_user.uid))
-    return render_template('dashboard.html', number_correct=data[0], number_attempted=data[1], rank=rank)
+    return render_template('dashboard.html', number_correct=data[0], number_attempted=data[1], rank=rank,
+                           overtime_pts=get_overtime_pts(current_user.uid))
 
 
 @app.route('/logout', methods=['GET'])

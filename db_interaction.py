@@ -268,20 +268,16 @@ def get_overtime_pts(uid):
     # amt of seconds in a month: 2678400
     # amt of seconds in a day: 89280
     index = 0
-    xpts = [x for x in times if current_time - x < 2678400]
+    times = [x for x in times if current_time - x < 2678400]
 
     t = 0
     day = 0
-    while (t <= 2678400 and day<=30):
+    while (t <= 2678400 and day <= 30):
         for cur in times:
             if current_time - cur >= t and current_time - cur <= (t + 89280):
                 ypts[day] += 1
         t += 89280
         day += 1
-
-    print(xpts)
-    print(ypts)
-
     return [xpts, ypts]
 
 
