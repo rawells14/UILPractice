@@ -1,6 +1,4 @@
 function graphDataScore(usernames, scores){
-
-
     var data = {
     labels: usernames,
     datasets: [
