@@ -251,4 +251,38 @@ def is_moderator(u):
     return False
 
 
+# This function retrieves all the points
+# The function that will be graphed is the frequency of questions per day
+# Returns only from the past 30 days. I want to further optimize this function in the future as it
+# runs around 4n and I could probably distill it down to 2n
+def get_overtime_pts(uid):
+    times = []
+    xpts = [x for x in range(1, 31)]
+    ypts = [0 for x in range(1, 31)]
+    session = Session()
+    q = session.query(Submission).filter(Submission.uid == uid).order_by(Submission.time_stamp)
+    session.close()
+    for t in q:
+        times.append(t.time_stamp)
+    current_time = (int)(time.time())
+    # amt of seconds in a month: 2678400
+    # amt of seconds in a day: 89280
+    index = 0
+    xpts = [x for x in times if current_time - x < 2678400]
+
+    t = 0
+    day = 0
+    while (t <= 2678400 and day<=30):
+        for cur in times:
+            if current_time - cur >= t and current_time - cur <= (t + 89280):
+                ypts[day] += 1
+        t += 89280
+        day += 1
+
+    print(xpts)
+    print(ypts)
+
+    return [xpts, ypts]
+
+
 Base.metadata.create_all(engine)

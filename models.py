@@ -86,5 +86,5 @@ class Submission(Base):
     time_stamp = Column(Integer, primary_key=True)
 
     def __repr__(self):
-        return "<Submission(uid='%s', status='%s', time_stamp='%d')>" % (
+        return "<Submission(uid='%d', status='%s', time_stamp='%d')>" % (
             self.username, self.status, self.time_stamp)
