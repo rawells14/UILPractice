@@ -257,10 +257,10 @@ def is_moderator(u):
 # runs around 4n and I could probably distill it down to 2n
 def get_overtime_pts(uid):
     times = []
-    xpts = [x for x in range(1, 31)]
-    ypts = [0 for x in range(1, 31)]
+    xpts = [x for x in range(1, 32)]
+    ypts = [0 for x in range(1, 32)]
     session = Session()
-    q = session.query(Submission).filter(Submission.uid == uid).order_by(Submission.time_stamp)
+    q = session.query(Submission).filter(Submission.uid == uid).order_by(Submission.time_stamp.desc())
     session.close()
     for t in q:
         times.append(t.time_stamp)
