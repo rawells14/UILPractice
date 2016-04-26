@@ -3,5 +3,5 @@ feedback.txt
 data.db
 .idea
 settings.py
-
+.pyc
 .idea/workspace.xml
