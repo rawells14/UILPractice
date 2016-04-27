@@ -11,6 +11,11 @@ import settings
 
 
 
+
+
+
+
+
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
@@ -27,6 +32,7 @@ def new_submission(uid, status):
     session = Session()
     t = time.time()
     sub = Submission(uid=uid, status=status, time_stamp=(int)(t))
+    print(str(str(uid) + ' ' + str(status)))
     session.add(sub)
     session.commit()
     session.close()

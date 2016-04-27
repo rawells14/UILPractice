@@ -5,7 +5,6 @@ def add_badge(uid, bid):
     bid = (str)(bid)
     session = Session()
     if (has_badge(uid, bid)):
-        print(has_badge(uid, bid))
         session.close()
         return
     else:
@@ -19,7 +18,6 @@ def add_badge(uid, bid):
 
 def has_badge(uid, bid):
     badges = get_badges(uid)
-    print(get_badges(uid))
     for b in badges:
         if b == bid or (int)(b) == (int)(bid):
             return True

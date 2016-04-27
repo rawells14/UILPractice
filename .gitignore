@@ -6,3 +6,5 @@ settings.py
 .pyc
 .idea/workspace.xml
 *.pyc
+db_interaction.pyc
+db_interaction.pyc
