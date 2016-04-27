@@ -28,8 +28,8 @@ function graphOverTime(xpts, ypts){
         {
             label: "Questions Answered",
             fill: true,
-            lineTension: .05,
-            backgroundColor: "rbga(89, 85, 148,1)",
+            lineTension: .1,
+            backgroundColor: 'rbga(89, 85, 148,1)',
             borderColor: "rgba(75,192,192,1)",
             borderCapStyle: 'butt',
             borderDash: [],
@@ -44,24 +44,11 @@ function graphOverTime(xpts, ypts){
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 1,
-            data: ypts
+            data: ypts,
             }
     ]
     };
 
     var ctx = document.getElementById("overtime-chart").getContext("2d");
     var correctIncorrectChart = new Chart(ctx).Line(data);
-}
-
-
-function getColor(percentage){
-    var colors = ["#AA3939", "#AA6939", "#AA9239", "#68C21D", "#148282"];
-    var percents = [50, 60, 70, 80, 90]
-    var color = "";
-    for(i = percents.length; i >= 0; i--){
-        if(percentage >= percents[i]){
-            return colors[i];
-        }
-    }
-    return colors[0];
 }
