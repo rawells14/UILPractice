@@ -8,6 +8,7 @@ import settings
 
 
 
+
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
@@ -278,7 +279,7 @@ def get_overtime_pts(uid):
                 ypts[day] += 1
         t += 89280
         day += 1
-    return [xpts, ypts]
+    return [xpts, ypts.reverse()]
 
 
 Base.metadata.create_all(engine)

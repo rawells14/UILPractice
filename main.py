@@ -10,6 +10,7 @@ from db_interaction import *
 from feedback import *
 import settings
 
+
 app = Flask(__name__)
 app.secret_key = settings.SECRET_KEY
 login_manager = LoginManager()
@@ -26,10 +27,10 @@ def before_request():
 
 @app.context_processor
 def moderator():
-    def is_mod(user):
+    def mod(user):
         return is_moderator(user)
 
-    return dict(is_moderator=is_mod)
+    return dict(is_moderator=mod)
 
 
 @login_manager.user_loader
