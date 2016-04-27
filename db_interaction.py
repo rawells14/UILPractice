@@ -9,6 +9,8 @@ import settings
 
 
 
+
+
 # mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
 data_base_address = settings.DB_ADDRESS
@@ -255,7 +257,7 @@ def is_moderator(u):
 # This function retrieves all the points
 # The function that will be graphed is the frequency of questions per day
 # Returns only from the past 30 days. I want to further optimize this function in the future as it
-# runs around 4n and I could probably distill it down to 2n
+# runs around 6n and I could probably distill it down to 2n
 def get_overtime_pts(uid):
     times = []
     xpts = [x for x in range(1, 31)]
@@ -279,11 +281,7 @@ def get_overtime_pts(uid):
                 ypts[day] += 1
         t += 89280
         day += 1
-
-
-    print(ypts)
     ypts.reverse()
-    print(ypts)
     return [xpts, ypts]
 
 
