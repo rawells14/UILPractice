@@ -10,3 +10,4 @@ db_interaction.pyc
 db_interaction.pyc
 badge_system.pyc
 badge_system.pyc
+*.pyc
