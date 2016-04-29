@@ -27,6 +27,11 @@ def before_request():
 @app.context_processor
 def moderator():
     def mod(user):
+        if user is None:
+            return False
+        if not user:
+            return False
+        if user.contains
         return is_moderator(user)
 
     return dict(is_moderator=mod)
