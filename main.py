@@ -31,7 +31,7 @@ def moderator():
             return False
         if not user:
             return False
-        if user.contains:
+        else:
             return is_moderator(user)
 
     return dict(is_moderator=mod)
