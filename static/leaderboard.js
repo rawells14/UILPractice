@@ -26,11 +26,11 @@ function graphDataAccurate(usernames, accuracies){
     datasets: [
         {
             label: "% Accuracy",
-            backgroundColor: "rgba(183, 255, 144,0.2)",
-            borderColor: "rgba(183, 255, 144,1)",
+            backgroundColor: "rgba(125, 255, 56,0.2)",
+            borderColor: "rgba(125, 255, 56,1)",
             borderWidth: 1,
-            hoverBackgroundColor: "rgba(255,99,132,0.4)",
-            hoverBorderColor: "rgba(255,99,132,1)",
+            hoverBackgroundColor: "rgba(125, 255, 56,0.4)",
+            hoverBorderColor: "rgba(125, 255, 56,1)",
             data: accuracies
         }
     ]
