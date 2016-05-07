@@ -3,7 +3,7 @@ function graphDataScore(usernames, scores){
     labels: usernames,
     datasets: [
         {
-            label: "My First dataset",
+            label: "Score",
             backgroundColor: "rgba(255,99,132,0.2)",
             borderColor: "rgba(255,99,132,1)",
             borderWidth: 1,

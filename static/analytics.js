@@ -2,6 +2,7 @@ $(document).ready(function() {
     $(function () {
       $('[data-toggle="score-tooltip"]').tooltip();
     });
+    Chart.defaults.global.maintainAspectRatio = true;
 });
 
 function graphData(correct, incorrect){
@@ -36,7 +37,7 @@ function graphOverTime(xpts, ypts){
     labels: xpts,
     datasets: [{
         label: "Questions Answered",
-            fill: false,
+            fill: true,
             lineTension: .2,
             backgroundColor: "rgba(75,192,192,0.4)",
             borderColor: "rgba(75,192,192,1)",

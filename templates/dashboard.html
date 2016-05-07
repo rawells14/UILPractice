@@ -19,17 +19,15 @@
             var xpts = {{ overtime_pts[0]|safe }};
             var ypts = {{ overtime_pts[1]|safe }};
 
-
-
         </script>
         <h3>Your Activity in the last 30 days</h3>
-        <canvas id="overtime-chart" width="600" height="400"></canvas>
+        <canvas id="overtime-chart"></canvas>
         <br>
         Day
         <br>
 
         <h3>Your Overall Performance</h3>
-        <canvas id="correct-incorrect-chart" width="400" height="300"></canvas>
+        <canvas id="correct-incorrect-chart"></canvas>
         <table id="table-rows" class="table">
             <tr>
                 <td>
@@ -92,6 +90,8 @@
     <script>
             graphData(correct, incorrect);
             graphOverTime(xpts, ypts);
+
+
 
 
     </script>
