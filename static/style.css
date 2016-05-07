@@ -93,6 +93,7 @@ body {
     font-family: "Roboto", sans-serif !important;
     font-size: 60px;
 }
+#overtime-chart{
     padding-left: 10%;
     padding-right: 10%;
 }
