@@ -2,10 +2,10 @@
 UIL Practice is a fun and informative environment for students participating in UIL Academics to practice and compete in a friendly manner
 
 ## Practice
-UILPractice is constantly expanding it's question pool
+UILPractice is constantly expanding it's question pool with new questions!
 
 ## Learn
-Instant feedback on the outcome of your answers and many questions include explanations
+Instant feedback on the outcome of your answers and many questions include explanations!
 
 ## Compete
 Users with accounts can challenge friends and attempt to get onto the leaderboard! There are even badges on your profile to try to earn!
