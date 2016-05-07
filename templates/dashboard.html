@@ -2,7 +2,6 @@
 {% block title %} My Dashboard {% endblock %}
 {% block head %}
 <link rel="stylesheet" href="static/dashboard.css">
-<script src="static/Chart.js"></script>
 <script src="static/analytics.js"></script>
 {% endblock %}
 {% block content %}
@@ -10,15 +9,12 @@
 
     <h1>Your Dashboard</h1>
 
-
     <div id="analytics">
         <script>
             var correct = {{ number_correct|safe }};
             var incorrect = {{ number_attempted|safe }} - correct;
             var attempted = {{ number_attempted|safe }};
             var accuracy = (Math.round(correct/attempted*100*10)/10);
-
-
             //Overtime Graph
             var xpts = {{ overtime_pts[0]|safe }};
             var ypts = {{ overtime_pts[1]|safe }};
@@ -27,13 +23,13 @@
 
         </script>
         <h3>Your Activity in the last 30 days</h3>
-        <canvas id="overtime-chart" width="800" height="600"></canvas>
+        <canvas id="overtime-chart" width="600" height="400"></canvas>
         <br>
         Day
         <br>
 
         <h3>Your Overall Performance</h3>
-        <canvas id="correct-incorrect-chart" width="600" height="400"></canvas>
+        <canvas id="correct-incorrect-chart" width="400" height="300"></canvas>
         <table id="table-rows" class="table">
             <tr>
                 <td>

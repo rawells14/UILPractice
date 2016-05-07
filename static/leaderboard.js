@@ -3,16 +3,22 @@ function graphDataScore(usernames, scores){
     labels: usernames,
     datasets: [
         {
-            label: "Score",
-            fillColor: "#7060B4",
-            highlightFill: "#523F9E",
+            label: "My First dataset",
+            backgroundColor: "rgba(255,99,132,0.2)",
+            borderColor: "rgba(255,99,132,1)",
+            borderWidth: 1,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
             data: scores
         }
     ]
 };
 
-        var ctx = document.getElementById("top-ten-graph").getContext("2d");
-        var topTenChart = new Chart(ctx).Bar(data);
+        var ctx = $("top-ten-graph");
+        var topTen = new Chart(ctx, {
+            type: 'bar',
+            data: data
+});
 }
 function graphDataAccurate(usernames, accuracies){
      var data = {

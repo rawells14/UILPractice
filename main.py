@@ -45,7 +45,6 @@ def load_user(uid):
 
 @app.route('/', methods=['GET'])
 def home():
-    error = ''
     if current_user.is_active:
         return redirect(url_for('dashboard'))
     return render_template('homepage.html')

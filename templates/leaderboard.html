@@ -2,7 +2,6 @@
 {% block title %} Leaderboard {% endblock %}
 {% block head %}
 <link rel="stylesheet" href="static/dashboard.css">
-<script src="static/Chart.js"></script>
 <script src="static/analytics.js"></script>
 <script src="static/leaderboard.js"></script>
 {% endblock %}
@@ -32,5 +31,6 @@
     graphDataScore(dataIn[0], dataIn[1]);
     dataIn = {{ accurate| safe }};
     graphDataAccurate(dataIn[0], dataIn[1]);
+
 </script>
 {% endblock %}
