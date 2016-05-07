@@ -3,16 +3,5 @@ feedback.txt
 data.db
 .idea
 settings.py
-.pyc
 .idea/workspace.xml
-*.pyc
-db_interaction.pyc
-db_interaction.pyc
-badge_system.pyc
-badge_system.pyc
-*.pyc
-*.pyc
-badge_system.pyc
-models.pyc
-badge_system.pyc
 *.pyc
