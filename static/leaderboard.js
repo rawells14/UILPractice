@@ -14,7 +14,7 @@ function graphDataScore(usernames, scores){
     ]
 };
 
-        var ctx = $("top-ten-graph");
+        var ctx = $("#top-ten-graph");
         var topTen = new Chart(ctx, {
             type: 'bar',
             data: data
@@ -36,7 +36,7 @@ function graphDataAccurate(usernames, accuracies){
     ]
 };
 
-        var ctx = $("most-accurate-graph");
+        var ctx = $("#most-accurate-graph");
         var accurateGraph = new Chart(ctx, {
             type: 'bar',
             data: data
