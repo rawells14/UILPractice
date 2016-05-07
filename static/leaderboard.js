@@ -25,9 +25,9 @@ function graphDataAccurate(usernames, accuracies){
     labels: usernames,
     datasets: [
         {
-            label: "My First dataset",
-            backgroundColor: "rgba(255,99,132,0.2)",
-            borderColor: "rgba(255,99,132,1)",
+            label: "% Accuracy",
+            backgroundColor: "rgba(183, 255, 144,0.2)",
+            borderColor: "rgba(183, 255, 144,1)",
             borderWidth: 1,
             hoverBackgroundColor: "rgba(255,99,132,0.4)",
             hoverBorderColor: "rgba(255,99,132,1)",
