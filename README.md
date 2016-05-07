@@ -17,4 +17,4 @@ Some tools used on the front end include: `Bootstrap`, `Chart.js`, and `Prettify
 
 
 ## Why was UILPractice made?
-This service was created during my Senior year of High School for an Independent Study project. I hope everyone who uses it can learn more about the subejcts of Mathematics and Computer Science! 
+This service was created during my Senior year of High School for an Independent Study project (2015-2016). I hope everyone who uses it can learn more about the subejcts of Mathematics and Computer Science! 
