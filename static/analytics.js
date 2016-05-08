@@ -2,7 +2,6 @@ $(document).ready(function() {
     $(function () {
       $('[data-toggle="score-tooltip"]').tooltip();
     });
-    Chart.defaults.global.maintainAspectRatio = true;
 });
 
 function graphData(correct, incorrect){
