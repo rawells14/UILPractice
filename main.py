@@ -30,10 +30,9 @@ def moderator():
     def mod(user):
         if user is None:
             return False
-        if not user:
-            return False
-        else:
+        if user.is_authenticated():
             return is_moderator(user)
+        return False
 
     return dict(is_moderator=mod)
 
