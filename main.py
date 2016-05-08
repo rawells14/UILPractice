@@ -28,6 +28,8 @@ def before_request():
 @app.context_processor
 def moderator():
     def mod(user):
+        if 'AnonymousUserMixin' in (str)(user):
+            return False
         if user is None:
             return False
         if not user:
@@ -167,6 +169,7 @@ def cs():
 
 
 @app.route('/cs/new', methods=['GET', 'POST'])
+@login_required
 def cs_question():
     question = get_random_question('cs')
     return redirect('/cs/question/' + (str)(question.qid))
@@ -181,6 +184,7 @@ def cs_question_specific(qid):
 
 # Submit API
 @app.route('/submit/', methods=['POST'])
+@login_required
 def submit():
     isCor = [request.form['isCor']][0]
     qid = [request.form['qid']][0]
@@ -202,6 +206,7 @@ def math():
 
 
 @app.route('/math/new', methods=['GET', 'POST'])
+@login_required
 def math_question():
     question = get_random_question('math')
     return redirect('/math/question/' + (str)(question.qid))
