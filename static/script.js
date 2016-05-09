@@ -20,6 +20,9 @@ $( document ).ready(function() {
         window.location.replace("/math/new");
          }, 600);
   });
+  $('.carousel').carousel({
+             interval: 5000
+         })
 });
 
 function clearStates(){
