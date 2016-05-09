@@ -10,19 +10,19 @@
 <div class="well well-lg">
     <div id="profile-title">
         {{ user.username }}'s Profile
-    </div>
-    {% if is_moderator(user) %}
-    <div id="mod-label">
+
+        {% if is_moderator(user) %}
+        <div id="mod-label">
                 <span class="label label-primary">
                     Moderator
                 </span>
+        </div>
+        {% endif %}
     </div>
-    {% endif %}
-
 </div>
 
 <div class="profile-stats">
-    <div class="profile-header">Stats
+    <div class="profile-header"><h1>Stats</h1>
     </div>
     <br>
     Rank: <strong>#{{ rank }}</strong><br>
