@@ -22,8 +22,9 @@ $( document ).ready(function() {
   });
   $('.carousel').carousel({
              interval: 4500,
-             wrap: true
-         })
+             wrap: true,
+             pause: false
+         });
 });
 
 function clearStates(){
