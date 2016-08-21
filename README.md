@@ -20,3 +20,4 @@ Some tools used on the front end include: `Bootstrap`, `Chart.js`, and `Prettify
 This service was created during my Senior year of High School for an Independent Study project (2015-2016). I hope everyone who uses it can learn more about the subejcts of Mathematics and Computer Science! 
 
 ### www.uilpractice.com
+### Note: The Production server is no longer running but feel free to clone it
